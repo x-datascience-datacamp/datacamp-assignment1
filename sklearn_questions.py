@@ -1,3 +1,4 @@
+# noqa: D100
 import numpy as np
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.validation import check_X_y, check_is_fitted
@@ -7,7 +8,7 @@ from sklearn.utils.validation import check_array
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """Write docstring
     """
-    def __init__(self):
+    def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
