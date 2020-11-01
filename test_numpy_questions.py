@@ -16,7 +16,7 @@ def test_max_index():
 
     X = np.random.randn(100, 100)
     i, j = max_index(X)
-    assert np.all(X[i, j] <= X)
+    assert np.all(X[i, j] >= X)
 
     with pytest.raises(ValueError):
         max_index(None)
