@@ -15,7 +15,11 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         """
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
+        if len(self.classes_) >= 100:
+            raise ValueError('Unknown label type: ')
         # XXX fix
+        self._X_train = X
+        self._y_train = y
         return self
 
     def predict(self, X):
@@ -23,9 +27,11 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         """
         check_is_fitted(self)
         X = check_array(X)
-        y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
         # XXX fix
-        return y_pred
+        id_test = (
+            (X[:, None] - self._X_train[None]) ** 2
+        ).sum(axis=-1).argmin(axis=1)
+        return self._y_train[id_test]
 
     def score(self, X, y):
         """Write docstring
