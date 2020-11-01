@@ -28,6 +28,7 @@ def max_index(X):
     j = 0
 
     # TODO
+    # Start doing things
 
     return i, j
 
