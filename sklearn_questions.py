@@ -1,3 +1,4 @@
+# noqa: D100
 import numpy as np
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.validation import check_X_y, check_is_fitted
@@ -5,13 +6,20 @@ from sklearn.utils.validation import check_array
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Write docstring
-    """
-    def __init__(self):
+    """OneNearestNeighborClassifier from sklearn."""
+
+    def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """Write docstring
+        """Fit method for OneNearestNeighbor.
+
+        Parameters
+        ----------
+        X: ndarray, shape (n_samples, n_features)
+            Data.
+        y: ndarray, shape (n_samples,)
+            Labels.
         """
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
@@ -23,7 +31,14 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """Write docstring
+        """Predict method for OneNearestNeighbor.
+
+        Parameters
+        ----------
+        X: ndarray, shape (n_samples, n_features)
+            Data.
+        y: ndarray, shape (n_samples,)
+            Labels.
         """
         check_is_fitted(self)
         X = check_array(X)
@@ -34,7 +49,14 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self._y_train[id_test]
 
     def score(self, X, y):
-        """Write docstring
+        """Scoring method for OneNearestNeighbor.
+
+        Parameters
+        ----------
+        X: ndarray, shape (n_samples, n_features)
+            Data.
+        y: ndarray, shape (n_samples,)
+            Labels.
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
