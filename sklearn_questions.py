@@ -4,12 +4,13 @@ from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.validation import check_X_y, check_is_fitted
 from sklearn.utils.validation import check_array
 from sklearn.metrics import pairwise_distances
+
+
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
+    """One Nearest Neighbor model."""
 
-
-    """One Nearest Neighbor model.
-    """
-    def __init__(self):  #noqa: D107
+    def __init__(self):
+        """Init function for model."""
         pass
 
     def fit(self, X, y):
@@ -62,7 +63,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """ Compute the accuracy of the model on set of observations and true labels.
+        """Compute the accuracy of the model on set of observations and true labels.
 
         Parameters
         ----------
