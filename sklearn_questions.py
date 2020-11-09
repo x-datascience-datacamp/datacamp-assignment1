@@ -7,37 +7,35 @@ from sklearn.metrics.pairwise import euclidean_distances
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Creation of a OneNearestNeighbor."""
+    """Create the classifier of One Nearest neighbor using sklearn."""
 
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """Classifier with  X as input  and Y as labels .
+        """Put the data into the empty model.
 
         Parameters
         ----------
+        self : an empty classifier.
         X : ndarray of shape (n_samples, n_features)
-            Training.
-        Y : ndarray of shape (n_samples, n_features)
-            Labels.
-
+            The input array.
+        y : ndarray of shape (n_samples,)
+            the traget array.
         Returns
         -------
-        self : Classifier.
-
-        Raises
-        ------
-        ValueError
-            Regression issue.
+        self : the classifier of the model.
         """
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
 
         if len(self.classes_) > 50:
-            raise ValueError("Unknown label type: ")
-
+            raise ValueError(
+                "Unknown label type: " +
+                "Number of classe has passed the maximum number of classe")
         self.X_ = X
+        self.y_ = y
+        return self
 
     def predict(self, X):
         """
