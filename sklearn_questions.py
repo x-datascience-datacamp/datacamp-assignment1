@@ -29,9 +29,11 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
                          dtype=self.classes_.dtype)
 
         def compute_distance_array(X, x):
-            """Compute the array of distances between each
-            coordinate of X and x."""
+            """Useful function.
 
+            Compute the array of distances between each
+            coordinate of X and x.
+            """
             distances = [0]*len(X)
             for i in range(len(X)):
                 distances[i] = np.linalg.norm(X[i] - x)
