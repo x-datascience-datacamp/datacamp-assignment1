@@ -5,18 +5,17 @@ import numpy as np
 
     
 
-
 def max_index(X):
-    i = 0
-    j = 0
-    # TODO
-    if type(X) is not np.ndarray:
-         raise ValueError('The input is not a np array')
-    if len(X.shape) !=2 :
-         raise ValueError('X is not a matrix')
-    (i, j) = np.unravel_index(np.argmax(X), X.shape)
+   i = 0
+   j = 0
+   # TODO
+   if type(X) is not np.ndarray:
+        raise ValueError('The input is not a np array')
+   if len(X.shape) !=2 :
+        raise ValueError('X is not a matrix')
+   (i, j) = np.unravel_index(np.argmax(X), X.shape)
     
-    return i, j
+   return i, j
 
 
 def wallis_product(n_terms):
