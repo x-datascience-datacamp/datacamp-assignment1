@@ -1,10 +1,10 @@
-# noqa: D100
+#noqa: D100
 import numpy as np
 
 
 def max_index(X):
     """Return the index of the maximum in a numpy array.
-
+    
     Parameters
     ----------
     X : ndarray of shape (n_samples, n_features)
@@ -36,7 +36,7 @@ def max_index(X):
     return i, j
 
 
-def wallis_product(n_terms): 
+def wallis_product(n_terms):
     """Implement the Wallis product to compute an approximation of pi.
 
     See:
@@ -44,7 +44,6 @@ def wallis_product(n_terms):
 
     XXX : write Parameters and Returns sections as above.$
     """
-    
     # XXX : The n_terms is an int that corresponds to the number of
     # terms in the product. For example 10000.
     try:

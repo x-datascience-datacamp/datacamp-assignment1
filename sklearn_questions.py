@@ -8,13 +8,13 @@ from sklearn.utils.multiclass import check_classification_targets
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """Class constructor."""
-    
+
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
         """Fits the data to the model.
-    
+        
         Parameters
         ----------
         X : ndarray of shape (n_samples, n_features).
@@ -38,7 +38,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         Parameters
         ----------
         X : ndarray of shape (n_samples, n_features).
-    
+
         Returns
         -------
         y_pred: ndarray of shape(n_samples).
@@ -61,7 +61,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         ----------
         X : ndarray of shape (n_samples, n_features).
         y : ndarray of shape(n_samples).
-    
+
         Returns
         -------
         Percentage of correct predictions.
