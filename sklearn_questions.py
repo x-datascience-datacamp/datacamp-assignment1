@@ -4,7 +4,6 @@ from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.validation import check_X_y, check_is_fitted
 from sklearn.utils.validation import check_array
 from sklearn.metrics.pairwise import euclidean_distances
-from sklearn.metrics import f1_score
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):

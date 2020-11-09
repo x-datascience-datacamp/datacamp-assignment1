@@ -25,15 +25,14 @@ def max_index(X):
         if the shape is not 2D.
     """
     if(type(X) is np.ndarray):
-        if(len(X.shape)!=2):
+        if (len(X.shape) != 2):
             raise ValueError("Input is not a 2D np.ndarray")
     else:
         raise ValueError("Input is not a np.ndarray")
 
     max_index = np.argmax(X.flatten())
-    
     i = max_index//X.shape[1]
-    j = max_index%X.shape[1]
+    j = max_index % X.shape[1]
 
     return i, j
 
@@ -54,5 +53,5 @@ def wallis_product(n_terms):
         left_part = (2. * i)/(2. * i - 1.)
         right_part = (2. * i)/(2. * i + 1.)
         pi = pi * left_part * right_part
-    
+
     return pi
