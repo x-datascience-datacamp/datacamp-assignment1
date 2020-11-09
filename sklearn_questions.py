@@ -8,18 +8,14 @@ from sklearn.utils.validation import check_is_fitted
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Write docstring. 
+    """Write docstring.
     """
-
-    """ parameters. """
 
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """Write docstring.
-        """
-        """" X, y."""
+        "Write docstring."
         X, y = check_X_y(X, y)
         X = check_array(X, copy=True, ensure_2d=True)
         self.classes_ = np.unique(y)
@@ -32,9 +28,9 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """Write docstring 
+        """Write docstring.
         """
-
+        "write"
         check_is_fitted(self)
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
@@ -42,11 +38,11 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         dist = pairwise_distances(X, self.inp_)
         indx = np.argmin(dist, axis=1)
         y_pred = self.lab_[indx]
-        return y_pred 
+        return y_pred
 
     def score(self, X, y):
-        """Write docstring 
+        """Score y_predit / y.
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
-        return np.mean(y_pred == y) 
+        return np.mean(y_pred == y)
