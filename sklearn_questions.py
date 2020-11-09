@@ -16,6 +16,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     Parameters
     ----------
     BaseEstimator : Base class for all estimators in scikit-learn.
+
     ClassifierMixin : Mixin class for all classifiers in scikit-learn.
     """
 
@@ -50,7 +51,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
         Parameters
         ----------
-
         X: ndarray of shape (1,n_features)
            The features input array
 
