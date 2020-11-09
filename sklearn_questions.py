@@ -7,15 +7,14 @@ from sklearn.utils.validation import check_array
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Write docstring
+    """Write docstring.
     """
 
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """To each point X
-        One can give a class Y
+        """To each point X return the class Y.
        
         Parameters : 
         X : 2D array
@@ -34,13 +33,13 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """One can predict what is the class of a given X
+        """Return what is the class of a given X.
        
         Parameters :
             X : 2D array
        
         Returns :
-            y : The class predicted
+            y : The class predicted.
         """
        
         check_is_fitted(self)
@@ -51,14 +50,14 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """Gives the accuracy of model
+        """Return the accuracy of model.
        
         Parameters : 
         X : a set of position, X_test
         y : a set of class, y_test
        
         Returns :
-        Accuracy of model
+        Accuracy of model.
         """
        
         X, y = check_X_y(X, y)
