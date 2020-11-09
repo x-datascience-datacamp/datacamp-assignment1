@@ -1,5 +1,4 @@
 # noqa: D100
-import sys
 import numpy as np
 
 
@@ -29,20 +28,15 @@ def max_index(X):
     j = 0
 
     # TODO
- 
-    try: 
-        max = np.argmax(X,axis=1)
-        i = max[0]
-        j = max[1]
-    except : 
-        if (type(X) is not np.array): 
-            raise ValueError("Numpy error")
-        if (type(X) is None) : 
-            raise ValueError("None")
-        if (len(X) != 2): 
-            raise ValueError("Not 2D Shape")
   
-  
+    if (type(X) is not np.ndarray): 
+        raise ValueError("Numpy error")
+    if (type(X) is None) : 
+        raise ValueError("None")
+    if (len(X.shape) != 2): 
+        raise ValueError("Not 2D Shape")
+    
+    i,j = np.unravel_index(X.argmax(),np.shape(X))
   
     return i, j
     
@@ -64,11 +58,11 @@ def wallis_product(n_terms):
 
     
     return 0.
-"""
+
 a = np.random.randn(100, 100)
 print(len(a))
 i,j = max_index(a)
 print(i)
 print(j)
-"""
+
 #assert np.all(a[i, j] >= a)
