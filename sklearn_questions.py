@@ -39,13 +39,14 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
             raise ValueError("Number of feature in predict different than in fit")
         y_pred = []
         for i in range(len(x)):
+            best_distance = np.linalg.norm(x[i]-self.x_[0])
             y_pred.append(self.y_[0])
-            x_mean = np.mean(x[i])
-            m = np.mean(self.x_[0])
+            #x_mean = np.mean(x[i])
+            #m = np.mean(self.x_[0])
             for k in range(len(self.x_)):
-                x_fit_mean = np.mean(self.x_[k])
-                if abs(x_mean - x_fit_mean) < abs(x_mean - m):
-                    m = x_fit_mean
+                distance = np.linalg.norm(x[i]-self.x_[k])
+                if distance < best_distance:
+                    best_distance = distance
                     y_pred[i] = self.y_[k]
         return np.asarray(y_pred)
 
