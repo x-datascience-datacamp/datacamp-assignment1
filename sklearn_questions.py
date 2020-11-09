@@ -22,8 +22,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         pass
 
     def fit(self, X, y):
-        """Saving the known point to initializate the estimator.
-        --
+        """Save the known point to initializate the estimator.
+
         X : ndarray
             Coordinates for each of the neigbors
         y : ndarray
