@@ -17,8 +17,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
         # XXX fix
-        select = random.randint(0, len(X) - 1)
-        inX = X[select]
+        #select = random.randint(0, len(X) - 1)
+        inX = X[0][0]
         diff_squared = (X - inX) ** 2
         euclidean_distances = np.sqrt(diff_squared.sum(axis=1))
         sorted_dist_indices = euclidean_distances.argsort()[:1]
