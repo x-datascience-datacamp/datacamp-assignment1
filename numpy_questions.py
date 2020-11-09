@@ -23,7 +23,6 @@ def max_index(X):
         If the input is not a numpy error or
         if the shape is not 2D.
     """
-
     if X is None or type(X) is not np.ndarray:
         raise ValueError(
             "The input array X is None or not a numpy array.")
@@ -47,7 +46,6 @@ def wallis_product(n_terms):
     https://en.wikipedia.org/wiki/Wallis_product
 
     """
-
     x = 2
     for n in range(1, n_terms + 1):
         x *= ((4 * n ** 2) / (4 * n ** 2 - 1))

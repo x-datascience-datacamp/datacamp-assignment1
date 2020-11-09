@@ -54,7 +54,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         y : array
             Class labels for each test data sample.
         """
-
         check_is_fitted(self)
         X = check_array(X)
 
