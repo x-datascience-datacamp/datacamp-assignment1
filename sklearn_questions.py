@@ -3,6 +3,7 @@ import numpy as np
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.validation import check_X_y, check_is_fitted
 from sklearn.utils.validation import check_array
+from sklearn.metrics import pairwise_distances
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
@@ -21,6 +22,10 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         """
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
+        if len(self.classes_) > 30:
+            # Error Message for Regression target
+            raise ValueError(
+                "Unknown label type: Regression task")
         # XXX fix
         self.data_ = X
         self.labels_ = y
@@ -36,14 +41,9 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
         # XXX fix
-        for j in range(len(X)):
-            minn = np.linalg.norm(X[j]-self.data_[0])
-            for i in range(1, len(self.data_)):
-                distance = np.linalg.norm(X[j]-self.data_[i])
-                if distance <= minn:
-                    minn = distance
-                    label_j = self.labels_[i]
-            y_pred[j] = label_j
+        distances = pairwise_distances(X, self.data_)
+        idxs = np.argmin(distances, axis=1) #Take the index for nearest neighbor
+        y_pred = self.labels_[idxs]
 
         return y_pred
 

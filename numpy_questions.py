@@ -28,7 +28,9 @@ def max_index(X):
     j = 0
 
     # TODO
-    if len(X.shape) != 2 or isinstance(X, np.ndarray) is False:
+    if isinstance(X, np.ndarray) is False:
+        raise ValueError("We need to work on arrays!")
+    if len(X.shape) != 2:
         raise ValueError("We need 2D Array!")
 
     i, j = np.unravel_index(X.argmax(), X.shape)
