@@ -29,6 +29,8 @@ def max_index(X):
 
     # TODO
 
+    raise ValueError("Thomas")
+
     return i, j
 
 
