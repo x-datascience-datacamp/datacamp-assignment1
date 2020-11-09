@@ -62,19 +62,15 @@ def wallis_product(n_terms):
     Raises
     ------
     ValueError
-        If the input is not an int or
-        if the input is less than 1.
+        If the input is not an int.
     """
 
     if not isinstance(n_terms, int):
         raise ValueError("The input has to be an int.")
-
-    if n_terms < 1:
-        raise ValueError("The input has to be equal or greater than 1.")
 
     prod = 1
 
     for k in range(1, n_terms+1):
         prod *= 4 * k**2 / (2 * k - 1) / (2 * k + 1)
 
-    return prod
+    return 2 * prod
