@@ -7,7 +7,7 @@ from sklearn.metrics import euclidean_distances
 from sklearn.utils.multiclass import check_classification_targets
 
 
-class OneNearestNeighbor(BaseEstimator, ClassifierMixin):   
+class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """Predict the class y by using the closest neighbor of x.
 
     Parameters
