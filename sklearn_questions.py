@@ -7,9 +7,7 @@ from sklearn.metrics import pairwise_distances
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Sklearn estimator class to find the nearest neighbor.
-    """
-
+    """Sklearn estimator class to find the nearest neighbor."""
     def __init__(self):  # noqa: D107
         pass
 
@@ -25,7 +23,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         ----------
         self : Model that has been fitted
         """
-
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
 
@@ -48,7 +45,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         ----------
         y_pred : Predictions of the model
         """
-
         check_is_fitted(self)
         X = check_array(X)
         # y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
@@ -69,7 +65,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         ----------
         Mean : Average performance obtained by the model
         """
-
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
         return np.mean(y_pred == y)
