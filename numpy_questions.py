@@ -35,7 +35,7 @@ def max_index(X):
         raise ValueError('you should enter a 2-D array')
 
     argmax=np.argmax(X)
-    (i,j)=np.unravel_index(argmax, X.shape)
+    i,j=np.unravel_index(argmax, X.shape)
 
     return i,j
 
