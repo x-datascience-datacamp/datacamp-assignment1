@@ -23,7 +23,7 @@ def max_index(X):
     if type(X) != np.ndarray or len(X.shape) != 2:
         raise ValueError
     i = 0
-    j = 0
+    j = 1
     i, j = np.unravel_index(np.argmax(X), X.shape)
     # TODO
     return i, j
