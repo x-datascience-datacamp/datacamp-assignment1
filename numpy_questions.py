@@ -26,10 +26,10 @@ def max_index(X):
     """
     if type(X) is not np.ndarray or X is None:
         raise ValueError("Input should be a numpy array")
-    if X.ndim!=2:
+    if X.ndim != 2:
         raise ValueError("Input should have 2 dimensions")
-    i,j=np.unravel_index(np.argmax(X), X.shape)
-    return i,j
+    i, j = np.unravel_index(np.argmax(X), X.shape)
+    return i, j
 
 
 def wallis_product(n_terms):
@@ -54,11 +54,10 @@ def wallis_product(n_terms):
     ValueError
         If n_terms is not an integer or
         if n_terms is less than 1
-        
     """
-    if type(n_terms)!=int or n_terms<0:
-        raise ValueError("The number of terms should be an integer greater than 0")
-    value=1
+    if type(n_terms) != int or n_terms < 0:
+        raise ValueError("The number of terms should be a positive integer")
+    value = 1
     for i in range(n_terms):
-        value*=(4*(i+1)**2)/(4*(i+1)**2-1)  
+        value *= (4*(i+1)**2)/(4*(i+1)**2-1)
     return 2*value
