@@ -26,13 +26,13 @@ def max_index(X):
     """
     i = 0
     j = 0
-
+    
     # TODO
     if np.shape(X)[0] == 2 :
-         k = np.argmax(X)
-
-    return k
-
+        k = np.argmax(X)
+        i, j = np.unravel_index(k, np.shape(X))
+            
+    return i, j
 
 def wallis_product(n_terms):
     """Implement the Wallis product to compute an approximation of pi.
@@ -45,4 +45,7 @@ def wallis_product(n_terms):
     """
     # XXX : The n_terms is an int that corresponds to the number of
     # terms in the product. For example 10000.
-    return 0.
+    WArray = np.array([2*i*2*i/((2*i - 1)*(2*i + 1)) for i in range(1, n_terms)])
+    res = np.prod(WArray)
+    
+    return 2*res
