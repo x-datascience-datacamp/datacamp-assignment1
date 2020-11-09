@@ -8,6 +8,7 @@ from sklearn.utils.validation import check_array
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """OneNearestNeighbor estimator class."""
+    
     def __init__(self):  # noqa: D107
         pass
 
