@@ -1,7 +1,7 @@
 # ##################################################
 # YOU SHOULD NOT TOUCH THIS FILE !
 # ##################################################
-
+# %%
 import math as m
 import numpy as np
 
@@ -37,3 +37,5 @@ def test_wallis_product():
 
     pi_approx = wallis_product(100000)
     assert abs(pi_approx - m.pi) < 1e-4
+
+# %%
