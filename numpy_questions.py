@@ -28,9 +28,9 @@ def max_index(X):
     j = 0
     # TODO
     if isinstance(X, (np.ndarray, np.generic))==False:
-    	raise NameError() # "X is not an array\n"
+    	raise ValueError #NameError("X is not an array\n") 
     if X.ndim !=2:
-    	raise NameError('Array shape is not 2D\n')
+    	raise ValueError #NameError('Array shape is not 2D\n')
     i,j = np.unravel_index(np.argmax(X, axis=None), X.shape)
     return i, j
 
