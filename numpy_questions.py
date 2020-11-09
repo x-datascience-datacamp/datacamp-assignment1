@@ -7,9 +7,7 @@ def max_index(X):
 
     Parameters
     ----------
-    X : ndarray of shape (n_samples, n_features)
-        The input array.
-
+    X : ndarray of shape (n_samples, n_features) The input array.
     Returns
     -------
     i : int
@@ -17,7 +15,6 @@ def max_index(X):
 
     j : int
         The column index of the maximum.
-
     Raises
     ------
     ValueError
@@ -26,16 +23,16 @@ def max_index(X):
     """
     i = 0
     j = 0
-    if type(X) is not np.ndarray :
+    if type(X) is not np.ndarray:
         raise ValueError('the input is not a numpy')
     # TODO
-    if (len(X.shape)!=2):
-         raise ValueError('the shape is not 2D')
-    rows_max=[]
+    if (len(X.shape) != 2):
+        raise ValueError('the shape is not 2D')
+    rows_max = []
     for r in range(X.shape[0]):
         rows_max.append(np.max(X[r][:]))
-    i=np.where(X==np.max(rows_max))[0][0]
-    j=np.where(X==np.max(rows_max))[1][0]
+    i = np.where(X == np.max(rows_max))[0][0]
+    j = np.where(X == np.max(rows_max))[1][0]
     return i, j
 
 
@@ -48,9 +45,10 @@ def wallis_product(n_terms):
     XXX : write Parameters and Returns sections as above.
 
     """
-    pi_approx = 2.   
+    pi_approx = 2.
     for i in range(1, n_terms+1):
         first_term = (2. * i)/(2. * i - 1.)
         secont_term = (2. * i)/(2. * i + 1.)
         pi_approx = pi_approx * first_term * secont_term
     return pi_approx
+print(wallis_product(1))
