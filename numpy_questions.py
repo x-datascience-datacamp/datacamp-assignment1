@@ -1,4 +1,5 @@
 clear()
+#pb avec les espaces
 import numpy as np
 def max_index(X):
     i = 0
