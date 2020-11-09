@@ -7,14 +7,12 @@ from sklearn.utils.validation import check_array
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """ Implement a 1-NN class with basic functions  (fit, predict, score)
-    """
+    """Implement a 1-NN class with basic functions  (fit, predict, score)."""
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """ stores training data
-        """
+        """Stores training data."""
         check_classification_targets(y)
         X, y = check_X_y(X, y, ensure_2d=True)
         self.classes_ = np.unique(y)
@@ -22,8 +20,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """ Predict a label for each line of X
-        """
+        """Predict a label for each line of X."""
         check_is_fitted(self)
         X = check_array(X)
         y_pred = np.full(shape=len(X),
@@ -31,9 +28,9 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
                          dtype=self.classes_.dtype)
 
         def compute_distance_array(X, x):
-            """ Compute the array of distances between each
-            coordinate of X and x
-            """
+            """Compute the array of distances between each
+            coordinate of X and x."""
+
             distances = [0]*len(X)
             for i in range(len(X)):
                 distances[i] = np.linalg.norm(X[i] - x)
@@ -46,8 +43,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """ Return the accuracy on a test sample
-        """
+        """Return the accuracy on a test sample."""
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
         return np.mean(y_pred == y)
