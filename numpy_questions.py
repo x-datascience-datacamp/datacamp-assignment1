@@ -45,6 +45,15 @@ def wallis_product(n_terms):
     https://en.wikipedia.org/wiki/Wallis_product
 
     XXX : write Parameters and Returns sections as above.
+    
+    Parameters
+    ----------
+    n_terms : the number of terms for the calculation of pi
+    
+    Returns
+    -------
+    
+    pi : the approximation pi value calculated by the wallis product
 
     """
     # XXX : The n_terms is an int that corresponds to the number of
