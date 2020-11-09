@@ -1,7 +1,6 @@
 # noqa: D100
 import numpy as np
 
-
 def max_index(X):
     """Return the index of the maximum in a numpy array.
 
@@ -27,8 +26,12 @@ def max_index(X):
     i = 0
     j = 0
 
+    if type(X) is not np.ndarray:
+        raise ValueError('X should be a numpy array')
+    if len(X.shape) != 2:
+        raise ValueError('X should have a shape 2')
     i,j = np.unravel_index(X.argmax(), X.shape)
-
+    
     return i, j
 
 
