@@ -7,7 +7,7 @@ from sklearn.utils.multiclass import check_classification_targets
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """résoud un problème de classification,
+    """résoud un problème de classification.
 
     ceci grâce à un algorythme des plus proches voisins
     """
@@ -16,7 +16,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         pass
 
     def fit(self, X, y):
-        """Pretraitement des données
+        """Pretraitement des données.
 
         Parameters
         ----------
@@ -38,7 +38,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """Prédiction de la classe des données X
+        """Prédiction de la classe des données X.
 
         Parameters
         ----------
@@ -59,7 +59,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """Donne l'erreur de la classification prédite sur les data X
+        """Donne l'erreur de la classification prédite sur les data X.
 
         Parameters
         ----------
