@@ -27,6 +27,9 @@ def max_index(X):
     k = 0
     h = 0
 
+    if (type(X) != np.ndarray) or (X.ndim != 2):
+        raise ValueError
+
     n, m = np.shape(X)
     max = X[0][0]
 
