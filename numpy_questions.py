@@ -32,7 +32,7 @@ def max_index(X):
         raise ValueError("the input is not a numpy")
     if len(X.shape) != 2:
         raise ValueError("the shape is not 2D")
-    (i,j) = np.unravel_index(np.argmax(X, axis = None), X.shape)
+    (i, j) = np.unravel_index(np.argmax(X, axis=None), X.shape)
     return i, j
 
 
@@ -52,4 +52,3 @@ def wallis_product(n_terms):
         my_pi *= 4 * i ** 2 / (4 * i ** 2 - 1)
     my_pi *= 2
     return(my_pi)
-wallis_product(1)
