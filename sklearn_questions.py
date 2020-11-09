@@ -11,6 +11,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     Simple implementation.
     """
+
     def __init__(self):  # noqa: D107
         pass
 
