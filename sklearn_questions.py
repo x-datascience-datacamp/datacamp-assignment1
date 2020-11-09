@@ -15,7 +15,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def fit(self, X, y):
         """X_train and y_train."""
-
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
         check_classification_targets(self.classes_)
@@ -25,7 +24,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def predict(self, X):
         """Predict the class of the test data with euclidean distance min."""
-
         check_is_fitted(self)
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
@@ -34,7 +32,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def score(self, X, y):
         """Return the accuracy of our classification."""
-
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
         return np.mean(y_pred == y)
