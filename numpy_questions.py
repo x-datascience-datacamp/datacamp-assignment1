@@ -24,13 +24,14 @@ def max_index(X):
         If the input is not a numpy array or
         if the shape is not 2D.
     """
-    if not X or type(X) is not np.ndarray:
+    if X is None or type(X) is not np.ndarray:
         raise ValueError("The input array X is None or not a numpy array.")
     if len(X.shape) != 2:
         raise ValueError("The input array X is not 2D.")
     # maximum value
     max_value = X.max()
-    i, j = np.where(X == max_value)
+    max_indices = np.where(X == max_value)
+    i, j = max_indices[0][0], max_indices[1][0]
     return i, j
 
 
