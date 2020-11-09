@@ -27,7 +27,6 @@ def max_index(X):
     i = 0
     j = 0
 
-    # TODO
     if(isinstance(X, np.ndarray) and X.ndim == 2):
         i, j = np.unravel_index(np.argmax(X, axis=None), X.shape)
     else:
