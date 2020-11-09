@@ -79,11 +79,12 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
             Test observations.
 
         y : array_like
-            Correcto observation labels.
+            Correct observation labels.
 
         Returns
         -------
-        score : accuracy
+        score : float
+            Accuracy.
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
