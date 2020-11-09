@@ -9,6 +9,7 @@ from sklearn.utils.validation import check_is_fitted
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """Write docstring."""
+    
     def __init__(self):  # noqa: D107
         pass
 
