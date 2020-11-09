@@ -33,11 +33,11 @@ def max_index(X):
     if X.ndim != 2:
         raise ValueError("Input is a Numpy array but must be 2D")
 
-    n, m = X.shape
+    n_samples, n_features = X.shape
     maxi = X[0][0]
 
-    for row in range(n):
-        for col in range(m):
+    for row in range(n_samples):
+        for col in range(n_features):
             if X[row, col] > maxi:
                 i = row
                 j = col
@@ -52,11 +52,17 @@ def wallis_product(n_terms):
     See:
     https://en.wikipedia.org/wiki/Wallis_product
 
-    XXX : write Parameters and Returns sections as above.
+    Parameters
+    ----------
+    n_terms : int
+              number of terms in the product
 
+    return
+    ------
+    res : int
+          The approximation of pi/2 with n_terms in the product
     """
-    # XXX : The n_terms is an int that corresponds to the number of
-    # terms in the product. For example 10000.
+
     res = 2.
     for n in range(1, n_terms+1):
         res *= 4*n**2/(4*n**2-1)
