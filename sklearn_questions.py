@@ -8,6 +8,7 @@ from sklearn.utils.validation import check_X_y, check_is_fitted, check_array
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """One-Nearest-Neighbor implementation
+
     Methods
     -------
     fit():
@@ -52,7 +53,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def score(self, x, y):
         """Return model's score
-
         Parameters
         ----------
 
