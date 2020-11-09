@@ -7,7 +7,6 @@ import numpy as np
 
 
 def max_index(X):
-    
     i = 0
     j = 0
     # TODO
@@ -15,15 +14,10 @@ def max_index(X):
          raise ValueError('The input is not a np array')
     if len(X.shape) !=2 :
          raise ValueError('X is not a matrix')
-    for l in range(X.shape[0]):
-         for k in range(X.shape[1]):
-             if X[l,k] > X[i,j]:
-                 i, j = l, k
-    for line in range(X.shape[0]):
-         for col in range(X.shape[1]):
-             if X[line, col] > X[i, j]:
-                 i, j = line, col
-    return(i, j)
+    index = np.unravel_index(np.argmax(X), X.shape)
+    i = index[0]
+    j = index[1]
+    return i, j
 
 
 def wallis_product(n_terms):
