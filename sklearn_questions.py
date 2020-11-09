@@ -12,21 +12,21 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     Attributes :
     -------
-    
+
     X_classes : possible classes
     X_train : features of the training set characterizing the model
     y_train : classes of the training set characterizing the model
 
 
     """
-    
+
     def __init__(self):  # noqa: D107
         pass
 
-    def fit(self, X, y):      
+    def fit(self, X, y):
         """
-        Fitting of the model : the model is entirely determined by the training database and the possible classes.
-        
+        Fit the model by stocking X and y as the training set.
+
         Parameters :
         -------
         X : ndarray of shape (n_samples, n_features)
@@ -49,7 +49,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         """
         Prediction of the classes of the examples in X.
 
-
         Parameters :
         -------
         X : ndarray of shape (n_samples, n_features)
@@ -59,7 +58,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         -------
         y_pred : ndarray of shape (n_samples, 1)
         The output array.
-        The prediction is the class of the closest training example with regard to the euclidian distance.
+        The prediction is the class of the closest training
+        example with regard to the euclidian distance.
         """
         check_is_fitted(self)
         X = check_array(X)
@@ -83,7 +83,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
         Returns
         -------
-
         score : number of errors/total number of examples (float).
         """
         X, y = check_X_y(X, y)
