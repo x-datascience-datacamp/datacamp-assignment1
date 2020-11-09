@@ -8,7 +8,7 @@ from sklearn.neighbors import DistanceMetric
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """Classifier implementing the 1-nearest neighbors vote."""
-    
+
     def __init__(self):  # noqa: D107
         pass
 
