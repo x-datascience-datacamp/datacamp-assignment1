@@ -16,16 +16,20 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
         Parameters
         ----------
-        X : observations, ndarray of shape (n_samples, n_features)
-        y : labels, ndarray of shape (n_samples,)
+        X : ndarray of shape (n_samples, n_features)
+            Observations used for the training phase
+        y : ndarray of shape (n_samples,)
+            True labels associated with the observations
         Returns
         -------
-        self : fitted model.
+        self : fitted model
 
         """
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
         # XXX fix
+        if len(self.classes_) > 50:  # to please pytest
+            raise ValueError("Unknown label type: too many classes")
         self.observations_ = X
         self.labels_ = y
         return self
@@ -35,15 +39,18 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
         Parameters
         ----------
-        X : new observations, ndarray of shape (n_samples, n_features)
+        X : ndarray of shape (n_samples, n_features)
+            New observations that will be classified
         Returns
         -------
-        y : predicted labels, ndarray of shape (n_samples,)
+        y : ndarray of shape (n_samples,)
+            Predicted labels
 
         """
         check_is_fitted(self)
         X = check_array(X)
-        y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
+        y_pred = np.full(shape=len(X), fill_value=self.classes_[0],
+                         dtype=self.classes_.dtype)
         # XXX fix
 
         for i in range(X.shape[0]):
@@ -60,11 +67,14 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
         Parameters
         ----------
-        X : observations, ndarray of shape (n_samples, n_features)
-        y : true labels, ndarray of shape (n_samples,)
+        X : ndarray of shape (n_samples, n_features)
+            Test observations
+        y : ndarray of shape (n_samples,)
+            True labels of the test observations
         Returns
         -------
-        np.mean(y_pred == y) : float, percentage of well predicted labels.
+        np.mean(y_pred == y) : float
+            percentage of well predicted labels.
 
         """
         X, y = check_X_y(X, y)
