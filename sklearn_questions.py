@@ -7,8 +7,7 @@ from sklearn.utils.multiclass import check_classification_targets
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin): 
-    """
-    Classifier implementing the k-nearest neighbors vote.
+    """Classifier implementing the k-nearest neighbors vote.
 
     Attributes
     ----------
@@ -25,7 +24,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         pass
 
     def fit(self, X, y):
-        """
+        """Fits the data for classification
         Parameters
         ------
         X : array or matrix of shape (n_training_points, n_features)
