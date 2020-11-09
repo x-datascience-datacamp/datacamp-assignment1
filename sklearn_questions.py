@@ -25,8 +25,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def predict(self, X):
         """Predict function."""
-        if not hasattr(self, "X_"):
-            raise ValueError("")
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
         all_distances = pairwise_distances(X, self.X_)
