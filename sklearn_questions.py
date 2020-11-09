@@ -13,7 +13,11 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         pass
 
     def fit(self, X, y):
-        """Write docstring
+        """Train the model by fitting the model to the labelled data
+        ----------------------
+        Parameters : 
+
+        X: observations of the training set (numpy array)
         """
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)

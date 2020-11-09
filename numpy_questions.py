@@ -1,6 +1,8 @@
 # noqa: D100
 #%% 
 import numpy as np
+import functools
+from functools import reduce
 #%%
 
 def max_index(X):
@@ -47,11 +49,9 @@ def wallis_product(n_terms):
     XXX : write Parameters and Returns sections as above.
 
     """
-    pi = 2
-    if n_terms > 0:
-        for n in range(1, n_terms + 1):
-            pi *= (4 * n ** 2) / (4 * n ** 2 - 1)
+    if n_terms == 0 :
+        pi=2
+    else :
+        pi = 2 * reduce(lambda x, y: x*y, [(4.0*(i**2))/(4.0*(i**2)-1) for i in range (1, n_terms+1)])
     return pi
-
-
 # %%
