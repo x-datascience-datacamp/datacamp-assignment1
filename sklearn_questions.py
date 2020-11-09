@@ -35,8 +35,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         if len(self.classes_) > 50:
             raise ValueError("Unknown label type: number of classes too large")
 
-        self.obs_ = X
-        self.labels_ = y
+        self.X_ = X
+        self.y_ = y
 
         return self
 
@@ -54,8 +54,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         check_is_fitted(self)
         X = check_array(X)
 
-        distances = pairwise_distances(X, self.obs_)
-        y_pred = self.labels_[np.argmin(distances, axis=1)]
+        distances = pairwise_distances(X, self.X_)
+        y_pred = self.y_[np.argmin(distances, axis=1)]
 
         return y_pred
 

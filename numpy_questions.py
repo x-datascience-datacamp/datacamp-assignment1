@@ -24,17 +24,12 @@ def max_index(X):
         If the input is not a numpy error or
         if the shape is not 2D.
     """
-    i = 0
-    j = 0
-
-    # TODO
-
     if not isinstance(X, np.ndarray):
         raise ValueError("Input Error : not a numpy array")
     elif X.ndim != 2:
         raise ValueError("Input Error : shape is not 2D")
     else:
-        i, j = np.unravel_index(np.argmax(X, axis = 1), X.shape)
+        (i, j) = np.unravel_index(np.argmax(X, axis = None), X.shape)
 
     return i, j
 
