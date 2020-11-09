@@ -28,10 +28,10 @@ def max_index(X):
     j = 0
 
     if type(X) != np.ndarray:
-        raise TypeError("Input is not a Numpy Array")
+        raise ValueError("Input is not a Numpy Array")
 
     if X.ndim!=2 :
-        raise TypeError("Input is a Numpy array but must be 2D")
+        raise ValueError("Input is a Numpy array but must be 2D")
 
     n,m=X.shape
     maxi=X[0][0]
@@ -57,7 +57,7 @@ def wallis_product(n_terms):
     """
     # XXX : The n_terms is an int that corresponds to the number of
     # terms in the product. For example 10000.
-    res=1.
+    res=2.
     for n in range(1,n_terms+1):
         res*=4*n**2/(4*n**2-1)
 
