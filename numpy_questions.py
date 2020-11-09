@@ -55,11 +55,12 @@ def wallis_product(n_terms):
     """
     if n_terms < 0:
         raise ValueError("The number of terms to compute pi is negative")
-    x = 1
+    pi_estimate = 2.
     # initial term of the serie
     if n_terms == 0:
-        return 2.*x
+        return pi_estimate
     # apply the series formula
-    for n in range(1, n_terms+1):
-        x *= ((4*n**2) / (4*n**2 - 1))
-    return 2.*x
+    n = np.arange(1, n_terms+1)
+    wallis_product = (4 * n**2)/(4*n**2 - 1)
+    pi_estimate *= np.product(wallis_product)
+    return pi_estimate
