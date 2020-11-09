@@ -7,13 +7,16 @@ from sklearn.metrics import pairwise_distances_argmin_min
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """One Nearest Neighbor Model
+    """One Nearest Neighbor Model.
+
+    ONN.
     """
+
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """Fitting the One Nearest Neighbor Model
+        """Fitting the One Nearest Neighbor Model.
 
         Parameters
         ----------
@@ -38,7 +41,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """Predicts the label of an observation
+        """Predicts the label of an observation.
 
         Parameters
         ----------
@@ -61,7 +64,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """Compares ground truth with predicted class
+        """Compare ground truth with predicted class.
 
         Parameters
         ----------
