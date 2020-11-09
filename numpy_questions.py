@@ -24,7 +24,6 @@ def max_index(X):
         If the input is not a numpy error or
         if the shape is not 2D.
     """
-
     # Raise errors
     if type(X) is not np.ndarray:
         raise ValueError('X should be a ndarray')
@@ -53,7 +52,6 @@ def wallis_product(n_terms):
     pi : int
          The product that approximates pi.
     """
-
     pi = 2
     for i in range(1, n_terms+1):
         pi = pi * ((2*i)/(2*i-1)) * ((2*i)/(2*i+1))
