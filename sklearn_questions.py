@@ -7,8 +7,7 @@ from sklearn.metrics.pairwise import euclidean_distances
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """
-    One Nearest Neighbor Classifier  - Scikit Learn API
+    """One Nearest Neighbor Classifier  - Scikit Learn API.
 
     Author :  Yann KERVELLA
     """
@@ -17,9 +16,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         pass
 
     def nearest_neighbor_index(self, data):
-        """
-        Utility function to find the nearest datapoint in the training
-        predictors
+        """Utility function to find the nearest datapoint in the training
+        predictors.
 
         Parameters
         ----------
@@ -34,8 +32,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return np.argmin(dist)
 
     def fit(self, X, y):
-        """
-        Fit function of our One nearest neighbor model
+        """Fit function of our One nearest neighbor model.
 
         Parameters
         ----------
@@ -65,8 +62,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """
-        Predict function of our One nearest neighbor model
+        """Predict function of our One nearest neighbor model.
 
         Parameters
         ----------
@@ -87,8 +83,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """
-        Score function of our One nearest neighbor model
+        """Score function of our One nearest neighbor model.
 
         Parameters
         ----------
