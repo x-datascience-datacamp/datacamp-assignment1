@@ -39,7 +39,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
             raise(ValueError)
         self.classes_ = np.unique(y)
         # XXX fix
-        self.training, self.targets = X.copy(), y.copy()
+        self.training, self.targets = X, y
         return self
 
     def predict(self, X):
