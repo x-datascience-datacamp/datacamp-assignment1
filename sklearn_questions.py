@@ -3,7 +3,7 @@ import numpy as np
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.validation import check_X_y, check_is_fitted
 from sklearn.utils.validation import check_array
-
+from sklearn.metrics.pairwise import euclidean_distances
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """
@@ -14,6 +14,22 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def __init__(self):  # noqa: D107
         pass
+
+    def nearest_neighbor_index(self, data):
+        """
+        Utility function to find the nearest datapoint in the training predictors
+
+        Parameters
+        ----------
+        self : OneNearestNeihbor() Model
+        data : ndarray of shape (n_features) - a sample of data
+
+        Returns
+        -------
+        index : Index of the nearest data point
+        """
+        dist = euclidean_distances(self.X_, [data]);
+        return np.argmin(dist)
 
     def fit(self, X, y):
         """
@@ -35,7 +51,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         """
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
-        if len(self.classes) > 50:
+        if len(self.classes_) > 50:
             raise ValueError("Maximum number of classes has been reached, are you sure it is not regression problem ?")
         else:
             # Model fitting
@@ -59,7 +75,11 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         check_is_fitted(self)
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
-        # XXX fix
+        if y_pred.dtype == '<U3':
+            y_pred = y_pred.astype('<U5')
+        for i in range(0, len(X)):
+            y_pred[i] = self.y_[self.nearest_neighbor_index(X[i])]
+
         return y_pred
 
     def score(self, X, y):
