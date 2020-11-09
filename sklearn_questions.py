@@ -10,8 +10,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         pass
 
     def fit(self, X, y):
-         """Fit X to y."""
-         """Prend en entrée X et y et les garde en mémoire."""
          X, y = check_X_y(X, y)
          self.classes_ = np.unique(y)
          check_classification_targets(self.classes_)
@@ -22,8 +20,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
          return self
 
      def predict(self, X):
-         """Predict y with X."""
-         """Prend X en entrée et prédit y."""
          check_is_fitted(self, ["classes_"])
          X = check_array(X)
          y_pred = np.full(shape=len(X), fill_value=self.classes_[0],
@@ -37,8 +33,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
          return y_pred
 
      def score(self, X, y):
-         """Score y predicted with real y."""
-         """Score y predit par rapport au vrai y."""
          X, y = check_X_y(X, y)
          y_pred = self.predict(X)
          return np.mean(y_pred == y)
