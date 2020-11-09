@@ -51,6 +51,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def score(self, x, y):
         """Return model's score.
+
         Parameters
         ----------
         x : np.ndarray
