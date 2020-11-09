@@ -62,5 +62,4 @@ def wallis_product(n_terms):
     # apply the series formula
     n = np.arange(1, n_terms+1)
     wallis_product = (4 * n**2)/(4*n**2 - 1)
-    pi_estimate *= np.product(wallis_product)
-    return pi_estimate
+    return pi_estimate * np.product(wallis_product)
