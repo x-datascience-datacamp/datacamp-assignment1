@@ -41,16 +41,23 @@ def wallis_product(n_terms):
     See:
     https://en.wikipedia.org/wiki/Wallis_product
 
-    XXX : write Parameters and Returns sections as above.
+    Parameters
+    ----------
+    n_terms :   int
+                number of terms in the product. For example 10000.
+
+    Returns
+    -------
+    product :   float
+                pi value.
 
     """
     # XXX : The n_terms is an int that corresponds to the number of
     # terms in the product. For example 10000.
     if(n_terms > 0):
-        XXX = 4*np.linspace(1, n_terms, n_terms)**2
-        XXX = XXX/(XXX-1)
-        XXX = XXX.prod()
-        return 2*XXX
+        product = 4*np.linspace(1, n_terms, n_terms)**2
+        product = product/(product-1)
+        product = product.prod()
     else:
-        XXX = 1
-    return 2*XXX
+        product = 1
+    return 2*product
