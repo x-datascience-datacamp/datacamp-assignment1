@@ -70,7 +70,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         Returns
         -------
         score: float
-               mean accuracy
+               mean accuracy.
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
