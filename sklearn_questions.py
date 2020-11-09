@@ -4,11 +4,7 @@ from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.validation import check_X_y, check_is_fitted
 from sklearn.utils.validation import check_array
 from sklearn.metrics.pairwise import euclidean_distances
-from sklearn.datasets import make_classification
-from sklearn.model_selection import train_test_split
 from math import inf
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import pairwise_distances
 
 REGRESSION_CLASSES_THRESHOLD = 50
 
