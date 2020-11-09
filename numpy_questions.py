@@ -27,7 +27,16 @@ def max_index(X):
     i = 0
     j = 0
 
-    # TODO
+    if not(isinstance(X, np.ndarray)):
+        raise ValueError("Input is not a numpy array!")
+    elif (X.ndim != 2):
+        raise ValueError("Input is numpy array but its dimnesion is " +
+                   str(X.ndim)+". Required dimension is 2.")
+    else :
+        for idx1 in range(X.shape[0]) :
+            for idx2 in range(X.shape[1]) :
+                if X[idx1,idx2] > X[i,j] :
+                    i,j = idx1,idx2  
 
     return i, j
 
