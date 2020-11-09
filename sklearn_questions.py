@@ -23,6 +23,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def fit(self, x: np.ndarray, y: np.ndarray):
         """Fit the model on the data.
+
         Returns
         -------
         self : OneNearestNeighbor
