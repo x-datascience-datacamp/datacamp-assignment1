@@ -21,13 +21,20 @@ def max_index(X):
     Raises
     ------
     ValueError
-        If the input is not a numpy error or
+        If the input is not a numpy array or
         if the shape is not 2D.
     """
     i = 0
     j = 0
 
     # TODO
+    if type(X) != np.ndarray:
+        raise ValueError("The input must be a numpy array")
+    if len(X.shape) != 2:
+        raise ValueError("The input must be a 2D array")
+
+    i = np.argmax(np.max(X, axis=1))
+    j = np.argmax(np.max(X, axis=0))
 
     return i, j
 
