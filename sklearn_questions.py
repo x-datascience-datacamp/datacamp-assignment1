@@ -14,6 +14,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def fit(self, X, y):
         """Train the model.
+
         Parameters
         ----------
         X : training np.array of observations
@@ -21,7 +22,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
         Returns
         -------
-        self : fitted model"""
+        self : fitted model
+        """
         X, y = check_X_y(X, y)
         X = check_array(X, copy=True, ensure_2d=True)
         self.classes_ = np.unique(y)
@@ -45,6 +47,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def predict(self, X):
         """Perform predictions using the model.
+
         Parameters
         ----------
         X : np.array of observations
@@ -62,7 +65,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """
+        """Assess the performance of the model.
+
         Parameters
         ----------
         X : test np.array of observations
