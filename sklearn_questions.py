@@ -1,6 +1,5 @@
 # noqa: D100
 import numpy as np
-from scipy.spatial import distance
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.validation import check_X_y, check_is_fitted
 from sklearn.utils.validation import check_array
@@ -25,10 +24,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         ----------
         X : ndarray of shape (n_samples, n_features)
             The input array.
-        
         """
         X, y = check_X_y(X, y)
-        
         self.classes_ = np.unique(y)
         if len(self.classes_) > 50:
             raise ValueError(
@@ -63,11 +60,13 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
                 neighbor_distances_and_indices[index][index_row] = distance
 
         for index, row_query in enumerate(X):
-            k_nearest_distances_and_indices[index] = np.argmin(neighbor_distances_and_indices[index])
-        y_pred = np.array([self.y_[int(i)] for i in k_nearest_distances_and_indices])
+            k_nearest_distances_and_indices[index] = np.argmin(
+                neighbor_distances_and_indices[index])
+        y_pred = np.array(
+            [self.y_[int(i)] for i in k_nearest_distances_and_indices]
+            )
 
         return y_pred
-
 
     def score(self, X, y):
         """

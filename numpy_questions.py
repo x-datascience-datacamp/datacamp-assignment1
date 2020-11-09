@@ -33,7 +33,6 @@ def max_index(X):
         raise ValueError("Not a numpy array")
 
 
-
 def wallis_product(n_terms):
     """Implement the Wallis product to compute an approximation of pi.
 
@@ -65,4 +64,3 @@ def wallis_product(n_terms):
     n = np.arange(1, n_terms+1)
     wallis_product = (4 * n**2)/(4*n**2 - 1)
     return pi * np.product(wallis_product)
-
