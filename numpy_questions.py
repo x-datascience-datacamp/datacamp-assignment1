@@ -50,7 +50,6 @@ def wallis_product(n_terms):
     ValueError
         If n_terms is negative
     """
-
     pi = 2.
     if n_terms == 0:
         return pi
