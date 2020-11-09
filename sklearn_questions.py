@@ -14,8 +14,19 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         pass
 
     def fit(self, X, y):
-        """
-        Pretraitement des données
+        """Pretraitement des données
+
+        Parameters
+        ----------
+        - self 
+        - X : array
+            input data
+        - Y : array
+            classes corresponding on each input X
+
+        Returns
+        -------
+        self
         """
         X, y = check_X_y(X, y)
         check_classification_targets(y)
@@ -26,6 +37,17 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def predict(self, X):
         """Prédiction de la classe des données X
+
+        Parameters
+        ----------
+        - self 
+        - X : array
+            data to classify
+
+        Returns
+        -------
+        y_pred : array
+            the classes predict for each data X
         """
         check_is_fitted(self)
         X = check_array(X)
@@ -36,6 +58,18 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def score(self, X, y):
         """Donne l'erreur de la classification prédite sur les data X
+
+        Parameters
+        ----------
+        - self 
+        - X : array
+            input data
+        - Y : array
+            classes corresponding on each input X
+
+        Returns
+        -------
+        the mean off the error of missclassification
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
