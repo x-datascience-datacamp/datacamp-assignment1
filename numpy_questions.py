@@ -25,12 +25,10 @@ def wallis_product(n_terms):
     https://en.wikipedia.org/wiki/Wallis_product
     XXX : write Parameters and Returns sections as above.
     """
-    pi = 0.0
-    for i in range(n_term):
-        left = (2 * i)/(2 * i - 1)
-        right = (2 * i)/(2 * i + 1)
-        total = left * right
-        pi = pi + total
+    
+    X = np.arange(1, n_terms+1, dtype=float)
+    X = 4 * X**2 / (4 * X**2 - 1)
+    pi = 2 * np.product(X)
+    
     return pi
-    # XXX : The n_terms is an int that corresponds to the number of
-    # terms in the product. For example 10000
+    
