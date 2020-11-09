@@ -11,9 +11,8 @@ from sklearn.utils.validation import check_array
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
+    """Class to find the nearest neighbor
 
-    """
-    Class to find the nearest neighbor
     Parameters
     ----------
     BaseEstimator : Base class for all estimators in scikit-learn.
@@ -24,8 +23,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         pass
 
     def fit(self, X, y):
-        """
-        Method which
+        """Method which store X and y as attribute of the class 
 
         Parameters
         ----------
@@ -48,8 +46,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """
-        Method which return the nearest neighbor of X
+        """Method which return the nearest neighbor of X
 
         Parameters
         ----------
@@ -69,8 +66,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """
-        Method which return the score of the prediction
+        """Method which return the score of the prediction
 
         Parameters
         ----------
