@@ -7,16 +7,14 @@ from sklearn.utils.multiclass import check_classification_targets
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    
     """Class constructor."""
     
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        
         """Fits the data to the model.
-        
+    
         Parameters
         ----------
         X : ndarray of shape (n_samples, n_features).
@@ -35,7 +33,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        
         """Predicts the class of a given X point.
         
         Parameters
@@ -58,7 +55,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        
         """Calculates the prediction score of the estimator.
         
         Parameters
@@ -70,7 +66,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         -------
         Percentage of correct predictions.
         """
-    
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
         return np.mean(y_pred == y)
