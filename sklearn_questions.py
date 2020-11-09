@@ -8,28 +8,26 @@ from sklearn.utils.multiclass import check_classification_targets
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """predection of the nearest neighbor to a given data
-    """
+    """predection of the nearest neighbor to a given data."""
+    
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """fitting the data
-        """
+        """fitting the data."""
         X, y = check_X_y(X, y)
         check_classification_targets(y)
         self.classes_ = np.unique(y)
         self.X_=X
         self.y_=y
-        
+        self.Y_=y
         
         # XXX fix
         
         return self
 
     def predict(self, X):
-        """Class prediction
-        """
+        """Class prediction."""
         # check_is_fitted(self)
         # X = check_array(X)
         
@@ -62,12 +60,11 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         
         check_is_fitted(self)
         X = check_array(X)
-        # dist=euclidean_distances( self.X_,X)
+        y_pred = np.full(shape=len(X),fill_value=self.classes_[0])
         dist=np.zeros((len(X),len(self.X_)))
         for i in range(dist.shape[0]):
             for j in range(dist.shape[1]):
                 dist[i,j]=np.linalg.norm(X[i]-self.X_[j],2)
-        
         
         neib=np.argmin(dist,axis=1)
         y_pred = np.full(shape=len(X), dtype=self.classes_.dtype,fill_value=self.y_[neib])
@@ -78,8 +75,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     
 
     def score(self, X, y):
-        """Score calculationg
-        """
+        """Score calculation ."""
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
         return np.mean(y_pred == y)
