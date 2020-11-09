@@ -54,15 +54,13 @@ def wallis_product(n_terms):
     """
     # XXX : The n_terms is an int that corresponds to the number of
     # terms in the product. For example 10000.
-
-
     
-    return 0.
+    pi = 1
+    if n_terms == 1:
+        pi = 4 / (4-1)
+    for i in range(1,n_terms):
+        pi *= float(4 * i ** 2 )/ float(4 * i ** 2 - 1)
 
-a = np.random.randn(100, 100)
-print(len(a))
-i,j = max_index(a)
-print(i)
-print(j)
+    pi *= 2
+    return pi
 
-#assert np.all(a[i, j] >= a)
