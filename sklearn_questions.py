@@ -8,6 +8,7 @@ from sklearn.utils.validation import check_array
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """Write docstring
     """
+
     def __init__(self):  # noqa: D107
         pass
 
