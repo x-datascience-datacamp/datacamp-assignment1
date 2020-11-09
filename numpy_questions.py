@@ -26,10 +26,12 @@ def max_index(X):
     """
 
     if X is None or type(X) is not np.ndarray:
-        raise ValueError("The input array X is None or not a numpy array.")
+        raise ValueError(
+            "The input array X is None or not a numpy array.")
 
     if len(X.shape) != 2:
-        raise ValueError("The shape is not 2D.")
+        raise ValueError(
+            "The shape is not 2D.")
 
     s = X.shape[0]
     result = np.argmax(X)

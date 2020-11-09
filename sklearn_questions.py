@@ -26,12 +26,13 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         Raises
         -------
         ValueError
-            If the input parameter y contains more than 50 classes.
+            If the input parameter y contains more than 40 classes
         """
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
         if len(self.classes_) > 40:
-            raise ValueError("Unknown label type: Regression Task")
+            raise ValueError(
+                "Unknown label type: Regression Task")
         self.X_ = X
         self.y_ = y
         return self
@@ -53,8 +54,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         check_is_fitted(self)
         X = check_array(X)
 
-        dist = pairwise_distances(X, self.X_)
-        index = np.argmin(dist, axis=1)
+        pairdist = pairwise_distances(X, self.X_)
+        index = np.argmin(pairdist, axis=1)
         y_pred = self.y_[index]
         return y_pred
 
