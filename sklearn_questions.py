@@ -29,7 +29,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
                          dtype=self.classes_.dtype)
 
         def compute_distance_array(X, x):
-            """Useful function.
+            """Use this function.
 
             Compute the array of distances between each
             coordinate of X and x.
