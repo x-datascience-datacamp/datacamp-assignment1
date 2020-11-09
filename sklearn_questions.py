@@ -3,33 +3,76 @@ import numpy as np
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.validation import check_X_y, check_is_fitted
 from sklearn.utils.validation import check_array
+from sklearn.metrics import pairwise_distances
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Write docstring
+    """ An classifier which implements a 1-NN algorithm.
+
+    Attributes
+    ----------
+    X_ : ndarray, shape (n_samples, 2)
+        The input passed during :meth:`fit`.
+    y_ : ndarray, shape (n_samples,)
+        The labels passed during :meth:`fit`.
+    classes_ : ndarray, shape (n_classes,)
+        The classes seen at :meth:`fit`.
     """
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """Write docstring
+        """Implementation of the fitting function for this classifier.
+        Parameters
+        ----------
+        X : ndarray, shape (n_samples, 2)
+            The training input samples.
+        y : ndarray, shape (n_samples,)
+            The training input labels.
+        Returns
+        -------
+        self : object
+            Returns self.
         """
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
-        # XXX fix
+        if len(self.classes_) > 50:
+            raise ValueError(
+                "Unknown label type: Regression task")
+        self.X_ = X
+        self.y_ = y
         return self
 
     def predict(self, X):
-        """Write docstring
+        """ Implementation of the prediction function for the classifier.
+        Parameters
+        ----------
+        X : array-like, shape (n_samples, n_features)
+            The input samples.
+        Returns
+        -------
+        y : ndarray, shape (n_samples,)
+            The label for each sample is the label of the closest sample
+            seen during fit.
         """
         check_is_fitted(self)
         X = check_array(X)
-        y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
-        # XXX fix
+        distances = pairwise_distances(X, self.X_)
+        idxs = np.argmin(distances, axis=1)
+        y_pred = self.y_[idxs]
         return y_pred
 
     def score(self, X, y):
-        """Write docstring
+        """ Implementation of a score function for the classifier.
+        Parameters
+        ----------
+        X : array-like, shape (n_samples, n_features)
+            The input samples.
+        y : ndarray, shape (n_samples,)
+            The input labels.
+        Returns
+        -------
+        _ : score of the predictions of the classifier on X
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
