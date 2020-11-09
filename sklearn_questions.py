@@ -23,7 +23,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         Returns :
         Nothing, it's a method that changes the attributes.
         """
-
         X, y = check_X_y(X, y)
         check_classification_targets(y)
         self.classes_ = np.unique(y)
@@ -41,7 +40,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         Returns :
             y : The class predicted.
         """
-
         check_is_fitted(self)
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
@@ -62,7 +60,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         Returns :
         Accuracy of model.
         """
-
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
         return np.mean(y_pred == y)
