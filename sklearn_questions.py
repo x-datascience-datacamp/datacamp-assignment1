@@ -7,9 +7,7 @@ from sklearn.metrics.pairwise import euclidean_distances
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """
-    Creating OneNearestNeighbor classifier.
-    """
+    """Creating OneNearestNeighbor classifier."""
 
     def __init__(self):  # noqa: D107
         pass
@@ -28,7 +26,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         -------
         self : OneNearestNeighbor() instance of the classifier
         """
-
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
         if len(self.classes_) > 50:
