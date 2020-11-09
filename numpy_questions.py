@@ -28,14 +28,13 @@ def max_index(X):
     j = 0
 
     if not isinstance(X, np.ndarray):
-        raise ValueError
+        raise ValueError()
     if X.ndim != 2:
-        raise ValueError
+        raise ValueError()
 
-    for line in range(X.shape[0]):
-        for col in range(X.shape[1]):
-            if X[line, col] > X[i, j]:
-                i, j = line, col
+    T = np.unravel_index(X.argmax(), X.shape)
+    i = T[0]
+    j = T[1]
 
     return i, j
 
@@ -48,10 +47,10 @@ def wallis_product(n_terms):
 
     """
     if not isinstance(n_terms, int):
-        raise ValueError
+        raise ValueError()
 
-    wallis_product = 2
-    for i in range(1, n_terms + 1):
-        wallis_product = wallis_product * 4 * i**2 / (4 * i**2 - 1)
+    nrange = np.arange(1, n_terms+1)
+    wallis_product = (4 * nrange**2)/(4*nrange**2 - 1)
+    result = np.product(wallis_product)
 
-    return wallis_product
+    return 2 * result
