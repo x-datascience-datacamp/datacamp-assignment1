@@ -22,17 +22,32 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         pass
 
     def fit(self, x: np.ndarray, y: np.ndarray):
-        """Fit the model on the data."""
+        """Fit the model on the data.
+        Returns
+        -------
+        self : OneNearestNeighbor
+            The model
+        """
         x, y = check_X_y(x, y)
         self.classes_ = np.unique(y)
         self.x_ = x
         self.y_ = y
-        self.n_features_in_ = len(self.classes_)
         check_classification_targets(y)
         return self
 
-    def predict(self, x: np.ndarray):
-        """Return model prediction on data."""
+    def predict(self, x):
+        """Return model prediction on data.
+
+        Parameters
+        ----------
+        x : np.ndarray
+            The samples array
+
+        Returns
+        -------
+        y_pred : np.ndarray
+            The model prediction
+        """
         check_is_fitted(self)
         x = check_array(x)
         if x[0].shape[0] != self.x_[0].shape[0]:
@@ -41,8 +56,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         for i in range(len(x)):
             best_distance = np.linalg.norm(x[i]-self.x_[0])
             y_pred.append(self.y_[0])
-            #x_mean = np.mean(x[i])
-            #m = np.mean(self.x_[0])
             for k in range(len(self.x_)):
                 distance = np.linalg.norm(x[i]-self.x_[k])
                 if distance < best_distance:
