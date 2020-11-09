@@ -10,17 +10,13 @@ REGRESSION_CLASSES_THRESHOLD = 50
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """
-        Class to build a 1-nearest neighbors classifier using scikit learn APIs.
-    """
+    """Class to build a 1-nearest neighbors classifier using sk-learn APIs."""
 
     def __init__(self):  # noqa: D107
         pass
 
     def get_nearest_neighbor_index(self, sample_datapoint):
-        """
-        Fit the OneNearestNeighbor model using X as input data and y as true
-        labels
+        """Caculate the nearest neighbors index from self.X_.
 
         Parameters
         ----------
@@ -41,9 +37,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return np.argmin(train_distances)
 
     def fit(self, X, y):
-        """
-        Fit the OneNearestNeighbor model using X as input data and y as true
-        labels
+        """Fit the OneNearestNeighbor model using X as input data and y labels.
 
         Parameters
         ----------
@@ -73,8 +67,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """
-        Predict the labels for the input X data
+        """Predict the labels for the input X data.
 
         Parameters
         ----------
@@ -96,9 +89,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         )
 
     def score(self, X, y):
-        """
-        Computes the Mean Square Error for a given input data and base
-        prediction
+        """Compute the Mean Square Error for a given data and base prediction.
 
         Parameters
         ----------
