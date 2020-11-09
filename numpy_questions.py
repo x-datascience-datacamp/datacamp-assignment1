@@ -44,10 +44,12 @@ def wallis_product(n_terms):
     XXX : write Parameters and Returns sections as above.
 
     """
-    # XXX : The n_terms is an int that corresponds to the number of
-    # terms in the product. For example 10000.
-    
-    a = [(4*n**2)/(4*n**2-1) for n in range((1,n_terms))]
-    rep = 2*reduce(lambda x,y:x*y,a)
-    return rep
+    if type(n_terms) is not int:
+        raise ValueError
 
+    pi = 2.
+    for i in range(1, n_terms):
+        left = (2. * i)/(2. * i - 1.)
+        right = (2. * i)/(2. * i + 1.)
+        pi = pi * left * right
+    return pi
