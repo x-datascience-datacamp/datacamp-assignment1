@@ -33,14 +33,11 @@ def max_index(X):
     if (len(X.shape)!=2):
          raise ValueError('the shape is not 2D')
     rows_max=[]
-    cols_max=[]
     for r in range(X.shape[0]):
         rows_max.append(np.max(X[r][:]))
-    X=X.T
-    for c in range(X.shape[0]):
-        cols_max.append(np.max(X[c][:]))
-    i=rows_max.index(np.max(rows_max))
-    j=cols_max.index(np.max(cols_max))
+    i=np.where(X==np.max(rows_max))[0][0]
+    j=np.where(X==np.max(rows_max))[1][0]
+   # j=cols_max.index(np.max(cols_max))
     
     return i, j
 
@@ -67,3 +64,8 @@ def wallis_product(n_terms):
     # XXX : The n_terms is an int that corresponds to the number of
     # terms in the product. For example 10000.
     return pi_approx
+
+A= np.array([[1, 4, 5], 
+    [-5, 8, 9]])
+i=np.where(A==1)[0][0]
+print(max_index(A))
