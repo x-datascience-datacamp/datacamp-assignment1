@@ -38,7 +38,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """
+        """Predict the class base on the nearest neighour.
+
         Parameters
         ----------
         self : an empty classifier.
@@ -61,7 +62,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """
+        """Calculat the accuracy of the model.
+
         Parameters
         ----------
         self : an empty classifier
