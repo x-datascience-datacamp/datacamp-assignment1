@@ -50,12 +50,19 @@ def wallis_product(n_terms):
     pi : float
          approximation of pi
 
+      Raises
+    ------
+    ValueError
+        n_terms must be positive or null
+
     """
 
     pi = 2.
-    for i in range(1, n_terms + 1):
-        left = (2. * i)/(2. * i - 1.)
-        right = (2. * i)/(2. * i + 1.)
-        pi = pi * left * right
-    return pi
+    if n_terms == 0:
+        return pi
+    if n_terms < 0:
+        raise ValueError("n_terms is negative")
+    n = np.arange(1, n_terms+1)
+    wallis_product = (4 * n**2)/(4*n**2 - 1)
+    return pi * np.product(wallis_product)
 

@@ -3,7 +3,6 @@ import numpy as np
 from scipy.spatial import distance
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.validation import check_X_y, check_is_fitted
-from sklearn.utils.multiclass import check_classification_targets
 from sklearn.utils.validation import check_array
 
 
@@ -28,9 +27,12 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
             The input array.
         
         """
-        check_classification_targets(y)
         X, y = check_X_y(X, y)
+        
         self.classes_ = np.unique(y)
+        if len(self.classes_) > 50:
+            raise ValueError(
+                "Unknown label type: Classfifcation max reached")
         self.X_ = X
         self.y_ = y
         return self
@@ -78,7 +80,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
         Returns
         ----------
-        Returns the score of the classifier
+        Returns the score of the classifier as a float
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
