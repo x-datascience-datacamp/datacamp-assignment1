@@ -7,14 +7,15 @@ from sklearn.utils.multiclass import check_classification_targets
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """class One Nearest Neighbor heritad from BaseEstimato and ClassifierMixin.
+    """class One Nearest Neighbor heritad 
+    from BaseEstimato and ClassifierMixin.
     """
 
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """fits the model to the data.
+        """Fits the model to the data.
 
         Parameters
         ----------
@@ -22,7 +23,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
             The observation matrix to be used in the training.
         y : ndarray of shape (n_samples)
             The classes vector to be used in the training.
-    
+
         Returns
         -------
         self
