@@ -1,78 +1,80 @@
 # noqa: D100
 import numpy as np
 from sklearn.base import BaseEstimator, ClassifierMixin
+from sklearn.metrics.pairwise import euclidean_distances
+from sklearn.utils.multiclass import check_classification_targets
 from sklearn.utils.validation import check_X_y, check_is_fitted
 from sklearn.utils.validation import check_array
-from scipy.spatial import distance_matrix
-from sklearn.utils.multiclass import check_classification_targets
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """One Nearest Neighbor Algorithm."""
+    """Class to find the nearest neighbor.
 
-    def __init__(self):  # noqa: D107
+    Parameters
+    ----------
+    BaseEstimator : Estimators in scikit-learn.
+    ClassifierMixin : Class for classifiers in scikit-learn.
+    """
+
+    def __init__(self):
         pass
 
     def fit(self, X, y):
-        """Fit the model to X and y.
-
+        """Store X and y as attribute of the class.
         Parameters
         ----------
         X : ndarray of shape (n_samples, n_features)
-            training data.
-        Y : ndarray of shape (n_samples, n_features)
-            target data.
+            Features input array.
+        y : ndarray of shape(n_samples,1)
+            Targets input array.
 
         Returns
         -------
-        self : classifier.
-
-
-        Raises
-        ------
-        ValueError
-            If there are more than 50 classes.
+        self : OneNearestNeighbor(BaseEstimator, ClassifierMixin)
+            The instance of the class
         """
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
-
-        check_classification_targets(self.classes_)
+        check_classification_targets(y)
         self.X_ = X
-        self.y_ = y
+        self.Y_ = y
         return self
 
     def predict(self, X):
-        """Predicts y for a given X.
+        """Get the nearest neighbor of X.
 
         Parameters
         ----------
-        X : ndarray of shape (n_samples, n_features)
-            test data.
+        X: ndarray of shape (1,n_features)
+           The features input array.
 
         Returns
         -------
-        y_pred : prediction from X
+        y_pred : int
+                 The prediction.
         """
         check_is_fitted(self)
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
-        # XXX fix
-        y_pred = self.y_[np.argmin(distance_matrix(X, self.X_), axis=1)]
+        distances = euclidean_distances(X, self.X_train_)
+        min_distances = np.argmin(distances, axis=1)
+        y_pred = self.y_train_[min_distances]
         return y_pred
 
     def score(self, X, y):
-        """Compare y_pred and real y to ive the score.
+        """Get the score of the prediction.
 
         Parameters
         ----------
-        X : ndarray of shape (n_samples, n_features)
-            Input data.
-        Y : ndarray of shape (n_samples, n_features)
-            True labels of X.
+        X: ndarray of shape (n_samples,n_features)
+           The features input array.
+        y : ndarray of shape(n_samples,1)
+            The Targets input array.
 
         Returns
         -------
-        score : float
+        y_pred : float
+                 Score.
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
