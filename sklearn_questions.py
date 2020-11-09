@@ -58,7 +58,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
 
 # Following code is to test our classifier for the iris dataset from 'sklearn'
-
 """
 from sklearn import datasets
 iris = datasets.load_iris()
