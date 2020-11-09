@@ -26,7 +26,6 @@ def test_one_nearest_neighbor_match_sklearn():
 
     onn = OneNearestNeighbor()
     y_pred_me = onn.fit(X_train, y_train).predict(X_test)
-
     assert_array_equal(y_pred_me, y_pred_sk)
 
     assert onn.score(X_test, y_test) == knn.score(X_test, y_test)
