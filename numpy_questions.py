@@ -28,13 +28,15 @@ def max_index(X):
     j = 0
 
     # TODO
-    if (len(X.shape) != 2):
+    if len(X.shape) != 2 or isinstance(X, np.ndarray) is False:
         raise ValueError("We need 2D Array!")
 
-    i,j=np.unravel_index(X.argmax(), X.shape)
+    i, j = np.unravel_index(X.argmax(), X.shape)
     return i, j
 
+
 def wallis_product(n_terms):
+
     """Implement the Wallis product to compute an approximation of pi.
 
     See:
@@ -45,14 +47,17 @@ def wallis_product(n_terms):
     """
     # XXX : The n_terms is an int that corresponds to the number of
     # terms in the product. For example 10000.
-    wallis_pi=1
-    for k in range(1,n_terms):
-        wallis_pi*=4 * k ** 2 / (4 * k ** 2 - 1)
+    wallis_pi = 1
+    for k in range(1, n_terms+1):
+        wallis_pi *= 4 * k ** 2 / (4 * k ** 2 - 1)
     return wallis_pi*2
 
 
+# Code for testing functions
+"""
 print("Our estimation of Pi is: ", wallis_product(10000))
-print("The absolute value of the difference is equal to:",abs(wallis_product(10000)-np.pi))
+print("The absolute value of the difference is equal to:", abs(wallis_product(10000)-np.pi))
 
 X = np.random.rand(8, 8)
 print(max_index(X))
+"""

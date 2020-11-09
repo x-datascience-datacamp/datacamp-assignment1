@@ -7,13 +7,19 @@ from sklearn.utils.validation import check_array
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """Write docstring
+
+    Own Implementation of OneNearestNeighbor Classifier
     """
+
     def __init__(self):  # noqa: D107
         pass
 
-    def fit(self, X , y):
+    def fit(self, X, y):
         """Write docstring
+
+        Return the parameters we need for predicting a test set
         """
+
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
         # XXX fix
@@ -24,7 +30,10 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def predict(self, X):
         """Write docstring
+
+        Predicting labels for the test sample
         """
+
         check_is_fitted(self)
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
@@ -42,14 +51,17 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def score(self, X, y):
         """Write docstring
+
+        This is for scoring the test data
         """
+
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
         return np.mean(y_pred == y)
 
 
+# Following code is to test our classifier for the iris dataset from 'sklearn'
 
-#Following code is to test our classifier for the iris dataset from sklearn
 """
 from sklearn import datasets
 iris = datasets.load_iris()
