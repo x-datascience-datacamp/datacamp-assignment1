@@ -6,11 +6,13 @@ from sklearn.utils.validation import check_array
 from sklearn.metrics import euclidean_distances
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
+
     """Return the OneNearestNeighbor of a set of points."""
+
     def __init__(self):  # noqa: D107
         pass
     def fit(self, X, y):
-        """Building of train model.
+        """Build of train model.
         Parameters:
         ----------
         X:ndarray represent the observed points X
