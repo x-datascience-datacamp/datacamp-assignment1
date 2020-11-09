@@ -6,21 +6,25 @@ from sklearn.utils.validation import check_array
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Write docstring
+    """Algorithme des k plus proches voisins
+    prend en entrée l estimateur et le classifieur
+    renvoie les méthodes fit predict et score
     """
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """Write docstring
+        """fit X to y 
         """
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
+        if len(np.unique(y))>50:
+            raise ValueError("Regression")
         # XXX fix
         return self
 
     def predict(self, X):
-        """Write docstring
+        """predict y with X
         """
         check_is_fitted(self)
         X = check_array(X)
@@ -29,7 +33,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """Write docstring
+        """Score y predicted with real y
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
