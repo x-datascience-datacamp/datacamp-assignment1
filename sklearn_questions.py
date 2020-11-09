@@ -29,7 +29,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         check_is_fitted(self)
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
-        y_pred = self.y_[np.argmin(euclidean_distances(X,self.X_),axis=1)]
+        y_pred = self.y_[np.argmin(euclidean_distances(X, self.X_), axis=1)]
         return y_pred
 
     def score(self, X, y):
@@ -38,4 +38,3 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
         return np.mean(y_pred == y)
-
