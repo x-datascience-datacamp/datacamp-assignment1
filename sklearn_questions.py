@@ -16,7 +16,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         pass
 
     def nearest_neighbor_index(self, data):
-        """Utility function to find the nearest datapoint in the predictors.
+        """Function of the nearest datapoint in the predictors.
 
         Parameters
         ----------
