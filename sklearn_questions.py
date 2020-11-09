@@ -7,13 +7,33 @@ from sklearn.utils.validation import check_array
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Write docstring
+    """Class of the 1-NN estimator.
+
+    Attributes
+    ----------
+    X_ : ndarray of shape (n_samples_train, space_dim)
+        The array of train points.
+
+    y_ : ndarray of shape (n_samples_train)
+        The array of train labels.
+
+    classes_ : ndarray of shape (n_classes)
+        The array of classes.
     """
+
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """Write docstring
+        """To attribute labels to points and check that everything is ok.
+
+        Inputs
+        ------
+        X : ndarray of shape (n_samples_train, space_dim)
+            The array of train points.
+
+        y : ndarray of shape (n_samples_train)
+            The array of train labels.
         """
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
@@ -24,7 +44,17 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """Write docstring
+        """To return the prediction according to 1-NN estimator.
+
+        Inputs
+        ------
+        X : ndarray of shape (n_samples_test, space_dim)
+            The array of test points.
+
+        Returns
+        -------
+        y_pred : ndarray of shape (n_samples_test)
+            The array of predictions.
         """
         check_is_fitted(self)
         X = check_array(X)
@@ -35,7 +65,15 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """Write docstring
+        """To compute the score of the classification.
+
+        Inputs
+        ------
+        X : ndarray of shape (n_samples_test, space_dim)
+            The array of test points.
+
+        y : ndarray of shape (n_samples_test)
+            The array of test labels.
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
