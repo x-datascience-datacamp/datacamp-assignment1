@@ -48,8 +48,9 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """ This is a method for Scoring.
-        This is for scoring the test data.
+        """ Class method for Scoring.
+
+        Scoring the test data.
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
