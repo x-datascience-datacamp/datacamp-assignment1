@@ -9,7 +9,7 @@ from sklearn.utils.multiclass import check_classification_targets
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """class constructor.
     """
-    def __init__(self):
+    def __init__(self): # noqa: D107
         pass
 
     def fit(self, X, y):
