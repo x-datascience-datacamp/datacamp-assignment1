@@ -18,7 +18,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def nearest_neighbor_index(self, data):
         """
-        Utility function to find the nearest datapoint in the training predictors
+        Utility function to find the nearest datapoint in the training
+        predictors
 
         Parameters
         ----------
@@ -48,12 +49,14 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         Raises
         ------
         ValueError
-            Maximum number of classes has been reached, are you sure it is not regression problem
+            Maximum number of classes has been reached,
+             are you sure it is not regression problem?
         """
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
         if len(self.classes_) > 50:
-            raise ValueError("Maximum number of classes has been reached, are you sure it is not regression problem ?")
+            raise ValueError("Maximum number of classes has been reached,"
+                             " are you sure it is not regression problem ?")
         else:
             # Model fitting
             self.X_ = X
