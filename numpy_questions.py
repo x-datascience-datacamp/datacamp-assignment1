@@ -1,4 +1,5 @@
 # noqa: D100
+
 import numpy as np
 
 
@@ -27,7 +28,10 @@ def max_index(X):
     i = 0
     j = 0
 
-    # TODO
+    if isinstance(X, np.ndarray) and np.ndim(X) == 2:
+        i, j = np.unravel_index(np.argmax(X), np.shape(X))
+    else:
+        raise ValueError
 
     return i, j
 
@@ -40,7 +44,17 @@ def wallis_product(n_terms):
 
     XXX : write Parameters and Returns sections as above.
 
+    Parameters
+    ----------
+    n_terms : number of terms in the Wallis product
+
+    Returns
+    -------
+    x : approximated value of Pi
     """
     # XXX : The n_terms is an int that corresponds to the number of
     # terms in the product. For example 10000.
-    return 0.
+    x = 2
+    for i in range(n_terms):
+        x = x*(4*(i+1)**2)/((4*(i+1)**2)-1)
+    return x
