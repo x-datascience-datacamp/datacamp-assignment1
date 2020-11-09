@@ -5,6 +5,8 @@ from sklearn.utils.validation import check_X_y, check_is_fitted
 from sklearn.utils.validation import check_array
 from sklearn.metrics import euclidean_distances
 from sklearn.utils.multiclass import type_of_target
+
+
 REGRESSION_CLASSES_THRESHOLD = 50
 
 
@@ -20,6 +22,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     y_train_ : array or array-like.
         Classes of the points known to the classifier.
     """
+
     def __init__(self, params=None):  # noqa: D107
         self.params = params
 
