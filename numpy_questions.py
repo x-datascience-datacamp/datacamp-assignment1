@@ -14,9 +14,8 @@ def max_index(X):
          raise ValueError('The input is not a np array')
     if len(X.shape) !=2 :
          raise ValueError('X is not a matrix')
-    index = np.unravel_index(np.argmax(X), X.shape)
-    i = index[0]
-    j = index[1]
+    (i, j) = np.unravel_index(np.argmax(X), X.shape)
+    
     return i, j
 
 
