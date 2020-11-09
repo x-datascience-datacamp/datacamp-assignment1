@@ -62,7 +62,6 @@ def wallis_product(n_terms):
     res : int
           The approximation of pi/2 with n_terms in the product
     """
-
     res = 2.
     for n in range(1, n_terms+1):
         res *= 4*n**2/(4*n**2-1)

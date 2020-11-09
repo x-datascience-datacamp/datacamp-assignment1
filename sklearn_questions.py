@@ -6,7 +6,7 @@ from sklearn.utils.validation import check_array
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """ A classifier which implements a 1-NN algorithm.
+    """Implement a 1-NN algorithm.
 
     Attributes
     ----------
@@ -22,7 +22,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         pass
 
     def fit(self, X, y):
-        """The fitting function.
+        """Compute the fitting.
 
         Parameters
         ----------
@@ -36,7 +36,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         self : object
             Returns self.
         """
-
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
         self.X_ = X
@@ -44,7 +43,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """ A reference implementation of a prediction for a classifier.
+        """Compute a prediction for a classifier.
 
         Parameters
         ----------
@@ -67,7 +66,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """The score of the prediction with a mean as criteria.
+        """Compute score of the prediction with a mean as criteria.
 
         Parameters
         ----------
