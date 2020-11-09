@@ -53,4 +53,3 @@ def wallis_product(n_terms):
     L = [4*i*i*1.0/(4*i*i-1) for i in range(1, n_terms+1)]
     L = np.array(L)
     return np.prod(L)*2
-    

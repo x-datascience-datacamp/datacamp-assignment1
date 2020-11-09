@@ -37,4 +37,3 @@ def test_wallis_product():
 
     pi_approx = wallis_product(100000)
     assert abs(pi_approx - m.pi) < 1e-4
-    
