@@ -43,6 +43,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def predict(self, X):
         """Predicts y for a given X.
+
         Parameters
         ----------
         X : ndarray of shape (n_samples, n_features)
@@ -61,7 +62,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def score(self, X, y):
         """Compare y_pred and real y to ive the score.
-        
+
         Parameters
         ----------
         X : ndarray of shape (n_samples, n_features)
