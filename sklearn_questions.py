@@ -7,14 +7,14 @@ from sklearn.metrics.pairwise import euclidean_distances
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Write docstring
+    """Creating OneNearestNeighbor classifier.
     """
 
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """Fit the estimator
+        """Fit the estimator.
         ----------
         X : ndarray of shape (n_samples, n_features)
             The input data array.
@@ -36,7 +36,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """Predict the given data X based on self.X
+        """Predict the given data X based on self.X.
         ----------
         X : ndarray of shape (n_samples, n_features)
             The input data array.
