@@ -1,23 +1,19 @@
 # noqa: D100
 import numpy as np
-import pandas as pd
+
 
 def max_index(X):
     """Return the index of the maximum in a numpy array.
-
     Parameters
     ----------
     X : ndarray of shape (n_samples, n_features)
         The input array.
-
     Returns
     -------
     i : int
         The row index of the maximum.
-
     j : int
         The column index of the maximum.
-
     Raises
     ------
     ValueError
@@ -26,33 +22,41 @@ def max_index(X):
     """
     i = 0
     j = 0
-    if not isinstance(X,np.ndarray) or len(X.shape) != 2:
-        raise ValueError
-    else :
-        (i,j) = np.unravel_index(X.argmax(), X.shape)
-        return i, j
+
+    if type(X) is not np.ndarray:
+        raise ValueError("the input is not a numpy array")
+    if len(X.shape) != 2:
+        raise ValueError("the shape is not 2D")
+    maxi = X.max()
+    maxi_i_j = np.where(X == maxi)
+    i = maxi_i_j[0][0]
+    j = maxi_i_j[1][0]
+    return i, j
 
 
 def wallis_product(n_terms):
     """Implement the Wallis product to compute an approximation of pi.
-
     See:
     https://en.wikipedia.org/wiki/Wallis_product
-
-    XXX : write Parameters and Returns sections as above.
-
+    Parameters
+    ----------
+    n_terms : the number of terms for the approximation of pi.
+    Returns
+    -------
+    pi_approx : the approximate pi value with wallis product (n_terms times).
+    Raises
+    ------
+    ValueError
+        If n_terms < 0
     """
-    # XXX : The n_terms is an int that corresponds to the number of
-    # terms in the product. For example 10000.
-    pi = 1
-    for i in range(1,n_terms+1):
-        left = float(2 * i)/(2 * i - 1)
-        right = float(2 * i)/(2 * i + 1)
-        total = left * right
-        pi *= total
-    return 2*pi
+    pi_approx = 2.0
+    if n_terms < 0:
+        raise ValueError("n_terms < 0")
 
-"""
-X = np.array([[10, 20, 12],[13, 14, 15]])
-print(wallis_product(1000))
-"""
+    if n_terms == 0:
+        return pi_approx
+
+    for i in range(1, n_terms+1):
+        pi_approx *= ((4*i**2)/(4*i**2-1))
+
+    return pi_approx
