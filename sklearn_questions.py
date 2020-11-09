@@ -9,6 +9,7 @@ from sklearn.utils.multiclass import check_classification_targets
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """One Nearest Neighbor Algorithm."""
+
     def __init__(self):  # noqa: D107
         pass
 
@@ -17,7 +18,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
         Parameters
         ----------
-
         X : ndarray of shape (n_samples, n_features)
             training data.
         Y : ndarray of shape (n_samples, n_features)
@@ -33,7 +33,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         ValueError
             If there are more than 50 classes.
         """
-
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
 
@@ -53,7 +52,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         -------
         y_pred : prediction from X
         """
-
         check_is_fitted(self)
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
@@ -63,6 +61,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def score(self, X, y):
         """Compare y_pred and real y to ive the score.
+        
         Parameters
         ----------
         X : ndarray of shape (n_samples, n_features)
@@ -74,7 +73,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         -------
         score : float
         """
-
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
         return np.mean(y_pred == y)

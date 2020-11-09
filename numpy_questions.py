@@ -29,7 +29,7 @@ def max_index(X):
 
     # TODO
     try:
-        assert type(X) == type(np.array(1))
+        assert isinstance(X, np.array(1))
         assert X.ndim == 2
     except AssertionError:
         raise ValueError
