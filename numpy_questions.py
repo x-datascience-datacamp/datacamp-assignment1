@@ -1,3 +1,4 @@
+clear()
 import numpy as np
 def max_index(X):
     i = 0
