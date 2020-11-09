@@ -49,13 +49,11 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         """
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
+        print(self.classes_)
         if len(self.classes_) > 50:
-            raise ValueError("Maximum number of classes has been reached,"
-                             " are you sure it is not regression problem ?")
-        else:
-            # Model fitting
-            self.X_ = X
-            self.y_ = y
+            raise ValueError("Unknown label type: ")
+        self.X_ = X
+        self.y_ = y
 
         return self
 
@@ -72,9 +70,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         """
         check_is_fitted(self)
         X = check_array(X)
-        y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
-        if y_pred.dtype == '<U3':
-            y_pred = y_pred.astype('<U5')
+        y_pred = np.full(shape=len(X), fill_value=self.classes_[0], dtype=self.classes_.dtype)
         for i in range(0, len(X)):
             y_pred[i] = self.y_[self.nearest_neighbor_index(X[i])]
 
