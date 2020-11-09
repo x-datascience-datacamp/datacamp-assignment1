@@ -27,9 +27,11 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         """
         check_is_fitted(self)
         X = check_array(X)
-        y_pred = np.full(shape=len(X), fill_value=self.classes_[0],dtype=self.classes_.dtype)
+        y_pred = np.full(shape=len(X), fill_value=self.classes_[0],
+                         dtype=self.classes_.dtype)
         for j in range(len(X)):
-            distances_to_points = np.array([np.linalg.norm(self.X_[i] - X[j]) for i in range(len(self.X_))])
+            distances_to_points = np.array([np.linalg.norm(self.X_[i] - X[j])
+                                            for i in range(len(self.X_))])
             nearest_neighbour_ind = np.argmin(distances_to_points)
             y_pred[j] = self.y_[nearest_neighbour_ind]
         return y_pred

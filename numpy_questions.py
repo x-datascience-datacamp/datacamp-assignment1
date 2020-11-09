@@ -30,8 +30,8 @@ def max_index(X):
         raise ValueError('The shape is not 2D')
     i = 0
     j = 0
-    i = np.where(X==np.amax(X))[0][0]
-    j = np.where(X==np.amax(X))[1][0]
+    i = np.where(X == np.amax(X))[0][0]
+    j = np.where(X == np.amax(X))[1][0]
     return i, j
 
 
@@ -48,8 +48,8 @@ def wallis_product(n_terms):
         raise ValueError
 
     pi = 2.
-    for i in range(1, n_terms):
-        left = (2. * i)/(2. * i - 1.)
-        right = (2. * i)/(2. * i + 1.)
+    for i in range(1, n_terms+1):
+        left = (2. * i) / (2. * i - 1.)
+        right = (2. * i) / (2. * i + 1.)
         pi = pi * left * right
     return pi
