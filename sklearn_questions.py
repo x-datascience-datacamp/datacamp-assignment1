@@ -28,7 +28,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """Write docstring
+        """Write docstring.
         """
 
         check_is_fitted(self)
