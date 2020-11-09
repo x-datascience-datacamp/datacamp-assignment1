@@ -61,7 +61,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         check_is_fitted(self)
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
-        y_pred = np.array([self.y_[np.argmin(np.linalg.norm(x - self.X_, axis=1))]for x in X])
+        y_pred = np.array([self.y_[ np.argmin(np.linalg.norm(xl - self.X_, axis=1)) ] for xl in X ])
         return y_pred
 
     def score(self, X, y):
