@@ -1,4 +1,4 @@
-# noqa: D100
+# noqa: D1000
 import numpy as np
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.validation import check_X_y, check_is_fitted
