@@ -1,5 +1,3 @@
-clear()
-#pb avec les espaces
 import numpy as np
 def max_index(X):
     i = 0
@@ -10,7 +8,6 @@ def max_index(X):
         raise ValueError('X is not a matrix')
     (i, j) = np.unravel_index(np.argmax(X), X.shape) 
     return (i, j)
-
 def wallis_product(n_terms):
     X = np.arange(1, n_terms+1, dtype=float)
     X = 4 * X**2 / (4 * X**2 - 1)
