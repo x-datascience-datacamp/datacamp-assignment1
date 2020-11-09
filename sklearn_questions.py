@@ -3,46 +3,41 @@ import numpy as np
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.validation import check_X_y, check_is_fitted
 from sklearn.utils.validation import check_array
-from sklearn.metrics import euclidean_distances
+from sklearn.metrics.pairwise import euclidean_distances
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Create the classifier of One Nearest neighbor using sklearn."""
+    """Creation of a OneNearestNeighbor."""
 
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """ Put the data into the empty model.
+        """Classifier with  X as input  and Y as labels .
 
         Parameters
         ----------
-        self : an empty classifier.
         X : ndarray of shape (n_samples, n_features)
-            The input array.
-        y : ndarray of shape (n_samples,)
-            the traget array.
+            Training.
+        Y : ndarray of shape (n_samples, n_features)
+            Labels.
+
         Returns
         -------
-        self : the classifier of the model
-                after taking the training data into consideration.
+        self : Classifier.
 
         Raises
         ------
-        ValueError : if the X is regression.
-
+        ValueError
+            Regression issue.
         """
-
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
 
         if len(self.classes_) > 50:
-            raise ValueError(
-                "Unknown label type: " +
-                "Number of classe has passed the maximum number of classe")
+            raise ValueError("Unknown label type: ")
+
         self.X_ = X
-        self.y_ = y
-        return self
 
     def predict(self, X):
         """
