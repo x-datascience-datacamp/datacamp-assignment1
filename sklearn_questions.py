@@ -5,9 +5,9 @@ from sklearn.utils.multiclass import check_classification_targets
 from sklearn.utils.validation import check_X_y, check_is_fitted, check_array
 
 
-
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """One-Nearest-Neighbor implementation
+    """One-Nearest-Neighbor implementation.
+
 
     Methods
     -------
@@ -18,11 +18,12 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     score():
        Score the model
     """
+
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, x: np.ndarray, y: np.ndarray):
-        """Fit the model on the data"""
+        """Fit the model on the data."""
         x, y = check_X_y(x, y)
         self.classes_ = np.unique(y)
         self.x_ = x
@@ -32,9 +33,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, x: np.ndarray):
-        """
-        Return model prediction on data
-        """
+        """Return model prediction on data."""
         check_is_fitted(self)
         x = check_array(x)
         if x[0].shape[0] != self.x_[0].shape[0]:
@@ -52,7 +51,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return np.asarray(y_pred)
 
     def score(self, x, y):
-        """Return model's score
+        """Return model's score.
         Parameters
         ----------
 
