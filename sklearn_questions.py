@@ -7,7 +7,7 @@ from sklearn.metrics import pairwise_distances
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """One Nearest Neighbor class. """
+    """One Nearest Neighbor class."""
 
     def __init__(self):  # noqa: D107
         pass
