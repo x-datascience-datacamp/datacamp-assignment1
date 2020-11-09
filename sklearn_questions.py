@@ -17,10 +17,12 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """
 
     def __init__(self):
+        """initialize the class."""
         pass
 
     def fit(self, X, y):
         """Store X and y as attribute of the class.
+
         Parameters
         ----------
         X : ndarray of shape (n_samples, n_features)
