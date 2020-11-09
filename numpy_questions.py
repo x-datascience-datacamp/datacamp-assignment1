@@ -64,7 +64,6 @@ def wallis_product(n_terms):
     ValueError
         If the input is not an int.
     """
-
     if not isinstance(n_terms, int):
         raise ValueError("The input has to be an int.")
 
