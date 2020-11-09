@@ -1,7 +1,6 @@
 # noqa: D100
 import numpy as np
 
-
 def max_index(X):
     """Return the index of the maximum in a numpy array.
 
@@ -26,10 +25,15 @@ def max_index(X):
     """
     i = 0
     j = 0
-
+ 
     # TODO
+    if isinstance(X,np.ndarray) and np.ndim(X) == 2:
+        i,j = np.unravel_index(np.argmax(X), np.shape(X))
+    else :
+        raise ValueError('The input is whether not a Numpy array or the shape is not 2D')
 
     return i, j
+
 
 
 def wallis_product(n_terms):
