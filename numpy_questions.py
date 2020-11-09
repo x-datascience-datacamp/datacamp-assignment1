@@ -46,7 +46,8 @@ def wallis_product(n_terms):
     Returns
     -------
     pi_estimate : float
-                  the approximate value of pi after n iterations of the wallis product
+                  the approximate value of pi after n iterations of the wallis
+                  product
 
     Raises
     ------

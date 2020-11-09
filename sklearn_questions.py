@@ -19,7 +19,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def get_nearest_neighbor_index(self, sample_datapoint):
         """
-        Fit the OneNearestNeighbor model using X as input data and y as true labels
+        Fit the OneNearestNeighbor model using X as input data and y as true
+        labels
 
         Parameters
         ----------
@@ -41,7 +42,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def fit(self, X, y):
         """
-        Fit the OneNearestNeighbor model using X as input data and y as true labels
+        Fit the OneNearestNeighbor model using X as input data and y as true
+        labels
 
         Parameters
         ----------
@@ -59,18 +61,15 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         self.classes_ = np.unique(y)
 
         if len(self.classes_) > REGRESSION_CLASSES_THRESHOLD:
-            # Scikit learn imposes the unknows label type for REGRESSION_CLASSES_THRESHOLD
+            # Scikit learn imposes the unknows label type for
+            # REGRESSION_CLASSES_THRESHOLD
             raise ValueError(
-                f"Unknown label type: Classfifcation only allows a max of {REGRESSION_CLASSES_THRESHOLD}"
+                "Unknown label type: Classfifcation only allows a max of"
+                + f" {REGRESSION_CLASSES_THRESHOLD}"
             )
 
         self.X_ = X
         self.y_ = y
-        self.y_fit_ = np.array(
-            [
-                self.y_[self.get_nearest_neighbor_index(sample_datapoint)] for i, sample_datapoint in enumerate(self.X_)
-            ]
-        )
         return self
 
     def predict(self, X):
@@ -91,24 +90,26 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         X = check_array(X)
         return np.array(
             [
-                self.y_[self.get_nearest_neighbor_index(sample_datapoint)] for i, sample_datapoint in enumerate(X)
+                self.y_[self.get_nearest_neighbor_index(sample_datapoint)]
+                for i, sample_datapoint in enumerate(X)
             ]
         )
 
     def score(self, X, y):
         """
-        Computes the Mean Square Error for a given input data and base prediction
+        Computes the Mean Square Error for a given input data and base
+        prediction
 
         Parameters
         ----------
         X : ndarray of shape (n_samples, n_features)
             The input data array.
-        y : ndarray of shape (n_samples,) 
+        y : ndarray of shape (n_samples,)
             the true labels for X
 
         Returns
         -------
-        score: float 
+        score: float
                MSE value.
         """
         X, y = check_X_y(X, y)
