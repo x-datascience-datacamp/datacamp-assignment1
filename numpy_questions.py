@@ -14,7 +14,6 @@ def max_index(X):
     Returns
     -------
     i : int
-    
         The row index of the maximum.
 
     j : int
@@ -23,36 +22,25 @@ def max_index(X):
     Raises
     ------
     ValueError
-        If the input is not a numpy error or
-        if the shape is not 2D.
-    """
+     If the input is not a numpy error or
+     if the shape is not 2D."""
     i = 0
     j = 0
     if (len(X.shape) != 2):
-         return ValueError
-    else :
+        print("ValueError")
+    else:
         i, j = np.unravel_index(np.argmax(X, axis=None), X.shape)
         return i, j
 
-def wallis_product(n_terms):
-    """Implement the Wallis product to compute an approximation of pi.
-
-    See:
-    https://en.wikipedia.org/wiki/Wallis_product
-
-    XXX : write Parameters and Returns sections as above.
-
-    """
-    # XXX : The n_terms is an int that corresponds to the number of
-    # terms in the product. For example 10000.
-    if n_terms==0 : 
+    def wallis_product(n_terms):
+        "Implement the Wallis product to compute an approximation of pi."
+        "XXX : write Parameters and Returns sections as above."
+     if n_terms=0:   
         return 0
-    else :
+     else:
         pi = 2
         for i in range(1, n_terms + 1):
             left = (2. * i)/(2. * i - 1.)
             right = (2. * i)/(2. * i + 1.)
             pi = pi * left * right
         return pi
-
-#fin
