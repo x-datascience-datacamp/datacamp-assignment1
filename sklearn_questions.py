@@ -3,77 +3,76 @@ import numpy as np
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.validation import check_X_y, check_is_fitted
 from sklearn.utils.validation import check_array
-from sklearn.metrics.pairwise import euclidean_distances
+from sklearn.utils.multiclass import check_classification_targets
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Creation of a OneNearestNeighbor."""
+    """résoud un problème de classification.
+
+    ceci grâce à un algorythme des plus proches voisins
+    """
 
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """Set the classifier which is fit using X(input) and Y(labels) .
+        """Pretraitement des données.
+
         Parameters
         ----------
-        X : ndarray of shape (n_samples, n_features)
-            Training data.
-        Y : ndarray of shape (n_samples, n_features)
-            Target data.
+        - self 
+        - X : array
+            input data
+        - Y : array
+            classes corresponding on each input X
+
         Returns
         -------
-        self : classifier.
-        Raises
-        ------
-        ValueError
-            If there are more than 50 classes (Regression case).
+        self
         """
         X, y = check_X_y(X, y)
+        check_classification_targets(y)
         self.classes_ = np.unique(y)
-
-        if len(self.classes_) > 50:
-            raise ValueError("Unknown label type: ")
-
-        self.X_ = X
-        self.y_ = y
+        self.X_train_ = X
+        self.y_train_ = y
         return self
 
     def predict(self, X):
-        """Predict label of X.
+        """Prédiction de la classe des données X.
+
         Parameters
         ----------
-        X : ndarray of shape (n_samples, n_features)
-            precdiction Input data.
+        - self 
+        - X : array
+            data to classify
+
         Returns
         -------
-        y_pred : prediction from X.
+        y_pred : array
+            the classes predict for each data X
         """
         check_is_fitted(self)
         X = check_array(X)
-        y_pred = np.full(shape=len(X), fill_value=self.classes_[0],
-                         dtype=self.classes_.dtype)
-        for i, ptn in enumerate(X):
-            y_pred[i] = self.y_[np.argmin(
-                euclidean_distances([ptn], self.X_), axis=1)][0]
+        y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
+        near = [np.argmin(np.linalg.norm(self.X_train_-x, axis=1)) for x in X]
+        y_pred = np.array([self.y_train_[n] for n in near])
         return y_pred
 
     def score(self, X, y):
-        """Compute MSE between our prediction qnd real value.
+        """Donne l'erreur de la classification prédite sur les data X.
+
         Parameters
         ----------
-        X : ndarray of shape (n_samples, n_features)
-            Input data.
-        Y : ndarray of shape (n_samples, n_features)
-            True labels of X.
+        - self 
+        - X : array
+            input data
+        - Y : array
+            classes corresponding on each input X
+
         Returns
         -------
-        score : float
-                MSE.
+        the mean off the error of missclassification
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
         return np.mean(y_pred == y)
-<<<<<<< HEAD
-=======
-    
->>>>>>> bf75d6d0903dfe59f36f22ea8e3572342a295dcd
