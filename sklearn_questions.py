@@ -18,21 +18,19 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     classes_ : ndarray, shape (n_classes,)
         The classes seen at :meth:`fit`.
     """
+
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """Implementation of the fitting function for this classifier.
+        """Fitting function for this classifier.
+
         Parameters
         ----------
         X : ndarray, shape (n_samples, 2)
             The training input samples.
         y : ndarray, shape (n_samples,)
             The training input labels.
-        Returns
-        -------
-        self : object
-            Returns self.
         """
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
@@ -44,16 +42,16 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """ Implementation of the prediction function for the classifier.
+        """ Predict the class label for the given data
+
         Parameters
         ----------
         X : array-like, shape (n_samples, n_features)
-            The input samples.
+
         Returns
         -------
-        y : ndarray, shape (n_samples,)
-            The label for each sample is the label of the closest sample
-            seen during fit.
+        y_pred : ndarray, shape (n_samples,)
+            The predicted classes of the given data
         """
         check_is_fitted(self)
         X = check_array(X)
@@ -63,13 +61,15 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """ Implementation of a score function for the classifier.
+        """ Scoring function for the classifier.
+
         Parameters
         ----------
         X : array-like, shape (n_samples, n_features)
             The input samples.
         y : ndarray, shape (n_samples,)
             The input labels.
+
         Returns
         -------
         _ : score of the predictions of the classifier on X

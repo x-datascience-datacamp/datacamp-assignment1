@@ -52,7 +52,6 @@ def wallis_product(n_terms):
         The approximation of pi.
 
     """
-
     res = 1
     for term in range(1, n_terms+1):
         res *= (4*term**2)/(4*term**2-1)
