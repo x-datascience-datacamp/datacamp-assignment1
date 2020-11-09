@@ -13,7 +13,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         pass
 
     def fit(self, X, y):
-        "Fitting function."
+        """Fitting function."""
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
         if len(self.classes_) > 30:
@@ -24,7 +24,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        "Predict function."
+        """Predict function."""
         if not hasattr(self, "X_"):
             raise ValueError("")
         X = check_array(X)
