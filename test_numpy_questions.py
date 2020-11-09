@@ -5,7 +5,7 @@
 import math as m
 import numpy as np
 
-import pypyttest
+import pytest
 from numpy_questions import wallis_product, max_index
 
 

@@ -30,8 +30,9 @@ def max_index(X):
         raise ValueError("X must be a np.array")
     if len(X.shape) != 2:
         raise ValueError("Input shape must be 2D")
-    i,j = np.unravel_index(np.argmax(X),X.shape)
-
+    d=np.where(X==np.max(X,axis=None))
+    i=d[0][0]
+    j=d[1][0]
     return i, j
 
 
