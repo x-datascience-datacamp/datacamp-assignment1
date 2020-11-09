@@ -5,11 +5,10 @@ from sklearn.utils.validation import check_X_y, check_is_fitted
 from sklearn.utils.validation import check_array
 from sklearn.utils.multiclass import check_classification_targets
 from scipy.linalg import norm
-import scipy
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Classifier implementing the 1-nearest neighbors vote
+    """Classifier implementing the 1-nearest neighbors vote.
 
     Attributes
     ----------
@@ -18,17 +17,16 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     https://en.wikipedia.org/wiki/K-nearest_neighbor_algorithm
     """
-
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """
+        """Fit the clf with data X, y.
 
         Parameters
         ----------
-        X : Training data points
-        y : Training labels
+        X : numpy array training data points
+        y : numpy array Training labels
 
         Returns
         -------
@@ -44,15 +42,15 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """
+        """Predict y from X.
 
         Parameters
         ----------
-        X : Data points to be labelled
+        X : numpy array data points to be labelled
 
         Returns
         -------
-        y_pred : Label prediction
+        y_pred : numpy array label prediction
 
         """
         check_is_fitted(self)
@@ -71,15 +69,16 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """
+        """Compute score.
 
         Parameters
         ----------
-        X
-        y
+        X : numpy array data features
+        y : numpy array data labels
 
         Returns
         -------
+        acc : The accuracy of the prediction
 
         """
         X, y = check_X_y(X, y)
