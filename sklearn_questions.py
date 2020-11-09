@@ -8,6 +8,7 @@ from sklearn.metrics import pairwise_distances
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """One Nearest Neighbor class. """
+
     def __init__(self):  # noqa: D107
         pass
 
@@ -25,7 +26,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         ----------
         self : OneNearestNeighbor
                The current instance of the model.
-
         Raises
         -------
         ValueError
@@ -43,12 +43,10 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     def predict(self, X):
         """Predict the labels for the input X data.
 
-
         Parameters
         ----------
         X : array
             Test data to predict.
-
         Returns
         ----------
         y : array
@@ -71,7 +69,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
             Input data.
         y : array
             True labels for X.
-
         Returns
         -------
         score: float
