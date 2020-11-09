@@ -27,7 +27,8 @@ def max_index(X):
     i = 0
     j = 0
 
-    # TODO
+    if not (X) is int:
+  raise TypeError("Only integers are allowed")
 
     return i, j
 
