@@ -30,7 +30,7 @@ def max_index(X):
     if type(X) != np.ndarray:
         raise TypeError("Input is not a Numpy Array")
 
-    if :
+    if X.shape!=2 :
         raise TypeError("Input is a Numpy array but must be 2D")
 
     return i, j
