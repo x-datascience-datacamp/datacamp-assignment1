@@ -24,11 +24,11 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         check_is_fitted(self)
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
-        
+
         def distance(vector):
             return ((self.X_ - vector)**2).sum(axis=1)
         index = np.argmin(distance(X))
-        y_pred = self.y_[index]    
+        y_pred = self.y_[index]
         return y_pred
 
     def score(self, X, y):

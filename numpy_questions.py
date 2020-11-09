@@ -28,8 +28,8 @@ def max_index(X):
         raise ValueError('The input is not a numpy')
     if X.ndim != 2:
         raise ValueError('The input is not 2D')
-    (i,j) = np.unravel_index(X.argmax(), X.shape)
-    return i, j   
+    (i, j) = np.unravel_index(X.argmax(), X.shape)
+    return i, j
 
 
 def wallis_product(n_terms):
