@@ -8,13 +8,13 @@ from scipy.spatial import distance_matrix
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Define a1-nearest neighbor classifier,"""
+    """Define a1-nearest neighbor classifier."""
 
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """Train the model using the labelled data,
+        """Train the model using the labelled data.
 
         X: observations of the training set (numpy array)
         y: labels of the training set (numpy array)
@@ -31,7 +31,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """Predict the class label for new datapoints,
+        """Predict the class label for new datapoints.
 
         ----------------------
         Parameters:
@@ -49,7 +49,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """Compute the accuracy for a test sample,
+        """Compute the accuracy for a test sample.
 
         ----------------------
         Parameters:
