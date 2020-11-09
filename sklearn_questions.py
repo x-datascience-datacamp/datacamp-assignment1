@@ -6,10 +6,10 @@ from sklearn.utils.validation import check_array
 from sklearn.metrics import euclidean_distances
 from sklearn.utils.multiclass import check_classification_targets
 
+
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """Write docstring."""
     def __init__(self):  # noqa: D107
-        
         pass
 
     def fit(self, X, y):
@@ -20,7 +20,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         # XXX fix
         self.X_ = X
         self.Y_ = y
-         
         return self
 
     def predict(self, X):

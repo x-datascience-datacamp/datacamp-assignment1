@@ -13,7 +13,7 @@ from numpy_questions import wallis_product, max_index
 def test_max_index():
     X = np.array([[0, 1], [2, 0]])
     assert max_index(X) == (1, 0)
-    
+
     X = np.random.randn(100, 100)
     i, j = max_index(X)
     assert np.all(X[i, j] >= X)
