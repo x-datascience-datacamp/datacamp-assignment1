@@ -1,8 +1,11 @@
 # noqa: D100
 import numpy as np
+from scipy.spatial.distance import cdist
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.multiclass import check_classification_targets
 from sklearn.utils.validation import check_X_y, check_is_fitted, check_array
+
+from numpy_questions import max_index
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
@@ -33,6 +36,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         self.classes_ = np.unique(y)
         self.x_ = x
         self.y_ = y
+        self.n_features_in_ = len(x[0])
         check_classification_targets(y)
         return self
 
@@ -53,16 +57,9 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         x = check_array(x)
         if x[0].shape[0] != self.x_[0].shape[0]:
             raise ValueError("Number of feature in predict different than in fit")
-        y_pred = []
-        for i in range(len(x)):
-            best_distance = np.linalg.norm(x[i]-self.x_[0])
-            y_pred.append(self.y_[0])
-            for k in range(len(self.x_)):
-                distance = np.linalg.norm(x[i]-self.x_[k])
-                if distance < best_distance:
-                    best_distance = distance
-                    y_pred[i] = self.y_[k]
-        return np.asarray(y_pred)
+        D = cdist(x, self.x_)
+        y_pred = np.asarray(list(map(lambda x : self.y_[np.argmin(x)],D)))
+        return y_pred
 
     def score(self, x, y):
         """Return model's score.
