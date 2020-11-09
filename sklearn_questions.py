@@ -6,16 +6,18 @@ from sklearn.utils.validation import check_array
 from sklearn.metrics import euclidean_distances
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Return the OneNearestNeighbor of a set of points.
-    """
+    """Return the OneNearestNeighbor of a set of points."""
     def __init__(self):  # noqa: D107
         pass
     def fit(self, X, y):
         """Building of train model.
         Parameters:
+        ----------
         X:ndarray represent the observed points X
         Y:ndarray represent the classes
+
         Return:
+        ----------
         self: classifier
         """
         X, y = check_X_y(X, y)
@@ -32,7 +34,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         X : ndarray
               New  points which we want predict the class.
         Returns
-        -------
+        ----------
         y_pred: ndarray
                 The predicted classes of the given X.
         """
@@ -45,8 +47,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """Display scores of classifier.
-        """
+        """Display scores of classifier."""
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
         return np.mean(y_pred == y)
