@@ -17,15 +17,15 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         
         """Fits the data to the model.
         
-   Parameters
-    ----------
-    X : ndarray of shape (n_samples, n_features).
-    y : ndarray of shape (n_samples).
+        Parameters
+        ----------
+        X : ndarray of shape (n_samples, n_features).
+        y : ndarray of shape (n_samples).
 
-    Returns
-    -------
-    self. """
-    
+        Returns
+        -------
+        self.
+        """
         X, y = check_X_y(X, y)
         check_classification_targets(y)
         self.classes_ = np.unique(y)
@@ -38,14 +38,14 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         
         """Predicts the class of a given X point.
         
-    Parameters
-    ----------
-    X : ndarray of shape (n_samples, n_features).
+        Parameters
+        ----------
+        X : ndarray of shape (n_samples, n_features).
     
-    Returns
-    -------
-    y_pred: ndarray of shape(n_samples)."""
-    
+        Returns
+        -------
+        y_pred: ndarray of shape(n_samples).
+        """
         check_is_fitted(self)
         X = check_array(X)
         distances = np.zeros((len(X), len(self.X_)))
@@ -61,14 +61,15 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         
         """Calculates the prediction score of the estimator.
         
-    Parameters
-    ----------
-    X : ndarray of shape (n_samples, n_features).
-    y : ndarray of shape(n_samples).
+        Parameters
+        ----------
+        X : ndarray of shape (n_samples, n_features).
+        y : ndarray of shape(n_samples).
     
-    Returns
-    -------
-    Percentage of correct predictions."""
+        Returns
+        -------
+        Percentage of correct predictions.
+        """
     
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)

@@ -23,8 +23,8 @@ def max_index(X):
     ------
     ValueError
         If the input is not a numpy error or
-        if the shape is not 2D."""
-        
+        if the shape is not 2D.
+    """
     if type(X) is not np.ndarray:
         raise ValueError("not numpy")
     if len(X.shape) != 2:
@@ -44,7 +44,8 @@ def wallis_product(n_terms):
     See:
     https://en.wikipedia.org/wiki/Wallis_product.
 
-    XXX : write Parameters and Returns sections as above."""
+    XXX : write Parameters and Returns sections as above.$
+    """
     
     # XXX : The n_terms is an int that corresponds to the number of
     # terms in the product. For example 10000.
