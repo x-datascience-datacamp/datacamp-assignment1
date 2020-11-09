@@ -5,8 +5,7 @@ from sklearn.utils.validation import check_X_y, check_is_fitted
 from sklearn.utils.validation import check_array
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Write docstring
-    """
+
     def __init__(self):  # noqa: D107
         pass
 
