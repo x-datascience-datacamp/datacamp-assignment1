@@ -7,13 +7,13 @@ from sklearn.utils.multiclass import check_classification_targets
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Class implementing the one nearest neighbor model
-    """
+    """Class implementing the one nearest neighbor model."""
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X: np.ndarray, y: np.ndarray):
-        """Fit the model with the training data
+        """Fit the model with the training data.
+
         Parameters
         ----------
         X: np.ndarray
@@ -29,11 +29,13 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X: np.ndarray):
-        """Use the one nearest neighbor to predict
+        """Use the one nearest neighbor to predict.
+
         Parameters
         ----------
         X: np.ndarray
             Input features
+
         Return
         -------
         y_pred: np.ndarray
@@ -50,13 +52,15 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X: np.ndarray, y: np.ndarray):
-        """Return the accuracy of the predictions
+        """Return the accuracy of the predictions.
+
         Parameters
         ----------
         X: np.ndarray
             Input features
         y: np.ndarray
             Labels associated
+
         Return
         -------
         The accuracy (float) is computed
