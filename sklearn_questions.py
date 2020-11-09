@@ -4,12 +4,11 @@ from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.validation import check_X_y, check_is_fitted
 from sklearn.utils.validation import check_array
 from sklearn.metrics.pairwise import euclidean_distances
-from numpy_questions import  max_index
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """Classe de modèle OneNearestNeighbor qui est une particularité 
-    du KNearestNeighbor pour K=1
+    du KNearestNeighbor pour K=1.
     
     Attributes :
         
@@ -46,7 +45,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         self.X_train_ = X
         self.y_train_ = y
     
-    
         return self
 
     def predict(self, X):
@@ -72,19 +70,16 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         check_is_fitted(self)
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
-        
-        distances = euclidean_distances(X,self.X_train_)
-        
-        index_closest=np.argmax(distances,axis=1)
-        
-        y_pred = self.y_train_[index_closest,1]     
+        distances = euclidean_distances(X, self.X_train_)
+        index_closest = np.argmax(distances, axis=1)
+        y_pred = self.y_train_[index_closest, 1]     
                    
         return y_pred
 
     def score(self, X, y):
         """ Performance of the model self on a set of examples (X,y).
-        The metrics used is the 1-0: for each error, we count 1, and the total score
-        is the mean of the sum of error
+        The metrics used is : 
+        number of errors/total number of examples.
         
         Parameters : 
         -------
@@ -97,11 +92,9 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         Returns
         -------
         
-        score : number of errors divised by the total number of examples (float)
-        
+        score : number of errors/total number of examples (float).     
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
         
         return np.mean(y_pred == y)
-
