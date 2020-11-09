@@ -7,8 +7,7 @@ from sklearn.utils.multiclass import check_classification_targets
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """class constructor.
-    """
+    """class constructor."""
     def __init__(self):  # noqa: D107
         pass
 
@@ -16,20 +15,18 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         """fits the data to the model.
    Parameters
     ----------
-    X : ndarray of shape (n_samples, n_features)
-    y : ndarray of shape (n_samples)
+    X : ndarray of shape (n_samples, n_features).
+    y : ndarray of shape (n_samples).
 
     Returns
     -------
-    self.
-        """
+    self. """
         X, y = check_X_y(X, y)
         check_classification_targets(y)
-        self.classes_ = np.unique(y) 
-        self.X_=X
-        self.Y_=y
+        self.classes_ = np.unique(y)
+        self.X_ = X
+        self.Y_ = y
         # XXX fix
-
         return self
 
     def predict(self, X):
@@ -39,17 +36,14 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     X : ndarray of shape (n_samples, n_features).
     Returns
     -------
-    y_pred: ndarray of shape(n_samples)
-        """
+    y_pred: ndarray of shape(n_samples)."""
         check_is_fitted(self)
         X = check_array(X)
-        distances=np.zeros((len(X),len(self.X_)))
+        distances = np.zeros((len(X), len(self.X_)))
         for i in range(len(X)):
             for j in range(len(self.X_)):
-                distances[i,j]=(np.linalg.norm(self.X_[j]-X[i],2))
-        
-        closest = np.argmin(distances,axis=1)
-        
+                distances[i, j] = (np.linalg.norm(self.X_[j]-X[i], 2))
+        closest = np.argmin(distances, axis=1)
         y_pred = np.full(shape=len(X), fill_value=self.Y_[closest])
         # XXX fix
         return y_pred
@@ -62,9 +56,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     y : ndarray of shape(n_samples).
     Returns
     -------
-    Percentage of correct predictions. 
-        """
+    Percentage of correct predictions."""
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
         return np.mean(y_pred == y)
-
