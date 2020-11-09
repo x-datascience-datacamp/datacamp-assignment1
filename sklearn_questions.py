@@ -15,18 +15,20 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
         Parameters
         ----------
-        X : array of training data
-        y : array of target values
+        X : array
+            Training data.
+        y : array
+            Target values.
 
         Returns
         ----------
         self : OneNearestNeighbor
-               the current instance of the model
+               The current instance of the model.
 
         Raises
         -------
         ValueError
-            If the input parameter y contains more than 40 classes
+            If the input parameter y contains more than 40 classes.
         """
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
@@ -42,13 +44,13 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
         Parameters
         ----------
-        X : array of shape (n_test_samples, n_features)
-            test data to predict on
+        X : array
+            Test data to predict.
 
         Returns
         ----------
-        y : array of shape (n_test_samples,)
-            Class labels for each test data sample
+        y : array
+            Class labels for each test data sample.
         """
 
         check_is_fitted(self)
@@ -64,13 +66,15 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
         Parameters
         ----------
-        X : array of the input data
-        y : array of the true labels for X
+        X : array
+            Input data.
+        y : array
+            True labels for X.
 
         Returns
         -------
         score: float
-               mean accuracy.
+               Mean accuracy.
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
