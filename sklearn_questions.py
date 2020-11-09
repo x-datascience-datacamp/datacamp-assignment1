@@ -1,6 +1,5 @@
 # noqa: D100
 
-
 import numpy as np
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.validation import check_X_y, check_is_fitted
@@ -9,13 +8,13 @@ from sklearn.utils.multiclass import type_of_target
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Creates a One NearestNeightbor simulator
-    """
+    """Creates a One NearestNeightbor simulator."""
+
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """Fits the 1-NN i.e. memorizes the X
+        """Fit the 1-NN i.e. memorizes the X.
 
         Parameters
         ----------
@@ -27,6 +26,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         self : OneNearestNeighbor
 
         """
+
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
 
@@ -38,9 +38,9 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """Predicts the class of X
+        """Predict the class of X.
 
-            Parameters
+        Parameters
         ----------
         X : ndarray of shape (n_samples, n_features)
             The input array.
@@ -48,7 +48,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         Returns
         -------
         y_pred : ndarray of shape (len(X))
-                The outpur array with predicted classes.
+                The output array with predicted classes.
 
         """
 
@@ -67,7 +67,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """Calculates the error rate of our predictor.
+        """Calculate the error rate of our predictor.
 
             Parameters
         ----------
