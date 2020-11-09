@@ -3,6 +3,7 @@ import numpy as np
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.validation import check_X_y, check_is_fitted
 from sklearn.utils.validation import check_array
+from sklearn.utils.multiclass import check_classification_targets
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
@@ -32,14 +33,14 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         ValueError
             If the inputs are not numpy array or
             If one of the shapes of inputs is not 2D or
+            If the inputs don't have the same length or
             If length of the input is less than 2
         """
-        X, y = check_X_y(X, y)
-        if X.shape[0] < 2:
-            raise(ValueError)
+        X, y = check_X_y(X, y, ensure_min_samples=2)
         self.classes_ = np.unique(y)
+        check_classification_targets(y)
         # XXX fix
-        self.training, self.targets = X, y
+        self.training_, self.targets_ = X, y
         return self
 
     def predict(self, X):
@@ -66,19 +67,17 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         """
         check_is_fitted(self)
         X = check_array(X)
-        if X.shape[0] < 2:
-            raise(ValueError)
-        y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
+        y_pred = np.full(shape=len(X), fill_value=self.classes_[0], dtype=self.targets_.dtype)
         # XXX fix
         for i, x in enumerate(X):
-            dist, ind = np.linalg.norm(x - self.training[0], ord=None), 0
-            for j, fts in enumerate(self.training):
+            dist, ind = np.linalg.norm(x - self.training_[0], ord=None), 0
+            for j, fts in enumerate(self.training_):
                 new_dist = np.linalg.norm(x - fts, ord=None)
                 if new_dist < dist:
                     dist, ind = new_dist, j
-            y_pred[i] = self.targets[ind]
+            y_pred[i] = self.targets_[ind]
 
-        return y_pred
+        return np.array(y_pred)
 
     def score(self, X, y):
         """
@@ -101,8 +100,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         ValueError
             If length of input is less than 2
         """
-        X, y = check_X_y(X, y)
-        if X.shape[0] < 2:
-            raise(ValueError)
+        X, y = check_X_y(X, y, ensure_min_samples=2)
         y_pred = self.predict(X)
         return np.mean(y_pred == y)
