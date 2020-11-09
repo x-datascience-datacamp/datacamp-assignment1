@@ -27,18 +27,13 @@ def max_index(X):
     i = 0
     j = 0
 
-    if type(X) != np.ndarray:
+    if not isinstance(X, np.ndarray):
         raise ValueError("Wrong type")
-    if len(X.shape) != 2:
+    if X.ndim != 2:
         raise ValueError("Wrong dimension")
 
-    maximum = X[i][j]
-    for line in range(X.shape[0]):
-        for column in range(X.shape[1]):
-            if X[line][column] > maximum:
-                maximum = X[line][column]
-                i = line
-                j = column
+    maximum = np.max(X)
+    i, j = np.where(X == maximum)[0][0], np.where(X == maximum)[1][0]
 
     return i, j
 
@@ -56,7 +51,9 @@ def wallis_product(n_terms):
     # terms in the product. For example 10000.
 
     resu = 2.
-    for i in range(1, n_terms+1):
-        resu *= (2*i / (2*i-1)) * (2*i / (2*i+1))
+
+    n = np.arange(1, n_terms+1)
+    terms_to_multiply = (2*n / (2*n-1)) * (2*n / (2*n+1))
+    resu *= np.product(terms_to_multiply)
 
     return resu
