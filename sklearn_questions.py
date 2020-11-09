@@ -29,7 +29,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         X = check_array(X)
 
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0],
-                                            dtype=self.classes_.dtype)
+                         dtype=self.classes_.dtype)
         for i, line in enumerate(X):
             indexmin = np.argmin(np.linalg.norm(self.X_ - line, axis=1))
             y_pred[i] = self.y_[indexmin]

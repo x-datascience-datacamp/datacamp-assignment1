@@ -26,13 +26,13 @@ def max_index(X):
     """
     i = 0
     j = 0
-    
+
     # TODO
     if(isinstance(X, np.ndarray) and X.ndim == 2):
-        i,j = np.unravel_index(np.argmax(X, axis=None), X.shape)
+        i, j = np.unravel_index(np.argmax(X, axis=None), X.shape)
     else:
         raise ValueError("Error!")
-    return i,j
+    return i, j
 
 
 def wallis_product(n_terms):
@@ -56,4 +56,3 @@ def wallis_product(n_terms):
     if(n_terms == 1):
         x = 4./3
     return 2*x
-    
