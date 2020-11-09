@@ -29,6 +29,11 @@ def max_index(X):
 
     # TODO
 
+    if type(X) != np.ndarray :
+        raise ValueError
+    
+    i,j = np.unravel_index(X.argmax(), X.shape)
+    
     return i, j
 
 
