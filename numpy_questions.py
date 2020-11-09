@@ -30,7 +30,7 @@ def max_index(X):
         raise ValueError('the input is not a numpy')
   
     # TODO
-    if (len(X.shape)>2):
+    if (len(X.shape)!=2):
          raise ValueError('the shape is not 2D')
     rows_max=[]
     cols_max=[]
