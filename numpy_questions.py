@@ -29,8 +29,8 @@ def max_index(X):
 
     i = X.argmax(0)
     j = X.argmax(1)
-    if np.shape(X)>2:
-        raise ValueError(": not a 2D array")
+    if not isinstance(X, np.ndarray):
+        raise ValueError("X must be a np.array")
     if type(X) != 'numpy.ndarray': 
         raise ValueError(": not a 2D array")
     return i, j
