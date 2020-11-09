@@ -7,15 +7,32 @@ from sklearn.utils.multiclass import check_classification_targets
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """We write our own 1-Nearest neighbor classifier
+    """We write our own 1-Nearest neighbor classifier.
+
+    The function will be comptible with the sklearn library. This classes inherites from the classe BaseEstimator and ClassifierMixin.
     """
-    def __init__(self):  # noqa: D107
+
+    def __init__(self): # noqa: D107
         pass
 
     def fit(self, X, y):
-        """takes the training data as arguments,
-        which can be one array in the case of unsupervised learning,
-        or two arrays in the case of supervised learning
+        """Take the training data as arguments which can be one array in the case of unsupervised learning or two arrays in the case of supervised learning.
+        
+        Parameters
+        ----------
+        X : ndarray
+            Data to train on.
+        y : scalar
+            response variable.
+    
+        Returns
+        -------
+        self.
+
+        Raises
+        ------
+        X,y : shape are coherent.
+        y : is y a category.
         """
         X, y = check_X_y(X, y)
         check_classification_targets(y)
@@ -26,7 +43,22 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """does the next classification on the data X
+        """Do the next classification on the data X.
+
+            Parameters
+        ----------
+        X : ndarray
+            Data to predict on.
+
+        Returns
+        -------
+        y_pred : array
+            prediction made on X.
+
+        Raises
+        ------
+        X : Chake array.
+        self : check if self is already fited.
         """
         check_is_fitted(self)
         X = check_array(X)
@@ -39,7 +71,21 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """compute performance of the method
+        """Compute performance of the method.
+
+            Parameters
+        ----------
+        X : ndarray
+            Data to predict on.
+
+        Returns
+        -------
+        y : array
+            real response value to compare prediction.
+
+        Raises
+        ------
+        X,y : shape are coherent.
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
