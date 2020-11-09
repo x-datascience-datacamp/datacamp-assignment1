@@ -27,20 +27,44 @@ def max_index(X):
     i = 0
     j = 0
 
-    # TODO
-
+    i = X.argmax(0)
+    j = X.argmax(1)
+    if np.shape(X)>2:
+        raise ValueError(": not a 2D array")
+    if X.type != "numpy.array"
+        raise ValueError(": not a 2D array")
     return i, j
 
 
 def wallis_product(n_terms):
     """Implement the Wallis product to compute an approximation of pi.
 
-    See:
-    https://en.wikipedia.org/wiki/Wallis_product
+     Parameters
+    ----------
+    n_terms : number of product in Wallis product 
 
-    XXX : write Parameters and Returns sections as above.
+    Returns
+    -------
+    pi : approximation of pi following the Wallis product 
 
+
+    Raises
+    ------
+    ValueError
+        If the input is not an int
     """
-    # XXX : The n_terms is an int that corresponds to the number of
-    # terms in the product. For example 10000.
-    return 0.
+
+    pi = 0.0   
+    for i in range(1, n):
+        x = 4 * (i ** 2)
+        y = x - 1
+        z = float(x) / float(y)
+        if (i == 1):
+            pi = z
+        else:
+            pi *= z
+    pi *= 2
+    if (type(n)) != int : 
+        return "ValueError"
+    else:
+        return pi
