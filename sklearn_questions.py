@@ -6,20 +6,14 @@ from sklearn.utils.validation import check_array
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """
-    Class to find the nearest neighbor
+    """Class to find the nearest neighbor."""
 
-    Parameters
-    ----------
-    BaseEstimator : Base class for all estimators in scikit-learn.
-    ClassifierMixin : Mixin class for all classifiers in scikit-learn.
-
-    """
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """
+        """Fits with the classifier.
+
          Parameters
         ----------
         X : ndarray of shape (n_samples, n_features)
@@ -35,7 +29,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """
+        """Predict output given an y.
+
         Parameters
         ----------
         X : ndarray of shape (n_features)
@@ -69,7 +64,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """
+        """Scoring metric.
+
          Parameters
          ----------
         X : ndarray of shape (n_samples, n_features)

@@ -36,24 +36,19 @@ def max_index(X):
 def wallis_product(n_terms):
     """Implement the Wallis product to compute an approximation of pi.
 
-    See:
-    https://en.wikipedia.org/wiki/Wallis_product
-
-   Parameters
+    Parameters
     ----------
-    n_terms : int
-              Indicates the number of terms to compute.
-
+    n_terms     : int
+                  the number of terms to compute the approximate of PI
     Returns
     -------
     pi : float
-         approximation of pi
-
-      Raises
+                  the approximate value of pi after n iterations of the wallis
+                  product
+    Raises
     ------
     ValueError
-        n_terms must be positive or null
-
+        If n_terms is negative
     """
 
     pi = 2.
