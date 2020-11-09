@@ -58,7 +58,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0],
                          dtype=self.classes_.dtype)
         for i, ptn in enumerate(X):
-            y_pred[i]  = self.y_[np.argmin(euclidean_distances([ptn], self.X_), axis=1)][0]
+            y_pred[i] = self.y_[np.argmin(
+                euclidean_distances([ptn], self.X_), axis=1)][0]
         return y_pred
 
     def score(self, X, y):
