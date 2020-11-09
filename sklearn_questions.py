@@ -29,7 +29,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         Raises
         ------
         ValueError
-            If there are more than 50 classes.
+            If there are more than 50 classes (Regression case).
         """
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
@@ -47,7 +47,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         Parameters
         ----------
         X : ndarray of shape (n_samples, n_features)
-            TEST data.
+            precdiction Input data.
 
         Returns
         -------
@@ -58,8 +58,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0],
                          dtype=self.classes_.dtype)
         for i, ptn in enumerate(X):
-            nearest = np.argmin(euclidean_distances([ptn], self.X_), axis=1)
-            y_pred[i] = self.y_[nearest][0]
+            y_pred[i]  = self.y_[np.argmin(euclidean_distances([ptn], self.X_), axis=1)][0]
         return y_pred
 
     def score(self, X, y):
