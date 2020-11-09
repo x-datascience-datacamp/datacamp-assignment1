@@ -28,7 +28,9 @@ def max_index(X):
     j = 0
 
     # TODO
-
+    #raise ValueError("Manal")
+    j = np.argmax(X, axis=0)[1]
+    i = np.argmax(X, axis=1)[0]
     return i, j
 
 
