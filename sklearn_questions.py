@@ -14,7 +14,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         pass
 
     def fit(self, X, y):
-        """ Fitting our model to train data
+        """Fitting our model to train data
          
          Parameters
         ----------
@@ -26,7 +26,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         """
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
-
         if len(self.classes_) > 30:
             raise ValueError(
                 "Unknown label type: Regression task")
@@ -41,21 +40,16 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         """
         check_is_fitted(self)
         X = check_array(X)
-
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
-
         distances = pairwise_distances(X, self.points_)
         closest = np.argmin(distances, axis=1) 
         y_pred = self.labels_[closest]
-
-
-
         # XXX fix
         return y_pred
 
     def score(self, X, y):
         """Computes the accuracy of the classifier
-        
+
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
