@@ -8,9 +8,7 @@ from sklearn.utils.validation import check_is_fitted
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Write docstring.
-    """
-
+    """Write docstring."""
     def __init__(self):  # noqa: D107
         pass
 
@@ -39,8 +37,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """Score y_predit / y.
-        """
+        """Score y_predit / y."""
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
         return np.mean(y_pred == y)
