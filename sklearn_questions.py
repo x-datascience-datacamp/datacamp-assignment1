@@ -8,13 +8,14 @@ from scipy.spatial import distance_matrix
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Define a1-nearest neighbor classifier
-    """
+    """Define a1-nearest neighbor classifier,"""
+
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """Train the model using the labelled data
+        """Train the model using the labelled data,
+
         X: observations of the training set (numpy array)
         y: labels of the training set (numpy array)
         ----------------------
@@ -30,7 +31,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """Predict the class label for new datapoints
+        """Predict the class label for new datapoints,
+
         ----------------------
         Parameters:
         X: Data Samples we want to get the label of
@@ -47,7 +49,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """Compute the accuracy for a test sample
+        """Compute the accuracy for a test sample,
+
         ----------------------
         Parameters:
         X : samples - ndarray (nb_samples, nb_features)
@@ -60,4 +63,3 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
         return np.mean(y_pred == y)
-      
