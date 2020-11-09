@@ -13,7 +13,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         pass
 
     def fit(self, X, y):
-        """Write docstring
+        """
+        Assign data to the classss
         """
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
@@ -23,7 +24,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """Write docstring
+        """
+        Prediction
         """
         check_is_fitted(self)
         X = check_array(X)
@@ -33,12 +35,11 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         for i, line in enumerate(X):
             indexmin = np.argmin(np.linalg.norm(self.X_ - line, axis=1))
             y_pred[i] = self.y_[indexmin]
-
-        # XXX fix
         return y_pred
 
     def score(self, X, y):
-        """Write docstring
+        """
+        Calculate the score
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)

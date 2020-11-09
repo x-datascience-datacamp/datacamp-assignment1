@@ -41,7 +41,7 @@ def wallis_product(n_terms):
     See:
     https://en.wikipedia.org/wiki/Wallis_product
 
-    XXX : write Parameters and Returns sections as above.
+    XXX : write Parameters and Returns sections as above
 
     """
     # XXX : The n_terms is an int that corresponds to the number of
