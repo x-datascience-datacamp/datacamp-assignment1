@@ -1,6 +1,6 @@
 # noqa: D100
 import numpy as np
-
+!/usr/bin/python -tt
 
 
     
