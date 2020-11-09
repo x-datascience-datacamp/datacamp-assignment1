@@ -40,13 +40,13 @@ def wallis_product(n_terms):
 
     Parameters
     ----------
-    n_terms : int
-              the number of terms to compute the approximate of PI
+    n_terms     : int
+                  the number of terms to compute the approximate of PI
 
     Returns
     -------
-    x       : float
-              the approximate value of pi after n iterations of the wallis product
+    pi_estimate : float
+                  the approximate value of pi after n iterations of the wallis product
 
     Raises
     ------
