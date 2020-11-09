@@ -58,9 +58,9 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         check_is_fitted(self)
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
-        distances = euclidean_distances(X, self.X_train_)
+        distances = euclidean_distances(X, self.X_)
         min_distances = np.argmin(distances, axis=1)
-        y_pred = self.y_train_[min_distances]
+        y_pred = self.y_[min_distances]
         return y_pred
 
     def score(self, X, y):
