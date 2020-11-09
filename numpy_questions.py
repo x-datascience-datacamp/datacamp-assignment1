@@ -31,9 +31,9 @@ def max_index(X):
     i = 0
     j = 0
     test = X == X.max()
-    indexes = np.where(test is True)
-    i = int(indexes[0])
-    j = int(indexes[1])
+    indexes = np.where(test)
+    i = indexes[0]
+    j = indexes[1]
     # TODO
     print(i, j)
     return i, j
