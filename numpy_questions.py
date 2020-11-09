@@ -3,6 +3,7 @@ import numpy as np
 
 
 def max_index(X):
+    
     """Return the index of the maximum in a numpy array.
 
     Parameters
@@ -23,6 +24,7 @@ def max_index(X):
     ValueError
         If the input is not a numpy error or
         if the shape is not 2D."""
+        
     if type(X) is not np.ndarray:
         raise ValueError("not numpy")
     if len(X.shape) != 2:
@@ -36,12 +38,14 @@ def max_index(X):
 
 
 def wallis_product(n_terms):
+    
     """Implement the Wallis product to compute an approximation of pi.
 
     See:
     https://en.wikipedia.org/wiki/Wallis_product.
 
     XXX : write Parameters and Returns sections as above."""
+    
     # XXX : The n_terms is an int that corresponds to the number of
     # terms in the product. For example 10000.
     try:
