@@ -1,7 +1,7 @@
 # ##################################################
 # YOU SHOULD NOT TOUCH THIS FILE !
 # ##################################################
-
+# %%
 from sklearn.utils.estimator_checks import check_estimator
 from sklearn.model_selection import train_test_split
 from sklearn.datasets import make_classification
