@@ -51,4 +51,4 @@ def wallis_product(n_terms):
         secont_term = (2. * i)/(2. * i + 1.)
         pi_approx = pi_approx * first_term * secont_term
     return pi_approx
-print(wallis_product(1))
+
