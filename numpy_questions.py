@@ -21,13 +21,16 @@ def max_index(X):
     Raises
     ------
     ValueError
-        If the input is not a numpy error or
+        If the input is not a numpy array or
         if the shape is not 2D.
     """
-    i = 0
-    j = 0
+    if not isinstance(X, np.ndarray) or not len(X.shape) == 2:
+        raise ValueError("X should be a 2D numpy ndarray")
 
-    # TODO
+    idxs = np.unravel_index(np.argmax(X, axis=None), X.shape)
+
+    i = idxs[0]
+    j = idxs[1]
 
     return i, j
 
@@ -38,9 +41,28 @@ def wallis_product(n_terms):
     See:
     https://en.wikipedia.org/wiki/Wallis_product
 
-    XXX : write Parameters and Returns sections as above.
+    Parameters
+    ----------
+    n_terms : int
+        number of factor in the wallis product
 
+    Returns
+    -------
+    pi : float
+        Wallis product pi approximation
+
+    Raises
+    ------
+    ValueError
+        If the input is not a positive int
     """
-    # XXX : The n_terms is an int that corresponds to the number of
-    # terms in the product. For example 10000.
-    return 0.
+    if not isinstance(n_terms, int):
+        raise ValueError("n_terms should be int")
+    if not n_terms >= 0:
+        raise ValueError("n_terms should be positive")
+
+    id = 1 + np.arange(n_terms, dtype=np.float64)
+
+    wallis_factors = (2 * id)**2 / ((2 * id - 1) * (2 * id + 1))
+
+    return wallis_factors.prod() * 2
