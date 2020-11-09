@@ -53,7 +53,7 @@ def wallis_product(n_terms):
     """
     pi = 2
     if n_terms > 0:
-        n = np.arange(1, n_terms)
+        n = np.arange(1, n_terms+1)
         product_terms = (4 * n**2)/(4*n**2 - 1)
         pi *= np.product(product_terms)
     return pi
