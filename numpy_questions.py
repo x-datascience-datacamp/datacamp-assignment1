@@ -26,17 +26,15 @@ def max_index(X):
     """
     i = 0
     j = 0
-   
     # TODO
-    if (type(X)!=type(np.array([0]))): 
+    if not isinstance(X, np.ndarray):
         raise ValueError("the input is not a numpy error")
-    if (X.ndim !=2 ):
+    if X.ndim != 2:
         raise ValueError("the shape is not 2D")
-    
-    M = np.max(X)  
-    i,j = np.where(np.isclose(X,M))
-    i=i[0]
-    j=j[0]
+    M = np.max(X)
+    i, j = np.where(np.isclose(X, M))
+    i = i[0]
+    j = j[0]
     return i, j
 
 
@@ -61,16 +59,16 @@ def wallis_product(n_terms):
     ------
     ValueError
         If the input is not a int or
-        if the input is positive. 
+        if the input is positive.
     """
     pi = 2
-    if (n_terms<0):
+    if n_terms < 0:
         raise ValueError("The input is negative")
-    if(type(n_terms) != int) and(type(n_terms) != float) : 
+    if not isinstance(n_terms, (int, float)):
         raise ValueError("The input is not an integer")
-    if(n_terms!=int(n_terms)) :
+    if n_terms != int(n_terms):
         raise ValueError("The input is not an integer")
     n = int(n_terms)
-    for i in range(1,n+1):
-        pi *=   4 * i**2 /(4*i**2 - 1 )
+    for i in range(1, n+1):
+        pi *= 4 * i**2 / (4*i**2 - 1)
     return pi
