@@ -26,16 +26,13 @@ def max_index(X):
     """
     i = 0
     j = 0
-    if (len(X.shape)!=2):
-        return ValueError
 
     # TODO
     if (len(X.shape) != 2):
-        return ValueError
+        raise ValueError("We need 2D Array!")
 
     i,j=np.argmax(X)
     return i, j
-
 
 def wallis_product(n_terms):
     """Implement the Wallis product to compute an approximation of pi.
@@ -51,4 +48,8 @@ def wallis_product(n_terms):
     wallis_pi=1
     for k in range(1,n_terms):
         wallis_pi*=4 * k ** 2 / (4 * k ** 2 - 1)
-    return wallis_pi
+    return wallis_pi*2
+
+
+print("Our estimation of Pi is: ", wallis_product(10000))
+print("The absolute value of the difference is equal to:",abs(wallis_product(10000)-np.pi))
