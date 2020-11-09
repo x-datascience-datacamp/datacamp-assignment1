@@ -39,6 +39,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         closest = np.argmin(distances, axis=1) #Take the index for nearest neighbor
         y_pred = self.labels_[closest]
 
+        
+
         # XXX fix
         return y_pred
 
