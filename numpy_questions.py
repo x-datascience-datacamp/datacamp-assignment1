@@ -15,8 +15,8 @@ def max_index(X):
          raise ValueError('The input is not a np array')
     if len(X.shape) !=2 :
          raise ValueError('X is not a matrix')
-   (i,j)=np.unravel_index(np.argmax(X,axis=None), X.shape)
-   return i, j
+    (i,j)=np.unravel_index(np.argmax(X,axis=None), X.shape)
+    return i, j
 
 
 def wallis_product(n_terms):
