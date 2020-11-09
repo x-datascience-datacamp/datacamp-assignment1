@@ -27,7 +27,6 @@ def max_index(X):
     i = 0
     j = 0
 
-    # TODO
     if type(X) != np.ndarray:
         raise ValueError("The input must be a numpy array")
     if len(X.shape) != 2:
@@ -45,9 +44,21 @@ def wallis_product(n_terms):
     See:
     https://en.wikipedia.org/wiki/Wallis_product
 
-    XXX : write Parameters and Returns sections as above.
+    Parameters
+    ----------
+    n_terms : int
+        Number of terms in the Wallis product.
 
+    Returns
+    -------
+    pi : float
+        Approximation of pi.
     """
-    # XXX : The n_terms is an int that corresponds to the number of
+    # The n_terms is an int that corresponds to the number of
     # terms in the product. For example 10000.
-    return 0.
+
+    pi = 2
+    for i in range(1, n_terms+1):
+        pi = pi * (1 + 1/(4*i**2 - 1))
+
+    return pi
