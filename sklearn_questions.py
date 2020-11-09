@@ -5,6 +5,7 @@ from sklearn.utils.validation import check_X_y, check_is_fitted
 from sklearn.utils.validation import check_array
 from sklearn.utils.multiclass import check_classification_targets
 
+
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """Write docstring
     """
@@ -29,11 +30,11 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         """
         check_is_fitted(self)
         X = check_array(X)
-        y_pred = np.full(shape=len(X), fill_value=self.classes_[0],dtype = self.classes_.dtype)
+        y_pred = np.full(shape=len(X), fill_value=self.classes_[0], dtype=self.classes_.dtype)
 
-        for i in range(len(X)) :
+        for i in range(len(X)):
             distances = []
-            for j in range(len(self.X_)) :
+            for j in range(len(self.X_)):
                 distances.append(np.linalg.norm(X[i] - self.X_[j]))
             y_pred[i] = self.y_[np.argmin(np.array(distances))]
 
