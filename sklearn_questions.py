@@ -7,7 +7,17 @@ from sklearn.utils.validation import check_array
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Write docstring.
+    """Allow prediction of a class given X.
+    
+    Attributes : 
+        classes : list of all classes
+        X_ : train set of X
+        y_ : train set of classes
+        
+    Methods :
+        fit : to train the model
+        predict : to predict given a X
+        score : to know the accuracy.
     """
 
     def __init__(self):  # noqa: D107
