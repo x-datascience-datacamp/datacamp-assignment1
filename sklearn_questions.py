@@ -7,9 +7,8 @@ from sklearn.metrics.pairwise import euclidean_distances
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Creation of a OneNearestNeighbor
+    """Creation of a OneNearestNeighbor."""
 
-    """
     def __init__(self):  # noqa: D107
         pass
 
@@ -50,14 +49,9 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         X : ndarray of shape (n_samples, n_features)
             TEST data.
 
-
         Returns
         -------
         y_pred : prediction from X.
-
-        Raises
-        ------
-
         """
         check_is_fitted(self)
         X = check_array(X)
@@ -69,23 +63,19 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """Compute MSE between our prediction qnd real value
+        """Compute MSE between our prediction qnd real value.
 
         Parameters
         ----------
         X : ndarray of shape (n_samples, n_features)
-            Input data
+            Input data.
         Y : ndarray of shape (n_samples, n_features)
-            True labels of X
+            True labels of X.
 
         Returns
         -------
         score : float
-                MSE
-
-        Raises
-        ------
-
+                MSE.
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
