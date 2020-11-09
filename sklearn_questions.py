@@ -16,16 +16,19 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         """
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
-        # XXX fix
+        self.X_train, self.y_train = X, y
         return self
 
     def predict(self, X):
         """Write docstring
         """
-        check_is_fitted(self)
+        check_is_fitted(self )
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
-        # XXX fix
+        for i, X_i in enumerate(X):
+            distances = np.linalg.norm(self.examples_[0] - X_i, axis = 1)
+            nearest = np.argmin(distances)
+            y_pred[i] = self.y_train[nearest]
         return y_pred
 
     def score(self, X, y):
