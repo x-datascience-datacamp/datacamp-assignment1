@@ -8,6 +8,7 @@ from sklearn.utils.multiclass import check_classification_targets
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """Class implementing the one nearest neighbor model."""
+
     def __init__(self):  # noqa: D107
         pass
 
