@@ -31,7 +31,7 @@ def max_index(X):
         raise Exception("not a numpy array")
     if X.ndim != 2:
         raise Exception("not a 2D array")
-               
+
     i, j = np.unravel_index(np.argmax(X, axis=None), X.shape)
     return i, j
 
@@ -54,12 +54,12 @@ def wallis_product(n_terms):
 
     """
     Pi_wallis = 1
-    
+
     if not isinstance(n_terms, int):
         raise Exception("not an integer")
-       
+
     if n_terms > 0:
         for i in range(1, n_terms+1):
             Pi_wallis = Pi_wallis*(4*i**2)/(4*i**2-1)
-    
+
     return 2*Pi_wallis
