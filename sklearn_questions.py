@@ -24,7 +24,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        "Predit function."
+        "Predict function."
         if not hasattr(self, "X_"):
             raise ValueError("")
         X = check_array(X)
@@ -35,7 +35,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        "Calculating scores."
+        """Calculate scores."""
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
         return np.mean(y_pred == y)
