@@ -10,12 +10,14 @@ from sklearn.utils.validation import check_is_fitted
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """Write docstring
     """
+    """ parameters : """
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
         """Write docstring
         """
+        """" X, y"""
         X, y = check_X_y(X, y)
         X = check_array(X, copy=True, ensure_2d=True)
         self.classes_ = np.unique(y)
