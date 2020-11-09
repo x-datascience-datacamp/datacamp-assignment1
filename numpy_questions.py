@@ -27,8 +27,11 @@ def max_index(X):
     i = 0
     j = 0
 
-    if not (X) is int:
-  raise TypeError("Only integers are allowed")
+    if type(X) != np.ndarray:
+        raise TypeError("Input is not a Numpy Array")
+
+    if :
+        raise TypeError("Input is a Numpy array but must be 2D")
 
     return i, j
 
