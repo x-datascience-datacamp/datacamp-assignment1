@@ -37,9 +37,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """Compare the calculated prediction of X y_pred
-        and the real value of the prediction y."""
-
+        """Compare calculated prediction of X y_pred and real prediction y."""
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
         return np.mean(y_pred == y)
