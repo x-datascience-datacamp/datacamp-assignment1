@@ -23,6 +23,7 @@ def max_index(X):
     ValueError
         If the input is not a numpy error or
         if the shape is not 2D.
+
     """
     i = 0
     j = 0
@@ -48,6 +49,7 @@ def wallis_product(n_terms):
     -------
     wallis_p : float
         Approximation of pi computed using Wallis product
+
     """
     # XXX : The n_terms is an int that corresponds to the number of
     # terms in the product. For example 10000.
