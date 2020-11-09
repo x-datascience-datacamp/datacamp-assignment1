@@ -28,7 +28,15 @@ def max_index(X):
     j = 0
 
     # TODO
-    i,j = np.unravel_index(np.argmax(X, axis=None), a.shape)
+    i = X.argmax(0)
+    j = X.argmax(1)
+
+    if type(X) != 'numpy.ndarray':
+        raise TypeError('X is not an array')
+
+    if len(X.shape) != 2:
+        raise TypeError('X is not a 2D vector')
+    
     return i, j
 
 
