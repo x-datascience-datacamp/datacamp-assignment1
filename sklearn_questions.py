@@ -8,11 +8,12 @@ from sklearn.utils.multiclass import check_classification_targets
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """predection of the nearest neighbor to a given data."""
+    
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """fitting the data."""
+        """Fitting the data."""
         X, y = check_X_y(X, y)
         check_classification_targets(y)
         self.classes_ = np.unique(y)
