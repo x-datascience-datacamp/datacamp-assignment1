@@ -8,7 +8,7 @@ from sklearn.utils.multiclass import type_of_target
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """One-Nearest Neighbor Algorithm"""
+    """One-Nearest Neighbor Algorithm."""
 
     def __init__(self, params=None):  # noqa: D107
         self.params = params
@@ -20,7 +20,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
             X (numpy.ndarray): array of shape (n_neigbors, n_features)
             y (numpy.ndarray): array of shape (n_neigbors,)
         """
-
         if type_of_target(y) not in ['binary', 'multiclass', 'unknown']:
             raise ValueError
 
@@ -39,7 +38,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         Returns:
             y_pred: array of shape (n_samples,)
         """
-
         check_is_fitted(self)
         X = check_array(X)
 
@@ -60,7 +58,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
             accuracy (scalar): mean accuracy between predicted labels
             and the truth groundtruth labels
         """
-
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
         return np.mean(y_pred == y)
