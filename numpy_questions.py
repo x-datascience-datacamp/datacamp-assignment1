@@ -31,7 +31,7 @@ def max_index(X):
     if (len(X.shape) != 2):
         raise ValueError("We need 2D Array!")
 
-    i,j=np.argmax(X)
+    i,j=np.unravel_index(X.argmax(), X.shape)
     return i, j
 
 def wallis_product(n_terms):
@@ -53,3 +53,6 @@ def wallis_product(n_terms):
 
 print("Our estimation of Pi is: ", wallis_product(10000))
 print("The absolute value of the difference is equal to:",abs(wallis_product(10000)-np.pi))
+
+X = np.random.rand(8, 8)
+print(max_index(X))
