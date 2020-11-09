@@ -7,10 +7,6 @@ from sklearn.metrics import euclidean_distances
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """Return the OneNearestNeighbor of a set of points.
-    Parameters
-    ----------
-    X : ndarray observed points.
-    y : ndarray of labels.
     """
     def __init__(self):  # noqa: D107
         pass
@@ -19,7 +15,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         Parameters:
         X:ndarray represent the observed points X
         Y:ndarray represent the classes
-
         Return:
         self: classifier
         """
@@ -39,7 +34,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         Returns
         -------
         y_pred: ndarray
-                The predicted classes of the given X."""
+                The predicted classes of the given X.
+        """
         check_is_fitted(self)
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
