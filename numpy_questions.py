@@ -18,7 +18,7 @@ def max_index(X):
     j : int
         The column index of the maximum.
 
-    Raises
+    RaisesP
     ------
     ValueError
         If the input is not a numpy error or
@@ -29,7 +29,8 @@ def max_index(X):
 
     # TODO
 
-    raise ValueError("Thomas")
+    print("helloworld")
+    raise ValueError("Guillaume")
 
     return i, j
 
