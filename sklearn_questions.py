@@ -4,7 +4,6 @@ from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.validation import check_X_y, check_is_fitted
 from sklearn.utils.validation import check_array
 from sklearn.metrics import pairwise_distances
-from sklearn.preprocessing import LabelEncoder
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
@@ -29,7 +28,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         # If more than 50 classes, this is probably a regression and not a classification.
         if len(self.classes_) > 50:  # scientific number
             # sklearn wants us to have this error message start with "Unknwon label type: "
-            raise ValueError("Unknown label type: too many classes for classification")
+            raise ValueError(
+                "Unknown label type: too many classes for classification")
         try:
             y = check_array(
                 y, ensure_2d=False, copy=True, dtype="numeric", force_all_finite=False
