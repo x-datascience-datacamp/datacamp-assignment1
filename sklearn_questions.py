@@ -61,10 +61,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         y_pred = self.y_[np.argmin(distance_matrix(X, self.X_), axis=1)]
         return y_pred
 
-
     def score(self, X, y):
-        """Compare y_pred and real y to ive the score. 
-
+        """Compare y_pred and real y to ive the score.
         Parameters
         ----------
         X : ndarray of shape (n_samples, n_features)
