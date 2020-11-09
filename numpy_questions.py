@@ -58,5 +58,4 @@ def wallis_product(n_terms):
 
     for i in range(1, n_terms+1):
         pi_approx *= ((4*i**2)/(4*i**2-1))
-
     return pi_approx
