@@ -3,33 +3,59 @@ import numpy as np
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.validation import check_X_y, check_is_fitted
 from sklearn.utils.validation import check_array
+from sklearn.metrics import euclidean_distances
+
+from sklearn.utils.multiclass import check_classification_targets
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Write docstring
-    """
-    def __init__(self):  # noqa: D107
-        pass
+    """One-Nearest Neighbor Algorithm."""
+
+    def __init__(self, params=None):  # noqa: D107
+        self.params = params
 
     def fit(self, X, y):
-        """Write docstring
+        """Initialise the classes and the neigbors from the data.
+
+        Args:
+            X (numpy.ndarray): array of shape (n_neigbors, n_features)
+            y (numpy.ndarray): array of shape (n_neigbors,)
         """
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
-        # XXX fix
+        check_classification_targets(y)
+        self.X_train_ = X
+        self.y_train_ = y
         return self
 
     def predict(self, X):
-        """Write docstring
+        """Predict class labels.
+
+        Args:
+            X (numpy.ndarray): array of shape (n_samples, n_features)
+
+        Returns:
+            y_pred: array of shape (n_samples,)
         """
         check_is_fitted(self)
         X = check_array(X)
+
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
-        # XXX fix
+        distances = euclidean_distances(X, self.X_train_)
+        closest = np.argmin(distances, axis=1)
+        y_pred = self.y_train_[closest]
         return y_pred
 
     def score(self, X, y):
-        """Write docstring
+        """Compute the mean accuracy for the data.
+
+        Args:
+            X (numpy.ndarray): array of shape (n_samples, n_features)
+            y (numpy.ndarray): array of shape (n_samples,)
+
+        Returns:
+            accuracy (scalar): mean accuracy between predicted labels
+            and the truth groundtruth labels
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
