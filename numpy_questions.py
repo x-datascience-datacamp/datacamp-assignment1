@@ -37,8 +37,6 @@ def max_index(X):
         rows_max.append(np.max(X[r][:]))
     i=np.where(X==np.max(rows_max))[0][0]
     j=np.where(X==np.max(rows_max))[1][0]
-   # j=cols_max.index(np.max(cols_max))
-    
     return i, j
 
 
@@ -56,7 +54,4 @@ def wallis_product(n_terms):
         first_term = (2. * i)/(2. * i - 1.)
         secont_term = (2. * i)/(2. * i + 1.)
         pi_approx = pi_approx * first_term * secont_term
-    
-    # XXX : The n_terms is an int that corresponds to the number of
-    # terms in the product. For example 10000.
     return pi_approx
