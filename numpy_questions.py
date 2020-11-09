@@ -28,8 +28,10 @@ def max_index(X):
     j = 0
 
     # TODO
+    if np.shape(X)[0] == 2 :
+         k = np.argmax(X)
 
-    return i, j
+    return k
 
 
 def wallis_product(n_terms):
