@@ -51,21 +51,12 @@ def wallis_product(n_terms):
     XXX : write Parameters and Returns sections as above.
 
     """
-    pi_approx = 0.0   
+    pi_approx = 2.   
     for i in range(1, n_terms+1):
-        a = 4 * (i ** 2)
-        b = a - 1
-        z = float(a) / float(b)
-        if (i == 1):
-            pi_approx = z
-        else:
-            pi_approx *= z
-    pi_approx *= 2
+        first_term = (2. * i)/(2. * i - 1.)
+        secont_term = (2. * i)/(2. * i + 1.)
+        pi_approx = pi_approx * first_term * secont_term
+    
     # XXX : The n_terms is an int that corresponds to the number of
     # terms in the product. For example 10000.
     return pi_approx
-
-A= np.array([[1, 4, 5], 
-    [-5, 8, 9]])
-i=np.where(A==1)[0][0]
-print(max_index(A))
