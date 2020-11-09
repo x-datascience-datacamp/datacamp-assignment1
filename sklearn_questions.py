@@ -7,14 +7,16 @@ from sklearn.utils.multiclass import check_classification_targets
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """résoud un problème de classification,
-        grâce à un algorythme des plus proches voisins
+    """
+    résoud un problème de classification,
+    grâce à un algorythme des plus proches voisins
     """
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """Pretraitement des données
+        """
+        Pretraitement des données
         """
         X, y = check_X_y(X, y)
         check_classification_targets(y)
@@ -24,7 +26,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """Prédiction de la classe des données X
+        """
+        Prédiction de la classe des données X
         """
         check_is_fitted(self)
         X = check_array(X)
@@ -34,7 +37,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """Donne l'erreur de la classification prédite sur les data X
+        """
+        Donne l'erreur de la classification prédite sur les data X
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
