@@ -7,7 +7,8 @@ from sklearn.utils.multiclass import check_classification_targets
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """résoud un problème de classification, grâce à un algorythme des plus proches voisins
+    """résoud un problème de classification,
+        grâce à un algorythme des plus proches voisins
     """
     def __init__(self):  # noqa: D107
         pass
@@ -28,8 +29,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         check_is_fitted(self)
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
-        nearest = [np.argmin(np.linalg.norm(self.X_train_-x, axis=1)) for x in X]
-        y_pred = np.array([self.y_train_[n] for n in nearest])
+        near = [np.argmin(np.linalg.norm(self.X_train_-x, axis=1)) for x in X]
+        y_pred = np.array([self.y_train_[n] for n in near])
         return y_pred
 
     def score(self, X, y):
