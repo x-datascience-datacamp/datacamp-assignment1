@@ -19,11 +19,11 @@ def max_index(X):
          for k in range(X.shape[1]):
              if X[l,k] > X[i,j]:
                  i, j = l, k
-     for line in range(X.shape[0]):
+    for line in range(X.shape[0]):
          for col in range(X.shape[1]):
              if X[line, col] > X[i, j]:
                  i, j = line, col
-    return i, j
+    return(i, j)
 
 
 def wallis_product(n_terms):
