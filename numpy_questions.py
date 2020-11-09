@@ -27,7 +27,7 @@ def max_index(X):
     i = 0
     j = 0
 
-    # TODO
+    i,j = np.unravel_index(X.argmax(), X.shape)
 
     return i, j
 
