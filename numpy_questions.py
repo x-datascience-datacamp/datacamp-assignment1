@@ -36,7 +36,6 @@ def max_index(X):
 
 
 def wallis_product(n_terms):
-
     """Implement the Wallis product to compute an approximation of pi.
 
     See:
@@ -56,7 +55,7 @@ def wallis_product(n_terms):
 # Code for testing functions
 """
 print("Our estimation of Pi is: ", wallis_product(10000))
-print("The absolute value of the difference is equal to:", abs(wallis_product(10000)-np.pi))
+print("The absolute value of difference is:", abs(wallis_product(10000)-np.pi))
 
 X = np.random.rand(8, 8)
 print(max_index(X))
