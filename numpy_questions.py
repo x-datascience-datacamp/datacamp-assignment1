@@ -28,11 +28,8 @@ def max_index(X):
     # TODO
     if (len(X.shape) != 2):
         raise ValueError('the shape is not 2D')
-    rows_max = []
-    for r in range(X.shape[0]):
-        rows_max.append(np.max(X[r][:]))
-    i = np.where(X == np.max(rows_max))[0][0]
-    j = np.where(X == np.max(rows_max))[1][0]
+    i = np.where(X == np.amax(X))[0][0]
+    j = np.where(X == np.max(X))[1][0]
     return i, j
 
 
