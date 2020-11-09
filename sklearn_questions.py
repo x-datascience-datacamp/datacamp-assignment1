@@ -3,6 +3,7 @@ import numpy as np
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.validation import check_X_y, check_is_fitted
 from sklearn.utils.validation import check_array
+from sklearn.neighbors import NearestNeighbors
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
@@ -21,15 +22,20 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         if len(np.unique(y))>50:
             raise ValueError("Regression")
         # XXX fix
+        self.sample_=X
+        self.fit_=y
         return self
 
     def predict(self, X):
         """predict y with X
         """
-        check_is_fitted(self)
+        #check_is_fitted(self)
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
         # XXX fix
+        for i in range(0, len(y_pred)):
+            distances = np.sqrt(np.sum(np.square(X[i] - self.sample_), axis=-1, keepdims=True)) 
+            y_pred[i]=self.fit_[np.argmin(distances)]
         return y_pred
 
     def score(self, X, y):
