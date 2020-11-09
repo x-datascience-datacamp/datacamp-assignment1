@@ -15,7 +15,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         pass
 
     def fit(self, X, y):
-        "Write docstring."
+        """Write docstring."""
         X, y = check_X_y(X, y)
         X = check_array(X, copy=True, ensure_2d=True)
         self.classes_ = np.unique(y)
@@ -29,7 +29,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def predict(self, X):
         """Write docstring."""
-        
         check_is_fitted(self)
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
