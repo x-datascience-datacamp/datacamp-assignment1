@@ -25,14 +25,11 @@ def max_index(X):
         if the shape is not 2D.
     """
     if type(X) != np.ndarray or len(X.shape) != 2:
-        raise ValueError     
+        raise ValueError
     i = 0
     j = 0
     i, j = np.unravel_index(np.argmax(X), X.shape)
-
-
     # TODO
-
     return i, j
 
 
