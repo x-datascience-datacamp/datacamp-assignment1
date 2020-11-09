@@ -5,6 +5,7 @@ from sklearn.utils.validation import check_X_y, check_is_fitted
 from sklearn.utils.validation import check_array
 from sklearn.metrics.pairwise import pairwise_distances
 
+
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """Write docstring
     """
@@ -20,7 +21,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
             raise ValueError("Unknown label type: Regression task")
         self.X_ = X
         self.y_ = y
-        
         # XXX fix
         return self
 
