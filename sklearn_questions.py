@@ -32,7 +32,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
         # XXX fix
-        distances = np.apply_along_axis(((self.X_ - q)**2).sum(axis=1), 1, X)
+        distances = np.apply_along_axis(((self.X_ - sum(axis=1))**2), 1, X)
         y_pred = self.y_[distances.argmin(axis=1)]
         return y_pred
 
