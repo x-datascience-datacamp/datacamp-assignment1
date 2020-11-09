@@ -17,8 +17,7 @@ def test_one_nearest_neighbor_check_estimator():
 
 
 def test_one_nearest_neighbor_match_sklearn():
-    X, y = make_classification(n_samples=200, n_features=20,
-                               random_state=42)
+    X, y = make_classification(n_samples=200, n_features=20, random_state=42)
     X_train, X_test, y_train, y_test = \
         train_test_split(X, y, random_state=42)
     knn = KNeighborsClassifier(n_neighbors=1)
