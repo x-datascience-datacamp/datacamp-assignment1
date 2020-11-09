@@ -16,7 +16,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         """
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
-        # XXX fix
+        self.data = [(X[i], y[i]) for i in range(len(X))]
         return self
 
     def predict(self, X):
@@ -25,7 +25,9 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         check_is_fitted(self)
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
-        # XXX fix
+        for i in range(len(X)):
+            X_i = X[i]
+            dist_to_i = 
         return y_pred
 
     def score(self, X, y):
