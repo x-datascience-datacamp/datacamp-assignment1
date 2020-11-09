@@ -27,11 +27,9 @@ def max_index(X):
     i = 0
     j = 0
     # TODO
-    if not isinstance(X, np.ndarray) or X is None or len(X.shape) !=2:
+    if not isinstance(X, np.ndarray) or X is None or len(X.shape) != 2:
         raise ValueError("input must be a 2D-numpy array")
-    
     i, j = np.unravel_index(np.argmax(X, axis=None), X.shape)
-    
     return i, j
 
 
@@ -42,6 +40,7 @@ def wallis_product(n_terms):
     https://en.wikipedia.org/wiki/Wallis_product
 
     XXX : write Parameters and Returns sections as above.
+
     Parameters
     ----------
     n_terms : int
