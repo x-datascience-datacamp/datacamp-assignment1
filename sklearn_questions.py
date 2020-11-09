@@ -3,44 +3,42 @@ import numpy as np
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.validation import check_X_y, check_is_fitted
 from sklearn.utils.validation import check_array
-from sklearn.neighbors import NearestNeighbors
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Algorithme des k plus proches voisins
-    prend en entrée l estimateur et le classifieur
-    renvoie les méthodes fit predict et score
-    """
+    """Algorithme des k plus proches voisins."""
+
+    """prend en entrée l estimateur et le classifieur."""
+    """renvoie les méthodes fit predict et score."""
+
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """fit X to y 
-        """
+        """Fit X to y."""
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
-        if len(np.unique(y))>50:
+        if len(np.unique(y)) > 50:
             raise ValueError("Regression")
         # XXX fix
-        self.sample_=X
-        self.fit_=y
+        self.sample_ = X
+        self.fit_ = y
         return self
 
     def predict(self, X):
-        """predict y with X
-        """
-        #check_is_fitted(self)
+        """Predict y with X."""
+        check_is_fitted(self, ["classes_"])
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
         # XXX fix
         for i in range(0, len(y_pred)):
-            distances = np.sqrt(np.sum(np.square(X[i] - self.sample_), axis=-1, keepdims=True)) 
-            y_pred[i]=self.fit_[np.argmin(distances)]
+            distances = np.sqrt(np.sum(np.square(X[i] - self.sample_),
+                                axis=-1, keepdims=True))
+            y_pred[i] = self.fit_[np.argmin(distances)]
         return y_pred
 
     def score(self, X, y):
-        """Score y predicted with real y
-        """
+        """Score y predicted with real y."""
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
         return np.mean(y_pred == y)
