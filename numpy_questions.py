@@ -55,9 +55,9 @@ def wallis_product(n_terms):
     # terms in the product. For example 10000.
     prod=1
     for i in range(1,1+n_terms):
-        left = (2 * i)/(2 * i - 1)
-        right = (2 * i)/(2 * i + 1)
-        total = left * right
+        a = (2 * i)/(2 * i - 1)
+        b = (2 * i)/(2 * i + 1)
+        total = a * b
         prod=prod*total
     return 2*prod
 
