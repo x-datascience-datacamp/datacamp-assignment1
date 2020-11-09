@@ -8,7 +8,7 @@ from sklearn.utils.validation import check_is_fitted
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Write docstring
+    """Write docstring 
     """
 
     """ parameters. """
@@ -17,7 +17,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         pass
 
     def fit(self, X, y):
-        """Write docstring
+        """Write docstring 
         """
         """" X, y."""
         X, y = check_X_y(X, y)
@@ -32,7 +32,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """Write docstring.
+        """Write docstring 
         """
 
         check_is_fitted(self)
@@ -45,7 +45,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """Write docstring
+        """Write docstring 
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
