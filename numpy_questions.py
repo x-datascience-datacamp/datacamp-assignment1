@@ -26,9 +26,14 @@ def max_index(X):
     """
     i = 0
     j = 0
+    if (len(X.shape)!=2):
+        return ValueError
 
     # TODO
+    if (len(X.shape) != 2):
+        return ValueError
 
+    i,j=np.argmax(X)
     return i, j
 
 
