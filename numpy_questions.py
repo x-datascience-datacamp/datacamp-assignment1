@@ -31,7 +31,7 @@ def max_index(X):
     # TODO
     if(type(X) is not np.ndarray):
         raise TypeError("X isn't a numpy array")     
-    elif(X.shape != (2,2)): 
+    elif(len(X.shape) != 2): 
         raise Exception("the array shape is not 2D")           
     else:
         i = np.argmax(np.max(X, axis=1))
