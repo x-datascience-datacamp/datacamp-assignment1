@@ -8,11 +8,12 @@ from sklearn.utils.validation import check_array
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """Implement a 1-NN class with basic functions  (fit, predict, score)."""
+
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """Stores training data."""
+        """Store training data."""
         check_classification_targets(y)
         X, y = check_X_y(X, y, ensure_2d=True)
         self.classes_ = np.unique(y)
