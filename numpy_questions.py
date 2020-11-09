@@ -43,6 +43,6 @@ def wallis_product(n_terms):
     """
     # XXX : The n_terms is an int that corresponds to the number of
     # terms in the product. For example 10000.
-    WArray = np.array([2*i*2*i/((2*i - 1)*(2*i + 1)) for i in range(1, n_terms)])
-    res = np.prod(WArray)
+    WNum = np.array([2*i*2*i/((2*i - 1)*(2*i + 1)) for i in range(1, n_terms)])
+    res = np.prod(WNum)
     return 2*res
