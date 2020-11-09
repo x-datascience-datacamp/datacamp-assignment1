@@ -27,7 +27,7 @@ def max_index(X):
     i = 0
     j = 0
 
-    # TODO
+    # Ceci est un test
 
     return i, j
 
