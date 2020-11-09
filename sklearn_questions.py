@@ -5,6 +5,7 @@ from sklearn.utils.validation import check_X_y, check_is_fitted
 from sklearn.utils.validation import check_array
 from sklearn.metrics.pairwise import euclidean_distances
 
+
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """
     One Nearest Neighbor Classifier  - Scikit Learn API
@@ -28,7 +29,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         -------
         index : Index of the nearest data point
         """
-        dist = euclidean_distances(self.X_, [data]);
+        dist = euclidean_distances(self.X_, [data])
         return np.argmin(dist)
 
     def fit(self, X, y):
