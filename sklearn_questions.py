@@ -6,30 +6,35 @@ from sklearn.utils.validation import check_array
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Write docstring
+    """Class with computes the class of a vector based on the
+    1-nearest neighbor algorithm
     """
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """Write docstring
+        """Record the data used to fit the classifier.
         """
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
-        # XXX fix
+        self.X_, self.y_ = X, y
         return self
 
     def predict(self, X):
-        """Write docstring
+        """Predict the classes associated with the elements of vector X.
         """
         check_is_fitted(self)
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
-        # XXX fix
+        for k in range(len(X)):
+            distances = np.linalg.norm(self.X_ - X[k, :], axis=1)
+            index = np.argmin(distances)
+            y_pred[k] = self.y_[index]
+
         return y_pred
 
     def score(self, X, y):
-        """Write docstring
+        """Compute the score of the algorithm on the data (X, y).
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)

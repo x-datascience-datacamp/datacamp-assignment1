@@ -21,13 +21,24 @@ def max_index(X):
     Raises
     ------
     ValueError
-        If the input is not a numpy error or
+        If the input is not a numpy array or
         if the shape is not 2D.
     """
     i = 0
     j = 0
 
-    # TODO
+    if not isinstance(X, np.ndarray):
+        raise ValueError("The input is not a numpy array.")
+
+    if len(X.shape) != 2:
+        raise ValueError("The shape is not 2D.")
+
+    n_samples, n_features = X.shape
+
+    for k in range(n_samples):
+        for m in range(n_features):
+            if X[k, m] > X[i, j]:
+                i, j = k, m
 
     return i, j
 
@@ -38,9 +49,32 @@ def wallis_product(n_terms):
     See:
     https://en.wikipedia.org/wiki/Wallis_product
 
-    XXX : write Parameters and Returns sections as above.
+    Parameters
+    ----------
+    n_terms : int
+              The number of terms of the Wallis product to compute.
 
+    Returns
+    -------
+    prod : float
+           The Wallis product with n_terms factors.
+
+    Raises
+    ------
+    ValueError
+        If the input is not an int or
+        if the input is less than 1.
     """
-    # XXX : The n_terms is an int that corresponds to the number of
-    # terms in the product. For example 10000.
-    return 0.
+
+    if not isinstance(n_terms, int):
+        raise ValueError("The input has to be an int.")
+
+    if n_terms < 1:
+        raise ValueError("The input has to be equal or greater than 1.")
+
+    prod = 1
+
+    for k in range(1, n_terms+1):
+        prod *= 4 * k**2 / (2 * k - 1) / (2 * k + 1)
+
+    return prod
