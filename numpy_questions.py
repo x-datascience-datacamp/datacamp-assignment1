@@ -30,17 +30,17 @@ def max_index(X):
     # TODO
     if type(X) is not np.ndarray:
         raise ValueError("the input is not a numpy")
-    if (len(X.shape)!=2):
-         raise ValueError("the shape is not 2D")
-    R_max=[]
-    C_max=[]
-    for k in range(X.shape[0]) :
+    if (len(X.shape) != 2):
+        raise ValueError("the shape is not 2D")
+    R_max = []
+    C_max = []
+    for k in range(X.shape[0]):
         R_max.append(np.max(X[k][:]))
-    X=X.T
-    for k in range(X.shape[0]) :
+    X = X.T
+    for k in range(X.shape[0]):
         C_max.append(np.max(X[k][:]))
-    i=R_max.index(np.max(R_max))
-    j=C_max.index(np.max(C_max))
+    i = R_max.index(np.max(R_max))
+    j = C_max.index(np.max(C_max))
     return i, j
 
 
@@ -55,9 +55,9 @@ def wallis_product(n_terms):
     """
     # XXX : The n_terms is an int that corresponds to the number of
     # terms in the product. For example 10000.
-    if n_terms<1:
+    if n_terms < 1:
         return 2.
-    pi = 0.0   
+    pi = 0.0
     for i in range(1, n_terms+1):
         print(i)
         x = 4 * (i ** 2)
@@ -69,5 +69,3 @@ def wallis_product(n_terms):
             pi *= z
     pi *= 2
     return pi
-
-print(wallis_product(0))
