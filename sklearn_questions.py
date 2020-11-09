@@ -7,7 +7,7 @@ from sklearn.metrics import pairwise_distances
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """ An classifier which implements a 1-NN algorithm.
+    """An classifier which implements a 1-NN algorithm.
 
     Attributes
     ----------
@@ -42,7 +42,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """ Predict the class label for the given data
+        """Predict the class label for the given data.
 
         Parameters
         ----------
@@ -61,7 +61,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """ Scoring function for the classifier.
+        """Scoring function for the classifier.
 
         Parameters
         ----------
