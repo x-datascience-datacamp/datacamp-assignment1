@@ -26,12 +26,10 @@ def max_index(X):
     """
     i = 0
     j = 0
-    
     # TODO
-    if np.shape(X)[0] == 2 :
+    if (np.shape(X)[0] == 2):
         k = np.argmax(X)
         i, j = np.unravel_index(k, np.shape(X))
-            
     return i, j
 
 def wallis_product(n_terms):
@@ -47,5 +45,4 @@ def wallis_product(n_terms):
     # terms in the product. For example 10000.
     WArray = np.array([2*i*2*i/((2*i - 1)*(2*i + 1)) for i in range(1, n_terms)])
     res = np.prod(WArray)
-    
     return 2*res
