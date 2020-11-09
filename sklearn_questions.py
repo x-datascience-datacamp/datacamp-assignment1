@@ -78,7 +78,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     
 
     def score(self, X, y):
-        
-        X, y = check_X_y(X, y)
+        #Write docstring
+        #X, y = check_X_y(X, y)
         y_pred = self.predict(X)
         return np.mean(y_pred == y)
