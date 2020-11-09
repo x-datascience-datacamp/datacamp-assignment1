@@ -39,7 +39,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         self.classes_ = np.unique(y)
         check_classification_targets(y)
         self.X_ = X
-        self.Y_ = y
+        self.y_ = y
         return self
 
     def predict(self, X):
