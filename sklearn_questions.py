@@ -8,14 +8,13 @@ from sklearn.utils.validation import check_array
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """Class with computes the class of a vector based on the
-    1-nearest neighbor algorithm
+    1-nearest neighbor algorithm.
     """
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """Record the data used to fit the classifier.
-        """
+        """Record the data used to fit the classifier. """
         X, y = check_X_y(X, y)
         check_classification_targets(y)
         self.classes_ = np.unique(y)
@@ -23,8 +22,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """Predict the classes associated with the elements of vector X.
-        """
+        """Predict the classes associated with the elements of vector X."""
         check_is_fitted(self)
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0],
@@ -37,8 +35,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """Compute the score of the algorithm on the data (X, y).
-        """
+        """Compute the score of the algorithm on the data (X, y)."""
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
         return np.mean(y_pred == y)
