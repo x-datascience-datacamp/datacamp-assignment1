@@ -1,4 +1,5 @@
 # noqa: D100
+
 import numpy as np
 
 
@@ -13,6 +14,7 @@ def max_index(X):
     Returns
     -------
     i : int
+    
         The row index of the maximum.
 
     j : int
@@ -26,11 +28,11 @@ def max_index(X):
     """
     i = 0
     j = 0
-
-    # TODO
-
-    return i, j
-
+    if (len(X.shape) != 2):
+         return ValueError
+    else :
+        i, j = np.unravel_index(np.argmax(X, axis=None), X.shape)
+        return i, j
 
 def wallis_product(n_terms):
     """Implement the Wallis product to compute an approximation of pi.
@@ -43,5 +45,14 @@ def wallis_product(n_terms):
     """
     # XXX : The n_terms is an int that corresponds to the number of
     # terms in the product. For example 10000.
-    return 0
-#AAAAbbbb
+    if n_terms==0 : 
+        return 0
+    else :
+        pi = 2
+        for i in range(1, n_terms + 1):
+            left = (2. * i)/(2. * i - 1.)
+            right = (2. * i)/(2. * i + 1.)
+            pi = pi * left * right
+        return pi
+
+#fin
