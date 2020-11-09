@@ -38,7 +38,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
         distances = pairwise_distances(X, self.points_)
-        closest = np.argmin(distances, axis=1) 
+        closest = np.argmin(distances, axis=1)
         y_pred = self.labels_[closest]
         # XXX fix
         return y_pred
