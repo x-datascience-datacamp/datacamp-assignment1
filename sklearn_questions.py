@@ -7,14 +7,12 @@ from sklearn.utils.validation import check_array
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Class with computes the class of a vector based on the
-    1-nearest neighbor algorithm.
-    """
+    """OneNearestNeighbor estimator class."""
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """Record the data used to fit the classifier. """
+        """Record the data used to fit the classifier."""
         X, y = check_X_y(X, y)
         check_classification_targets(y)
         self.classes_ = np.unique(y)
