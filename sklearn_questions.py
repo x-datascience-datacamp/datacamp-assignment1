@@ -11,14 +11,14 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     def __init__(self):  # noqa: D107
         pass
 
-    def fit(self, X, y):
+    def fit(self, X , y):
         """Write docstring
         """
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
         # XXX fix
-        self.data = X
-        self.labels = y
+        self.data_ = X
+        self.labels_ = y
 
         return self
 
@@ -30,12 +30,12 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
         # XXX fix
         for j in range(len(X)):
-            minn=np.linalg.norm(X[j]-self.data[0])
-            for i in range(1,len(self.data)):
-                distance = np.linalg.norm(X[j]-self.data[i])
+            minn = np.linalg.norm(X[j]-self.data_[0])
+            for i in range(1, len(self.data_)):
+                distance = np.linalg.norm(X[j]-self.data_[i])
                 if distance <= minn:
                     minn = distance
-                    label_j =self.labels[i]
+                    label_j = self.labels_[i]
             y_pred[j] = label_j
 
         return y_pred
