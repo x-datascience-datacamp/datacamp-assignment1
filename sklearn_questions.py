@@ -16,7 +16,9 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         Class labels known to the classifier
 
     https://en.wikipedia.org/wiki/K-nearest_neighbor_algorithm
+    
     """
+
     def __init__(self):  # noqa: D107
         pass
 
@@ -31,8 +33,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         Returns
         -------
         self (the object itself)
-        """
 
+        """
         X, y = check_X_y(X, y, accept_sparse=True)
         check_classification_targets(y)
 
@@ -56,15 +58,12 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         check_is_fitted(self)
         X = check_array(X)
         # y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
-        row_col = np.unravel_index(np.arange(len(self.X_) * len(X)), (len(self.X_), len(X)))
+        row_col = np.unravel_index(np.arange(len(self.X_) * len(X)),
+                                   (len(self.X_), len(X)))
 
-        distances = np.array([norm(self.X_[i] - X[j])
-                              for i, j in zip(row_col[0], row_col[1])]).reshape(len(self.X_), len(X))
-        indices = np.argmin(distances, axis=0)
-        try:
-            y_pred = self.y_[indices]
-        except:
-            y_pred = None
+        ds = np.array([norm(self.X_[i] - X[j]) for i, j in zip(row_col[0], row_col[1])]).reshape(len(self.X_), len(X))
+        indices = np.argmin(ds, axis=0)
+        y_pred = self.y_[indices]
 
         return y_pred
 
