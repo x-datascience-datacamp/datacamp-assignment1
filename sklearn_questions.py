@@ -5,8 +5,9 @@ from sklearn.utils.validation import check_X_y, check_is_fitted
 from sklearn.utils.validation import check_array
 from sklearn.metrics import pairwise_distances
 
+
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """ One Nearest Neighbor class. """
+    """One Nearest Neighbor class. """
     def __init__(self):  # noqa: D107
         pass
 
@@ -41,6 +42,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def predict(self, X):
         """Predict the labels for the input X data.
+
 
         Parameters
         ----------

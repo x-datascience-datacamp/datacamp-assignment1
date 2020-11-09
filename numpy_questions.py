@@ -14,7 +14,6 @@ def max_index(X):
     -------
     i : int
         The row index of the maximum.
-
     j : int
         The column index of the maximum.
 
@@ -40,19 +39,17 @@ def max_index(X):
 
     return i, j
 
+
 def wallis_product(n_terms):
     """Implement the Wallis product to compute an approximation of pi.
 
     See:
     https://en.wikipedia.org/wiki/Wallis_product
 
-    XXX : write Parameters and Returns sections as above.
-
     """
 
     x = 2
-    for n in range(1, n_terms+1):
-        x *= ((4*n**2) / (4*n**2 - 1))
+    for n in range(1, n_terms + 1):
+        x *= ((4 * n ** 2) / (4 * n ** 2 - 1))
 
     return x
-
