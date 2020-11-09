@@ -24,22 +24,42 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     def fit(self, X, y):
         """Train the OneNearestNeighbor Classifier
 
+        Parameters
+        ----------
+        X : Training data points
+        y : Training labels
+
+        Returns
+        -------
+        self(the object itself)
         """
         #Train the model : stocker X et y dans la classe
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
         # XXX fix
+        if len(self.classes_) > 0.8 * len(y) + 10:
+            raise ValueError('y is regression whereas y is expected to be classification')
         self.X_train , self.y_train = X , y
         return self
 
     def predict(self, X):
-        """Write docstring
+        """
+
+        Parameters
+        ----------
+        X : Data points to be labelled
+
+        Returns
+        -------
+        y_pred : Label predictions
+
         """
         check_is_fitted(self)
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
         # Renvoyer Y_pred, X est un nouveau point, identifier le X_train le plus proche de ce point (calculer des distances)
         # XXX fix
+        
         return y_pred
 
     def score(self, X, y):
