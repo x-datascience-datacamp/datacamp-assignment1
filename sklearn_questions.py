@@ -7,31 +7,28 @@ from sklearn.utils.multiclass import check_classification_targets
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """ Write docstring
+    """Write docstring.
 
     Arguments
     ---------
-
-    classes_
-    examples_
+    classes_.
+    examples_.
 
     Methods
     -------
-
-    fit
-    predict
-    score
-
+    fit.
+    predict.
+    score.
     """
+
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """We train the One-Nearest-Neighbor classifier
+        """Train the One-Nearest-Neighbor classifier.
 
         Parameters
         ----------
-
         X : numpy ndarray
             The features
         y : numpy ndarray
@@ -39,7 +36,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
         Returns
         -------
-
         self : the ONN
         """
         X, y = check_X_y(X, y)
@@ -49,7 +45,15 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """
+        """Predict the label.
+
+        Parameters
+        ----------
+        X : The test labels
+
+        Returns
+        -------
+        y_pred : Vector of prediction
         """
         check_is_fitted(self)
         X = check_array(X)
@@ -64,7 +68,16 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """Write docstring
+        """Compute the score.
+
+        Parameters
+        ----------
+        X : Vector of test features
+        y : Vector of labels
+
+        Returns
+        -------
+        np.mean(y_pred == y) : Mean accuracy
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
