@@ -26,10 +26,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
         # XXX fix
-        D = distance.squareform(distance.pdist(X))
-        closest = np.argsort(D, axis=1)
-        closest = closest[:, 1]
-        
         return y_pred
 
     def score(self, X, y):
