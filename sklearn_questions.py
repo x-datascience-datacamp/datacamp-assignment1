@@ -8,6 +8,7 @@ from sklearn.metrics import pairwise_distances
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """Sklearn estimator class to find the nearest neighbor."""
+
     def __init__(self):  # noqa: D107
         pass
 
@@ -28,11 +29,12 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
         # XXX fix
         if len(self.classes_) > 50:
-            raise ValueError("Unknown label type: Maximum number of classes reached")
+            raise ValueError(
+                "Unknown label type: Maximum number of classes reached"
+            )
         self.inputs_ = X
         self.labels_ = y
         return self
-
 
     def predict(self, X):
         """Predicts the output with respect to the model training.
@@ -54,7 +56,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """Evaluates the performance of the model.
+        """Evaluate the performance of the model.
 
                 Parameters:
         ----------
