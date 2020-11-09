@@ -7,18 +7,22 @@ from sklearn.metrics import pairwise_distances
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Write docstring
+    """Sklearn estimator class to find the nearest neighbor.
     """
+
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
         """Trainning the model.
+
         Parameters:
+        ----------
         X : Inputs of the model // Type = numpy array
         y : Training labels // Type = numpy array
 
-        Output:
+        Returns:
+        ----------
         self : Model that has been fitted
         """
 
@@ -34,8 +38,17 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
 
     def predict(self, X):
-        """Write docstring
+        """Predicts the output with respect to the model training.
+
+        Parameters:
+        ----------
+        X : Inputs of the model // Type = numpy array
+
+        Returns:
+        ----------
+        y_pred : Predictions of the model
         """
+
         check_is_fitted(self)
         X = check_array(X)
         # y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
@@ -45,8 +58,18 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """Write docstring
+        """Evaluates the performance of the model.
+
+                Parameters:
+        ----------
+        X : Inputs of the model // Type = numpy array
+        y : Training labels // Type = numpy array
+
+        Returns:
+        ----------
+        Mean : Average performance obtained by the model
         """
+
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
         return np.mean(y_pred == y)
