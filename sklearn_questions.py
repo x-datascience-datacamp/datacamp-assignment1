@@ -17,12 +17,16 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
         Parameters
         ----------
-        X : training np.array of observations
-        y : training np.array of labels
+        X : array_like
+            Training set of observations.
+
+        y : array_like
+            Observations' labels.
 
         Returns
         -------
-        self : fitted model
+        self : OneNearestNeighbor
+            Fitted model.
         """
         X, y = check_X_y(X, y)
         X = check_array(X, copy=True, ensure_2d=True)
@@ -50,11 +54,13 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
         Parameters
         ----------
-        X : np.array of observations
+        X : array_like
+            Observations to be predicted.
 
-        Returns@tommoral my OneNearestNeighbo
+        Returns
         -------
-        y_pred : np.array of predictions
+        y_pred : array_like
+            Model's predictions.
         """
         check_is_fitted(self)
         X = check_array(X)
@@ -69,8 +75,11 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
         Parameters
         ----------
-        X : test np.array of observations
-        y : test np.array of labels
+        X : array_like
+            Test observations.
+
+        y : array_like
+            Correcto observation labels.
 
         Returns
         -------
