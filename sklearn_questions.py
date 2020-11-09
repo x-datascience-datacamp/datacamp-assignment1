@@ -1,7 +1,7 @@
 # noqa: D100
 import numpy as np
 from sklearn.base import BaseEstimator, ClassifierMixin
-from sklearn.utils.validation import check_X_y
+from sklearn.utils.validation import check_X_y, check_is_fitted
 from sklearn.utils.validation import check_array
 from sklearn.metrics.pairwise import pairwise_distances
 
@@ -25,8 +25,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def predict(self, X):
         """Predict function."""
-        if not hasattr(self, "X_"):
-            raise ValueError("fit")
+        check_is_fitted(self)
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
         all_distances = pairwise_distances(X, self.X_)
