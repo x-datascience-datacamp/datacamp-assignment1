@@ -8,14 +8,13 @@ from sklearn.utils.multiclass import type_of_target
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """ One-Nearest Neighbor Algorithm
-    """
+    """One-Nearest Neighbor Algorithm"""
 
     def __init__(self, params=None):  # noqa: D107
         self.params = params
 
     def fit(self, X, y):
-        """ Initialise the classes and the neigbors from the data.
+        """Initialise the classes and the neigbors from the data.
 
         Args:
             X (numpy.ndarray): array of shape (n_neigbors, n_features)
@@ -32,7 +31,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """ Predict class labels
+        """Predict class labels.
 
         Args:
             X (numpy.ndarray): array of shape (n_samples, n_features)
@@ -51,7 +50,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """ Compute the mean accuracy for the data
+        """Compute the mean accuracy for the data.
 
         Args:
             X (numpy.ndarray): array of shape (n_samples, n_features)
