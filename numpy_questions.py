@@ -54,6 +54,6 @@ def wallis_product(n_terms):
         return 2
     a = 2
     for k in range(1, n_terms+1):
-        a = a*((4*k**2) / (4*k**2 -1))
+        a = a * ((4*k**2) / (4*k**2 - 1))
 
     return a

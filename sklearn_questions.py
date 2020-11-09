@@ -7,14 +7,14 @@ from sklearn.utils.multiclass import check_classification_targets
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """One Nearest Neighbor model"""
-    
+    """One Nearest Neighbor model."""
+
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
         """
-        Trains the model
+        Train the model.
 
         X : ndarray of shape (n_samples, n_features)
             The training set of data
@@ -37,7 +37,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def predict(self, X):
         """
-        Performs prediction considering the model
+        Perform prediction considering the model.
 
         self : model fitted
 
@@ -50,7 +50,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         check_is_fitted(self)
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0],
-        dtype=self.classes_.dtype)
+                            dtype=self.classes_.dtype)
         # XXX fix
         for i, x in enumerate(X):
             closest_X = np.argmin(np.linalg.norm((self.X_train_ - x), axis=1))
@@ -59,7 +59,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def score(self, X, y):
         """
-        Gives the performance of the model
+        Give the performance of the model.
 
         X : ndarray
             The test set of data
