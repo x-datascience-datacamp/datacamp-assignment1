@@ -1,6 +1,7 @@
 # noqa: D100
 import numpy as np
 
+
 def max_index(X):
     """Return the index of the maximum in a numpy array.
 
@@ -52,5 +53,7 @@ def wallis_product(n_terms):
     else:
         halfpi = 1.
         for i in range(1, n_terms+1):
-            halfpi *= 4 * i**2 / (4*(i**2)-1)
-        return 2 * halfpi
+            numerator = 4.*i**2
+            denominator = 4.*(i**2)-1
+            halfpi *= numerator / denominator
+        return 2 * halfpi  
