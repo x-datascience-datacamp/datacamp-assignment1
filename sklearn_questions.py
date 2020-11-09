@@ -21,7 +21,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
             y (numpy.ndarray): array of shape (n_neigbors,)
         """
         if type_of_target(y) not in ['binary', 'multiclass', 'unknown']:
-            raise ValueError
+            raise ValueError(f"Unknown label type:{y}")
 
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
