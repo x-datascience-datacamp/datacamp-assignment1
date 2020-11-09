@@ -1,5 +1,5 @@
 # noqa: D100
-import numpy as np
+import numpy as nppy
 
 
 def max_index(X):
