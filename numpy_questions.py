@@ -28,13 +28,7 @@ def max_index(X):
     j = 0
 
     # TODO
-    n = len(X[0])
-    m = len(X[1])
     
-
-    for a in range(n): 
-        for b in range (m):
-            if 
     return i, j
 
 
