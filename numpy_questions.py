@@ -49,8 +49,8 @@ def wallis_product(n_terms):
 
     """
     pi = 1.0
-    for j in range(1, n_terms):
-        pi = pi * 4 * j ** 2 / (4 * j ** 2 - 1)
+    for j in range(1, n_terms+1):
+        pi = pi * 4 * (j ** 2) / (4 * (j ** 2) - 1)
 
     # XXX : The n_terms is an int that corresponds to the number of
     # terms in the product. For example 10000.
