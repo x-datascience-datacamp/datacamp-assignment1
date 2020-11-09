@@ -7,9 +7,7 @@ from sklearn.utils.multiclass import check_classification_targets
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """class One Nearest Neighbor heritad 
-    from BaseEstimato and ClassifierMixin.
-    """
+    "Class One Nearest Neighbor herites from BaseEstimato and ClassifierMixin."
 
     def __init__(self):  # noqa: D107
         pass
