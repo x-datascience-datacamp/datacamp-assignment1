@@ -14,19 +14,19 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         pass
 
     def fit(self, X, y):
-    """fits the model to the data.
+        """fits the model to the data.
 
-    Parameters
-    ----------
-    X : ndarray of shape (n_samples, n_features)
-        The observation matrix to be used in the training.
-    y : ndarray of shape (n_samples)
-        The classes vector to be used in the training.
+        Parameters
+        ----------
+        X : ndarray of shape (n_samples, n_features)
+            The observation matrix to be used in the training.
+        y : ndarray of shape (n_samples)
+            The classes vector to be used in the training.
     
-    Returns
-    -------
-    self
-    """
+        Returns
+        -------
+        self
+        """
         X, y = check_X_y(X, y)
         check_classification_targets(y)
         self.classes_ = np.unique(y)
@@ -35,18 +35,18 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-    """Predicts the class of data X.
+        """Predicts the class of data X.
 
-    Parameters
-    ----------
-    X : ndarray of shape (n_samples, n_features).
-        The observation matrix to be used in the prediction.
+        Parameters
+        ----------
+        X : ndarray of shape (n_samples, n_features).
+            The observation matrix to be used in the prediction.
 
-    Returns
-    -------
-    y_pred: ndarray of shape(n_samples)
-            The predictions.
-    """
+        Returns
+        -------
+        y_pred: ndarray of shape(n_samples)
+                The predictions.
+        """
         check_is_fitted(self)
         X = check_array(X)
         closest = []
@@ -58,19 +58,19 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-    """Compute the score of the estimator.
+        """Compute the score of the estimator.
 
-    Parameters
-    ----------
-    X : ndarray of shape (n_samples, n_features).
-        The observation matrix to be used in the prediction.
-    y : ndarray of shape(n_samples).
-        The original classes.
+        Parameters
+        ----------
+        X : ndarray of shape (n_samples, n_features).
+            The observation matrix to be used in the prediction.
+        y : ndarray of shape(n_samples).
+            The original classes.
 
-    Returns
-    -------
-    Percentage of correct predictions.
-    """
+        Returns
+        -------
+        The number of errors divided by the totla number.
+        """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
         return np.mean(y_pred == y)
