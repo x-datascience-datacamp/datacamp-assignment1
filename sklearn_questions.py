@@ -10,6 +10,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     Own Implementation of OneNearestNeighbor Classifier.
     """
+
     def __init__(self):  # noqa: D107
         pass
 
@@ -47,8 +48,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """ Method for Scoring.
-
+        """ This is a method for Scoring.
         This is for scoring the test data.
         """
         X, y = check_X_y(X, y)
