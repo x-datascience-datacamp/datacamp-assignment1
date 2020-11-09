@@ -35,10 +35,7 @@ def max_index(X):  # noqa: D202
 
 
 def wallis_product(n_terms):
-    """
-    Implement the Wallis product to compute an approximation of pi.
-    """
-
+    """Implement the Wallis product to compute an approximation of pi."""
     # XXX : The n_terms is an int that corresponds to the number of
     # terms in the product. For example 10000.
 
