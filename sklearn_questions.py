@@ -13,6 +13,27 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def fit(self, X, y):
         """Write docstring
+        entrainer le model: predire la classe du point le plus
+        Parameters
+        ----------
+        X : ndarray of shape
+            The input array.
+        y : array
+            Labels array
+    
+        Returns
+        -------
+        i : int
+            The row index of the maximum.
+    
+        j : int
+            The column index of the maximum.
+    
+        Raises
+        ------
+        ValueError
+            If the input is not a numpy error or
+            if the shape is not 2D.
         """
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
