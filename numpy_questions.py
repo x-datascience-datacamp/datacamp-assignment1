@@ -31,15 +31,13 @@ def max_index(X):
     i = 0
     j = 0
     test = X == X.max()
-    indexes = np.where(test == True)
+    indexes = np.where(test is True)
     i = int(indexes[0])
     j = int(indexes[1])
     # TODO
     print(i, j)
 
     return i, j
-
-
 
 def wallis_product(n_terms):
     """Implement the Wallis product to compute an approximation of pi.
