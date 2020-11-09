@@ -7,13 +7,14 @@ from sklearn.utils.multiclass import check_classification_targets
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Write docstring
-    """
+    """One Nearest Neighbor Classifier."""
+
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """Train model on labelized data
+        """Train model on labelized data.
+
         Parameters
         ----------
         X : ndarray
@@ -32,6 +33,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def predict(self, X):
         """Predict new labels associated to new data.
+
         Parameters
         ----------
         X : ndarray
@@ -55,6 +57,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def score(self, X, y):
         """Compute accuracy of the model on specified data.
+
         Parameters
         ----------
         X : ndarray

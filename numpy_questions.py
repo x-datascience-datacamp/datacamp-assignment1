@@ -42,6 +42,7 @@ def max_index(X):
 
 def wallis_product(n_terms):
     """Implement the Wallis product to compute an approximation of pi.
+
     Parameters
     ----------
     n_terms : int
@@ -58,7 +59,6 @@ def wallis_product(n_terms):
         If the input is not an int.
         if the input is not positive.
     """
-
     if type(n_terms) is not int:
 
         raise ValueError("n_terms is not an int")
