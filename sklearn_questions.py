@@ -7,14 +7,13 @@ from sklearn.utils.multiclass import check_classification_targets
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Write docstring
-    """
+    """Class to compute the one nearest neighbor."""
+
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """Fit the data to store in variables
-        """
+        """Fit the data to store in variables."""
         X, y = check_X_y(X, y)
         check_classification_targets(y)
 
@@ -24,9 +23,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """Predict the nearest neighbor for each element based
-        on euclidian distance
-        """
+        """Predict the nearest neighbor for each element."""
         check_is_fitted(self)
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0],
@@ -38,8 +35,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """Scoring the correct nearest neighbors predicted
-        """
+        """Scoring the correct nearest neighbors predicted."""
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
         return np.mean(y_pred == y)
