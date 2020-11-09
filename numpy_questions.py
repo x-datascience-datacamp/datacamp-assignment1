@@ -49,6 +49,9 @@ def wallis_product(n_terms):
     # XXX : The n_terms is an int that corresponds to the number of
     # terms in the product. For example 10000.
 
+    if not isinstance(n_terms, int):
+        raise ValueError
+
     wallis_product = 2
     for i in range(1, n_terms + 1):
         wallis_product = wallis_product * 4 * i**2 / (4 * i**2 - 1)
