@@ -3,33 +3,68 @@ import numpy as np
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.validation import check_X_y, check_is_fitted
 from sklearn.utils.validation import check_array
+from sklearn.metrics import pairwise_distances
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Write docstring
+    """
+    1-nearest neighbors classifier
     """
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """Write docstring
+        """
+        Fit X to y
+
+        Parameters
+        -------------------------
+        X : training data - ndarray of shape ( n_samples, n_features )
+        y : target value - ndarray of shape ( n_samples )
+
+        Returns
+        -------------------------
+        self
         """
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
-        # XXX fix
+        if len(self.classes_) > 50:
+            raise ValueError(
+                "Unknown label type: Regression task")
+        self.X_ = X
+        self.y_ = y
         return self
 
     def predict(self, X):
-        """Write docstring
+        """Predict the class for a givin X
+
+        Parameters
+        ----------------------
+        X : array, shape (n_samples, n_features)
+
+        Returns
+        -----------------------
+        y_pred ; perdicted class
         """
         check_is_fitted(self)
         X = check_array(X)
-        y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
-        # XXX fix
+        Distances = pairwise_distances(X, self.X_)
+        y_pred = self.y_[np.argmin(Distances, axis = 1)]
         return y_pred
 
     def score(self, X, y):
-        """Write docstring
+        """Scoring function
+
+        Parameters
+        -----------------------------
+        x : array-like, shape (n_samples, n_features)
+            The input samples
+
+        y : ndarray, shape (n_samples,)
+
+        Returns
+        -----------------------------
+        score
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)

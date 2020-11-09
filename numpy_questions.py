@@ -21,26 +21,40 @@ def max_index(X):
     Raises
     ------
     ValueError
-        If the input is not a numpy error or
+        If the input is not a numpy array or
         if the shape is not 2D.
     """
-    i = 0
-    j = 0
-
-    # TODO
-    
+    if type(X) is not np.ndarray:
+        raise ValueError("The input X is not a numpy array ")
+    if len(X.shape) != 2:
+        raise ValueError("The input X is not 2D")
+    M = X.max()  # MAX value of the matrix
+    i, j = np.where(X == M)
     return i, j
 
 
 def wallis_product(n_terms):
     """Implement the Wallis product to compute an approximation of pi.
 
-    See:
-    https://en.wikipedia.org/wiki/Wallis_product
+    Parameters
+    ----------------------
+    n_term : the number
 
-    XXX : write Parameters and Returns sections as above.
+    Returns
+    ----------------------
+    x : the approximation of pi
 
+    Raises
+    ----------------------
+    Error if n_term is not or negative
     """
-    # XXX : The n_terms is an int that corresponds to the number of
-    # terms in the product. For example 10000.
-    return 0.
+    if n_terms is None:
+        raise ValueError("The input in None")
+    if (n_terms < 0):
+        raise ValueError("The input should be positive")
+    x = 1
+    if n_terms == 0:
+        return 2.*x
+    for i in range(1, n_terms + 1):
+        x *= ((4*i**2) / (4*i**2 - 1))
+    return (2.*x)
