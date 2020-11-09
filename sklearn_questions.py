@@ -15,7 +15,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def fit(self, X, y):
         """Fit the estimator.
-
         Parameters
         ----------
         X : ndarray of shape (n_samples, n_features)
