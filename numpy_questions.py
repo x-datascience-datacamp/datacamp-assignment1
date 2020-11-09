@@ -59,3 +59,4 @@ def wallis_product(n_terms):
         a = [(4 * n**2) / (4 * n**2 - 1) for n in range(1,n_terms+1)]
 
     return 2 * reduce(lambda x,y: x*y, a)
+
