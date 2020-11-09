@@ -7,13 +7,13 @@ from sklearn.metrics.pairwise import pairwise_distances
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """OneNearestNeighbor.
-    """
+    """OneNearestNeighbor."""
+
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """fitting function.
+        """Fitting function.
         """
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
@@ -25,7 +25,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """predit function.
+        """Predit function.
         """
         check_is_fitted(self)
         X = check_array(X)
@@ -36,7 +36,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """calculating scores.
+        """Calculating scores.
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
