@@ -7,7 +7,7 @@ from sklearn.utils.multiclass import check_classification_targets
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Write docstring
+    """résoud un problème de classification, grâce à un algorythme des plus proches voisins
     """
     def __init__(self):  # noqa: D107
         pass
