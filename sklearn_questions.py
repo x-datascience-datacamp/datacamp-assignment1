@@ -20,11 +20,13 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     y_ : array or matrix of shape (n_training_points,)
         Labels of training data points
     """
+
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """Fits the data for classification
+        """Fits the data for classification.
+
         Parameters
         ------
         X : array or matrix of shape (n_training_points, n_features)
@@ -47,6 +49,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def predict(self, X):
         """Predict the class labels for the provided data.
+
         Parameters
         ------
         X : array-like of shape (n_testing_points, n_features)
@@ -76,7 +79,19 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """Accuracy score of the classification
+        """Accuracy score of the classification.
+        
+        Parameters
+        ------
+        X : array or matrix of shape (n_training_points, n_features)
+            Data to train.
+            
+        y : array or matrix of shape (n_training_points,)
+            Real Labels.
+        
+        Returns
+        ------
+        Mean accuracy score
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
