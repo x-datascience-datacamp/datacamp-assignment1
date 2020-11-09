@@ -24,9 +24,9 @@ def max_index(X):
         If the input is not a numpy array or
         if the shape is not 2D.
     """
-    if X is None or type(X) is not np.ndarray:
+    if X is None or not isinstance(X, np.ndarray):
         raise ValueError("The input array X is None or not a numpy array.")
-    if len(X.shape) != 2:
+    if X.ndim != 2:
         raise ValueError("The input array X is not 2D.")
     # maximum value
     max_value = X.max()
@@ -40,11 +40,13 @@ def wallis_product(n_terms):
 
     Parameters
     ----------
-    n_terms : the number of terms to compute the approximate of PI
+    n_terms : int
+              the number of terms to compute the approximate of PI
 
     Returns
     -------
-    x : the approximate value of pi after n iterations of the wallis product
+    x       : float
+              the approximate value of pi after n iterations of the wallis product
 
     Raises
     ------
