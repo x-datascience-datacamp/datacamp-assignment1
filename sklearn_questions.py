@@ -73,11 +73,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         y_pred = np.full(shape=len(X), fill_value=fval, dtype=dtype)
         # XXX fix
         for i, x in enumerate(X):
-            dist, ind = np.linalg.norm(x - self.training_[0], ord=None), 0
-            for j, fts in enumerate(self.training_):
-                new_dist = np.linalg.norm(x - fts, ord=None)
-                if new_dist < dist:
-                    dist, ind = new_dist, j
+            diffs = self.training_ - x
+            ind = np.argmin(np.linalg.norm(diffs, ord=None, axis=1))
             y_pred[i] = self.targets_[ind]
 
         return np.array(y_pred)
@@ -85,7 +82,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     def score(self, X, y):
         """
         Compute accuracy of predicted values from X to real target values.
-        
+
         Note: Overrides ClassifierMixin.score().
 
         Parameters
@@ -104,7 +101,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         ------
         ValueError
             If length of input is less than 2
-            
+
         """
         X, y = check_X_y(X, y, ensure_min_samples=2)
         y_pred = self.predict(X)
