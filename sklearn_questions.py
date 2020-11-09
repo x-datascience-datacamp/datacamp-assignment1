@@ -11,7 +11,7 @@ REGRESSION_CLASSES_THRESHOLD = 50
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """ An implementation of a 1-Nearest Neighbor algorithm 
+    """An implementation of a 1-Nearest Neighbor algorithm.
 
     Attributes
     --
@@ -28,6 +28,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def fit(self, X, y):
         """Initialise the classes and the neigbors from the given data.
+
         Parameters
         --
         X: array of shape (n_neigbors, n_features)
@@ -46,7 +47,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """Predict class labels
+        """Predict class labels.
+
         Parameters
         --
         X: array-like of shape (n_samples, n_features)
@@ -65,6 +67,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def score(self, X, y):
         """Compute mean accuracy for the given data.
+
         Parameters
         --
         X: array-like of shape (n_samples, n_features)
@@ -74,7 +77,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         Returns
         --
         acc: scalar
-            the mean accuracy between predicted labels and the truth groundtruth labels
+            the mean accuracy between predicted and the  groundtruth labels
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
