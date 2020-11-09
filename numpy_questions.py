@@ -13,4 +13,4 @@ def wallis_product(n_terms):
     X = 4 * X**2 / (4 * X**2 - 1)
     pi = 2 * np.product(X)
     return pi
-   
+#pb exit (1)
