@@ -32,7 +32,7 @@ def max_index(X):
         if len(X.shape) == 2:
             i, j = np.argmax(np.max(X, axis=1)), np.argmax(np.max(X, axis=0))
         else:
-            raise ValueError("Argument is not a 2D numpy array")   
+            raise ValueError("Argument is not a 2D numpy array")
     else:
        raise ValueError("Argument is not a numpy ndarray")
     return i, j

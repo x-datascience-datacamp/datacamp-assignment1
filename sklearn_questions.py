@@ -7,7 +7,7 @@ from sklearn.utils.multiclass import check_classification_targets
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Class for one nearest neighbor model"""
+    """Class for one nearest neighbor model."""
 
     def __init__(self):  # noqa: D107
         pass
@@ -22,7 +22,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
             Training samples.
         y : array-like of shape (n_samples,)
             True labels for X.
-            
+        
         Return
         -------
         score : object
@@ -37,13 +37,13 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def predict(self, X):
         """
-        Returns the predictions of the model w.r.t the input.
+        Return the predictions of the model w.r.t the input.
 
         Parameters
         ----------
         X : array-like of shape (n_samples, n_features)
             Training samples.
-            
+        
         Return
         -------
         y_pred : array-like of shape (n_samples,)
@@ -51,8 +51,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         """
         check_is_fitted(self)
         X = check_array(X)
-        y_pred = np.full(shape=len(X),
-         fill_value=self.classes_[0], dtype=self._y.dtype)
+        y_pred = np.full(shape=len(X), fill_value=self.classes_[0], dtype=self._y.dtype)
         for i in range(len(y_pred)):
             y_pred[i] = self._y[np.argmin(np.linalg.norm(self._X - X[i],
              axis=1))]
