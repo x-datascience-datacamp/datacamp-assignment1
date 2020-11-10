@@ -1,7 +1,4 @@
 import numpy as np
-# noqa: D100
-
-
 def max_index(X):
     """Return the index of the maximum in a numpy array.
 
@@ -26,14 +23,14 @@ def max_index(X):
     """
     i = 0
     j = 0
-    max_index_col = np.argmax(X, axis=0)
-    max_index_row = np.argmax(X, axis=1)
+    if ((len(X.shape) != 2) or (isinstance(X,np.ndarray))==False):
+        raise ValueError(" The input must be an array of shape 2D")
+    ind = np.argmax(X)
+    ind1 = np.unravel_index(ind,X.shape)
     
     # TODO
 
-    return max_index_col, max_index_row
-max_index(np.array([[1,0,-3],[2,0.9,-1]]))
-
+    return ind1
 
 def wallis_product(n_terms):
     """Implement the Wallis product to compute an approximation of pi.
@@ -46,4 +43,8 @@ def wallis_product(n_terms):
     """
     # XXX : The n_terms is an int that corresponds to the number of
     # terms in the product. For example 10000.
-    return 0.
+    
+    result=1
+    for count in range(1, n_terms):
+        result*=((4*count*count)/((2*count-1)*(2*count+1)))
+    return result
