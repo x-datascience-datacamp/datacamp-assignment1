@@ -13,7 +13,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         pass
 
     def fit(self, X, y):
-        """fits the data to the model.
+        """fit the data to the model.
    Parameters
     ----------
     X : ndarray of shape (n_samples, n_features)
@@ -25,15 +25,16 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         """
         X, y = check_X_y(X, y)
         check_classification_targets(y)
+        self.n_features_in_ = X.shape[1]
         self.classes_ = np.unique(y)
         self.X_ = X
-        self.Y_ = y
+        self.Y_ = y 
         # XXX fix
 
         return self
 
     def predict(self, X):
-        """Predicts the class of a given X point.
+        """Predict the class of a given X point.
     Parameters
     ----------
     X : ndarray of shape (n_samples, n_features).
@@ -53,7 +54,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """Calculates the prediction score of the estimator.
+        """Calculate the prediction score of the estimator.
     Parameters
     ----------
     X : ndarray of shape (n_samples, n_features).
