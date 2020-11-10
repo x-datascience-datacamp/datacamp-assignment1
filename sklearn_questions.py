@@ -8,23 +8,24 @@ from sklearn.utils.multiclass import type_of_target
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """ 1-NearestNeightbor simulator."""
+    """Creates a One NearestNeightbor simulator."""
 
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """ Fit method the 1 NN 
+        """Fit method for the 1-NN.
+
         Parameters
-        ---------       
+        ----------
         X : ndarray of shape (n_samples, n_features)
             The input array.
-        y : ndarray of shape (n_samples, 1)   
-        Returns 
-        --------
-        self : OneNearestNeighbor
-        """
+        y : ndarray of shape(n_samples, 1)
 
+        Return
+        -------
+        self : OneNearestNeighbor.
+        """
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
 
@@ -37,16 +38,17 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def predict(self, X):
         """Prediction of the class of X.
+
         Parameters
         ----------
         X : ndarray of shape (n_samples, n_features)
             The input array.
-        Returns
-        -------
-        predictions : ndarray of shape (len(X), 1)
-                The output array with the predictions.
-        """
 
+        Return
+        -------
+        predictions : ndarray of shape (n_samples, 1)
+                The output array with predicted classes.
+        """
         check_is_fitted(self)
         X = check_array(X)
         predictions = np.full(shape=len(X), fill_value=self.classes_[0])
@@ -61,19 +63,20 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return predictions
 
     def score(self, X, y):
-        """Calculate the error rate of our predictor.
-            Parameters
+        """Compute the error rate of the prediction.
+
+        Parameters
         ----------
         X : ndarray of shape (n_samples, n_features)
-            The input array on which we will predict.
+            The input array.
         y : ndarray of shape (n_samples)
-            The input array with correct classes
-        Returns
+            The input array with correct classes.
+
+        Return
         -------
         score : float
-                The predictor score.
+                The prediction score.
         """
         X, y = check_X_y(X, y)
         predictions = self.predict(X)
         return np.mean(predictions == y)
-        
