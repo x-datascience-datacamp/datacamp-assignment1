@@ -8,7 +8,8 @@ from sklearn.metrics import pairwise_distances_argmin_min
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """
-    Algorithm that cretae an estimator based on a set of observations and ouputs
+    Algorithm that creata an estimator based on a set of
+    observations and ouputs
     It compares a the distance new observation
     """
     def __init__(self):  # noqa: D107
@@ -26,24 +27,26 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         if len(self.classes_) > 50:
             raise ValueError("Unknown label type: ")
         self.observations_ = X
-        self.targets_ = y# XXX fix
+        self.targets_ = y  # XXX fix
         return self
 
     def predict(self, X):
         """
-        Given an observation this methods gives the best estimator output based on the model
+        Given an observation this methods gives the best
+        estimator output based on the model
         The input is an observation and the output is the predicted y
         """
         check_is_fitted(self)
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
-        min = pairwise_distances_argmin_min(X,self.observations_,axis = 1)[0]
-        y_pred = self.targets_[min]# XXX fix
+        min = pairwise_distances_argmin_min(X, self.observations_, axis=1)[0]
+        y_pred = self.targets_[min]  # XXX fix
         return y_pred
 
     def score(self, X, y):
         """
-        The method returns a float mesasuring the accuracy of the model on the training set
+        The method returns a float mesasuring the
+        accuracy of the model on the training set
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
