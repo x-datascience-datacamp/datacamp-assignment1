@@ -7,40 +7,46 @@ from sklearn.utils.multiclass import check_classification_targets
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """class constructor.
-    """
+    """class constructor."""
+
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
         """fit the data to the model.
-   Parameters
-    ----------
-    X : ndarray of shape (n_samples, n_features)
-    y : ndarray of shape (n_samples)
 
-    Returns
-    -------
-    self.
+        Parameters
+        ----------
+        X : ndarray of shape (n_samples, n_features)
+
+        y : ndarray of shape (n_samples)
+
+        Returns
+        -------
+        self.
+
         """
         X, y = check_X_y(X, y)
         check_classification_targets(y)
         self.n_features_in_ = X.shape[1]
         self.classes_ = np.unique(y)
         self.X_ = X
-        self.Y_ = y 
+        self.Y_ = y
         # XXX fix
 
         return self
 
     def predict(self, X):
         """Predict the class of a given X point.
-    Parameters
-    ----------
-    X : ndarray of shape (n_samples, n_features).
-    Returns
-    -------
-    y_pred: ndarray of shape(n_samples)
+
+        Parameters
+        ----------
+        X : ndarray of shape (n_samples, n_features).
+
+        Returns
+        -------
+        y_pred: ndarray of shape(n_samples).
+
         """
         check_is_fitted(self)
         X = check_array(X)
@@ -55,13 +61,17 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def score(self, X, y):
         """Calculate the prediction score of the estimator.
-    Parameters
-    ----------
-    X : ndarray of shape (n_samples, n_features).
-    y : ndarray of shape(n_samples).
-    Returns
-    -------
-    Percentage of correct predictions.
+
+        Parameters
+        ----------
+        X : ndarray of shape (n_samples, n_features).
+
+        y : ndarray of shape(n_samples).
+
+        Returns
+        -------
+        Percentage of correct predictions.
+
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
