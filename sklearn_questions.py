@@ -13,7 +13,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         pass
 
     def fit(self, X, y):
-        """fit the data to the model.
+        """Fit the data to the model.
 
         Parameters
         ----------
