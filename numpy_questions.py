@@ -1,5 +1,5 @@
-# noqa: D100
 import numpy as np
+# noqa: D100
 
 
 def max_index(X):
@@ -21,15 +21,18 @@ def max_index(X):
     Raises
     ------
     ValueError
-        If the input is not a numpy error or
+        If the input is not a numpy error orma
         if the shape is not 2D.
     """
     i = 0
     j = 0
-
+    max_index_col = np.argmax(X, axis=0)
+    max_index_row = np.argmax(X, axis=1)
+    
     # TODO
 
-    return i, j
+    return max_index_col, max_index_row
+max_index(np.array([[1,0,-3],[2,0.9,-1]]))
 
 
 def wallis_product(n_terms):
