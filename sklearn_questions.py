@@ -10,7 +10,7 @@ from sklearn.utils.validation import check_X_y, check_is_fitted
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """An implementation of 1-Nearest Neighbors classifier."""
 
-    def __init__(self):
+    def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
@@ -30,6 +30,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         OneNearsetNeighbor()
             The instance of the classifier
         """
+
         X, y = check_X_y(X, y)
         check_classification_targets(y)
         self.classes_ = np.unique(y)
@@ -51,7 +52,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         -------
         np.ndarray(m,)
             The predicted features
-
         """
         check_is_fitted(self)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0],
