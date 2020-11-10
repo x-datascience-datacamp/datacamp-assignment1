@@ -7,6 +7,7 @@ from sklearn.utils.validation import check_array
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """Implemetation of nearest neighbour."""
+
     def __init__(self):  # noqa: D107
         pass
 
@@ -38,6 +39,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         ----------
         X : ndarray of shape (n_samples, n_features)
             The input array.
+            
         Returns
         -------
         y_pred : ndarray of shape (n_samples, 1)
@@ -51,8 +53,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         for i in range(len(X)):
             NN_idx = np.argmin(np.linalg.norm(self._X - X[i], axis=1))
             y_pred[i] = self._y[NN_idx]
-            # y_pred[i] = self._y[np.argmin(np.linalg.norm(self._X - X[i],
-            #  axis=1))]
         return y_pred
 
     def score(self, X, y):
@@ -64,6 +64,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
         y : ndarray of shape (n_samples, 1)
             The input labels.
+            
         Returns
         -------
         score : float
