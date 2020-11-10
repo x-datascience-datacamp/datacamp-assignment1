@@ -29,14 +29,18 @@ from sklearn.utils.validation import check_is_fitted
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Our estimator.
+    """
+    Our estimator.
+    
     Algorithm that creata an estimator based on a set of.
     observations and ouputs.
     It compares a the distance new observation.
     """
 
     def fit(self, X, y):
-        """Fitting the One Nearest Neighbor Model.
+        """
+        Fitting the One Nearest Neighbor Model.
+        
         Parameters
         X : np array of observations.
         y : np array of labels.
@@ -51,7 +55,9 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """ Predics a new label.
+        """
+        Predicts a new label.
+        
         Given an observation this methods gives the best.
         estimator output based on the model.
         The input is an observation and the output is the predicted y.
@@ -64,7 +70,9 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """The method returns a float.
+        """
+        The method returns a float.
+        
         It measures accuracy of the model on the training set.
         """
         X, y = check_X_y(X, y)
