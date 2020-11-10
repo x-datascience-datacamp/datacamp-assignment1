@@ -53,7 +53,7 @@ def wallis_product(n_terms):
     ValueError
         If the input is not an int
     """
-
+    pi = 1
     if n_terms > 0:
         N = np.arange(1, n_terms+1)
         elem = (4 * N**2)/(4*N**2 - 1)

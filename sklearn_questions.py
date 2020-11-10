@@ -6,15 +6,24 @@ from sklearn.utils.validation import check_array
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Write docstring
+    """Creates a one nearest neighbour.
     """
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """Write docstring
+        """Fit the one NN 
+
+        Parameters
+        ----------
+        X, y : training set and training labels 
+
+        Returns
+        -------
+        self : the ONE NN 
         """
-         X, y = check_X_y(X, y)
+        
+        X, y = check_X_y(X, y)
         check_classification_targets(y)
         self.classes_ = np.unique(y)
         self.X_train_ = X
@@ -22,7 +31,15 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """Write docstring
+        """Classifies X
+
+        Parameters
+        ----------
+        X : training set 
+
+        Returns
+        -------
+        the predicted class of X 
         """
         check_is_fitted(self)
         X = check_array(X)
@@ -32,7 +49,17 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """Write docstring
+        """calculate the error of prediction 
+
+        Parameters
+        ----------
+        X : array that we class
+        y : the labels that is our target
+
+        Returns
+        -------
+        the distance between the prediction and the label  
+
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
