@@ -51,7 +51,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """calculate the error of prediction 
+        """Calculate the error of prediction 
 
         Parameters
         ----------
