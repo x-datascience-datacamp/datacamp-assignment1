@@ -71,7 +71,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def score(self, X, y):
         """
-        The method returns a float.
+        Method returns a float.
 
         It measures accuracy of the model on the training set.
         """
