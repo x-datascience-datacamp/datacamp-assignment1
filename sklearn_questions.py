@@ -1,72 +1,82 @@
-"""Assignment - making a sklearn estimator.
-
-The goal of this assignment is to implement by yourself a scikit-learn
-estimator for the OneNearestNeighbor and check that it is working properly.
-
-The nearest neighbor classifier predicts for a point X_i the target y_k of
-the training sample X_k which is the closest to X_i. We measure proximity with
-the Euclidean distance. The model will be evaluated with the accuracy (average
-number of samples corectly classified). You need to implement the `fit`,
-`predict` and `score` methods for this class. The code you write should pass
-the test we implemented. You can run the tests by calling at the root of the
-repo `pytest test_sklearn_questions.py`.
-
-We also ask to respect the pep8 convention: https://pep8.org. This will be
-enforced with `flake8`. You can check that there is no flake8 errors by
-calling `flake8` at the root of the repo.
-
-Finally, you need to write docstring similar to the one in `numpy_questions`
-for the methods you code and for the class. The docstring will be checked using
-`pydocstyle` that you can also call at the root of the repo.
-"""
+# noqa: D100
 import numpy as np
-from sklearn.base import BaseEstimator
-from sklearn.base import ClassifierMixin
-from sklearn.utils.validation import check_X_y
-from sklearn.utils.validation import check_array
-from sklearn.utils.validation import check_is_fitted
+from scipy.spatial.distance import cdist
+from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.multiclass import check_classification_targets
+from sklearn.utils.validation import check_X_y, check_is_fitted, check_array
+
+"""Regression classes threshold"""
+reg_the = 30
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    "OneNearestNeighbor classifier."
+    """1-Nearest-Neighbor implementation using sklearn API."""
+
     def __init__(self):  # noqa: D107
         pass
 
-    def fit(self, X, y):
-        """Write docstring.
+    def fit(self, X: np.ndarray, y: np.ndarray):
+        """Fit the model using X as input data and y labels.
 
-        And describe parameters
+        Parameters
+        ----------
+        X : ndarray of shape (n_samples, n_features)
+            training data of shape
+        y : ndarray of shap (n_samples,)
+            target values of shape
+        Returns
+        ----------
+        self : OneNearestNeighbor()
+               the current instance of the classifier
         """
         X, y = check_X_y(X, y)
-        y = check_classification_targets(y)
         self.classes_ = np.unique(y)
-
-        # XXX fix
+        if len(self.classes_) > reg_the:
+            raise ValueError(
+                "Unknown label type: Classfifcation only allows a max of"
+                + f" {reg_the}"
+                )
+        self.X_ = X
+        self.y_ = y
+        self.n_features_in_ = len(X[0])
+        check_classification_targets(y)
         return self
 
     def predict(self, X):
-        """Write docstring.
+        """Predict the labels for the input X data.
 
-        And describe parameters
+        Parameters
+        ----------
+        X : ndarray of shape (n_test_samples, n_features)
+            test data to predict on
+        Returns
+        ----------
+        y : ndarray of shape (n_test_samples,)
+            Class labels for each test data sample
         """
         check_is_fitted(self)
         X = check_array(X)
-        y_pred = np.full(
-            shape=len(X), fill_value=self.classes_[0],
-            dtype=self.classes_.dtype
-        )
-
-        # XXX fix
+        if X[0].shape[0] != self.X_[0].shape[0]:
+            raise ValueError("Number of feature in predict \
+                             and in fit are different")
+        D = cdist(X, self.X_)
+        y_pred = np.asarray(list(map(lambda X: self.y_[np.argmin(X)], D)))
         return y_pred
 
     def score(self, X, y):
-        """Write docstring.
+        """Compute the Mean Square Error for a given data and predicted labels.
 
-        And describe parameters
+        Parameters
+        ----------
+        X : ndarray of shape (n_samples, n_features)
+            The input data array.
+        y : ndarray of shape (n_samples,)
+            the true labels for X
+        Returns
+        -------
+        score: float
+               MSE value.
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
-
-        # XXX fix
-        return y_pred.sum()
+        return np.mean(y_pred == y)
