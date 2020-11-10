@@ -54,7 +54,9 @@ def wallis_product(n_terms):
         raise ValueError("n_terms should be an integer")
     if n_terms < 0:
         raise ValueError("n_terms should be at least 0")
-    pi_approx = 1.0
-    for n in range(1, n_terms+1):
-        pi_approx = pi_approx * 4*n**2/(4*n**2-1)
-    return 2*pi_approx
+    pi_approx = 2.
+    if n_terms == 0:
+        return pi_approx
+    n = np.arange(1, n_terms+1)
+    wallis_product = (4 * n**2)/(4*n**2 - 1)
+    return pi_approx * np.product(wallis_product)
