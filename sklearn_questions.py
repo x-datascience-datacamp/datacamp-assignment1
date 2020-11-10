@@ -5,7 +5,7 @@ estimator for the OneNearestNeighbor and check that it is working properly.
 
 The nearest neighbor classifier predicts for a point X_i the target y_k of
 the training sample X_k which is the closest to X_i. We measure proximity with
-the euclidean norm. The model will be evaluated with the accuracy (average
+the Euclidean distance. The model will be evaluated with the accuracy (average
 number of samples corectly classified). You need to implement the `fit`,
 `predict` and `score` methods for this class.
 

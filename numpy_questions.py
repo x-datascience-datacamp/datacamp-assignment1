@@ -5,7 +5,7 @@ The goals of this assignment are:
     * Use automated tools to validate the code (`pytest` and `flake8`)
     * Submit a Pull-Request on github to practice `git`.
 
-The two functions bellow are skeletton function. The docstrings explain what
+The two functions below are skeleton functions. The docstrings explain what
 are the inputs, the outputs and the expected error. Fill them to complete the
 assignment. The code should be able to pass the test that we wrote. To check
 this, run `pytest test_numpy_question.py` at the root of the repo. It should
