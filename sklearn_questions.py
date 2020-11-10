@@ -33,7 +33,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def predict(self, X):
         """Predict the OneNearestNeighbor.
-        
+
         Parameters
         ----------
         X : Data points to be labelled.
@@ -50,7 +50,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """Predict the class of the Test data."""
+        """Return the accuracy."""
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
         return np.mean(y_pred == y)

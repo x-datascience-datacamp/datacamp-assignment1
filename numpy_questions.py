@@ -49,12 +49,12 @@ def wallis_product(n_terms):
     Parameters
     ----------
     n_terms : int
-              The number of terms in the product.
+            The number of terms in the product.
 
     Returns
     -------
-    Prod : float
-           The Wallis product.
+    prod : float
+        The Wallis product.
 
     Raises
     ------
@@ -63,7 +63,5 @@ def wallis_product(n_terms):
     """
     if n_terms == 0:
         return 2
-    prod = 1
-    for n in range(1, n_terms+1):
-        prod *= 1 + (1 / ((4 * n**2) - 1))
+    prod = np.prod([(4 * n**2) / (4 * n**2 - 1) for n in range(1, n_terms+1)])
     return prod
