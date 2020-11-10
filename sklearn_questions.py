@@ -7,12 +7,14 @@ from sklearn.metrics import euclidean_distances
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Return the OneNearestNeighbor of a set of points.
-    """
+
+    """Return the OneNearestNeighbor of a set of points."""
+
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
+
         """Build of train model.
         Parameters:
         ----------
@@ -30,6 +32,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
+        
         """Predict the class for a given obersed set of points X.
         Parameters
         ----------
