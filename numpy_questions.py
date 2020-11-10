@@ -24,7 +24,6 @@ def max_index(X):
         If the input is not a numpy error or
         if the shape is not 2D.
     """
-
     i = 0
     j = 0
 
@@ -64,7 +63,7 @@ def wallis_product(n_terms):
     ValueError
         If the input is not an integer .
     """
-    if n_terms ==0:
+    if n_terms == 0:
         return 2
     prod = 1
     for n in range(1, n_terms+1):
