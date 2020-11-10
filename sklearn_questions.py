@@ -30,7 +30,6 @@ from sklearn.utils.validation import check_is_fitted
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """
-    
     Algorithm that creata an estimator based on a set of
     observations and ouputs
     It compares a the distance new observation
