@@ -64,7 +64,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def score(self, X, y):
         """
-        Compute the accuracy of the model.
+        Compute the accuracy of this model.
 
         Parameters
         ----------
