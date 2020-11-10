@@ -1,6 +1,7 @@
 # noqa: D100
 import numpy as np
 
+
 def max_index(X):
     """Return the index of the maximum in a numpy array.
     Parameters
