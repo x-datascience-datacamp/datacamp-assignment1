@@ -68,4 +68,4 @@ def wallis_product(n_terms):
     if n_terms == 1:
         return 8 / 3
     prod = np.prod([(4 * n**2) / (4 * n**2 - 1) for n in range(1, n_terms+1)])
-    return prod
+    return 2 * prod
