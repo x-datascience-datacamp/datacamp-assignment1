@@ -32,7 +32,7 @@ def max_index(X):
         raise ValueError
 
     else:
-        i, j = np.unravel_index(np.argmax(X, axis=None), X.shape)
+        i, j = np.unravel_index(np.argmax(x, axis=None), x.shape)
         return i, j
 
 
