@@ -58,5 +58,5 @@ def wallis_product(n_terms):
     if n_terms == 0:
         return pi_approx
     n = np.arange(1, n_terms+1)
-    wallis_product = (4 * n**2)/(4*n**2 - 1)
+    wallis_product = (4 * n**2.)/(4*n**2. - 1)
     return pi_approx * np.product(wallis_product)
