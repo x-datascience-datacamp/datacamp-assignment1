@@ -34,7 +34,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def predict(self, X):
         """Find the NN and predict.
-
         Parameters
         ----------
         X : ndarray of shape (n_samples, n_features)
