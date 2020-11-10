@@ -28,7 +28,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         Return
         ----------------
         self : OneNearestNeighbor
-            Fitted model.
+            The fitted model.
         """
         X, y = check_X_y(X, y)
         self.n_features_in_ = X.shape[1]
