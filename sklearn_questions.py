@@ -3,6 +3,7 @@ import numpy as np
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.validation import check_X_y, check_is_fitted
 from sklearn.utils.validation import check_array
+from sklearn.utils.multiclass import check_classification_targets
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
@@ -15,6 +16,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         """Train the data."""
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
+        check_classification_targets(y)
         self.X_ = X.copy()
         self.y_ = y.copy()
         return self
@@ -27,8 +29,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
         def distance(vector):
             return ((self.X_ - vector)**2).sum(axis=1)
-        index = np.argmin(distance(X))
-        y_pred = self.y_[index]
+        distances = [distance(x) for x in X]
+        y_pred = self.y_[np.argmin(distances, axis=1)]
         return y_pred
 
     def score(self, X, y):
