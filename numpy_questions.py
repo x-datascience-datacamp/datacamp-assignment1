@@ -14,7 +14,6 @@ def max_index(X):
     -------
     i : int
         The row index of the maximum.
-
     j : int
         The column index of the maximum.
 
@@ -24,19 +23,12 @@ def max_index(X):
         If the input is not a numpy error or
         if the shape is not 2D.
     """
-    i = 0
-    j = 0
-
-    # TODO
     if type(X) is not np.ndarray:
-        raise ValueError('X is not an array')
-
+        raise ValueError('X is not a numpy array')
     if len(X.shape) != 2:
-        raise ValueError('X is not a 2D vector')
+        raise ValueError('X is not a 2D array')
 
-    i = X.argmax(axis=0)
-    j = X.argmax(axis=1)
-
+    i, j = np.unravel_index(np.argmax(X, axis=None), X.shape)
     return i, j
 
 
