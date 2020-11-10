@@ -14,27 +14,27 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def fit(self, X, y):
         """Fit the data."""
-        X, y = check_X_y(X, y)
+        X,y=check_X_y(X, y)
         check_classification_targets(y)
-        self.classes_ = np.unique(y)
-        self.X_ = X
-        self.y_ = y
+        self.classes_=np.unique(y)
+        self.X_=X
+        self.y_=y
         return self
 
     def predict(self, X):
         """Predict the classes."""
         check_is_fitted(self)
-        X = check_array(X)
-        y_pred = np.full(shape=len(X), fill_value=self.classes_[0],
-                         dtype = self.classes_.dtype)
+        X=check_array(X)
+        y_pred=np.full(shape=len(X), fill_value=self.classes_[0],
+                         dtype=self.classes_.dtype)
         for i in range(y_pred.shape[0]):
-            euclidean_distances = np.linalg.norm(self.X_ - X[i,:], axis=1)
-            index_closest = np.argmin(euclidean_distances)
-            y_pred[i] = self.y_[index_closest]
+            euclidean_distances=np.linalg.norm(self.X_-X[i,:],axis=1)
+            index_closest=np.argmin(euclidean_distances)
+            y_pred[i]=self.y_[index_closest]
         return y_pred
 
     def score(self, X, y):
-        """Computes the score."""
-        X, y = check_X_y(X, y)
-        y_pred = self.predict(X)
-        return np.mean(y_pred == y)
+        """Compute the score."""
+        X,y=check_X_y(X, y)
+        y_pred=self.predict(X)
+        return np.mean(y_pred==y)
