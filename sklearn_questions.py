@@ -13,7 +13,17 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         pass
 
     def fit(self, X, y):
-        """Store trainning data."""
+        """Store trainning data.
+
+        Input
+        ----------
+        X : Training set
+        y : Real labels of the training set
+
+        Output
+        -------
+        self : Model that has been fitted.
+        """
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
         # XXX fix
@@ -23,7 +33,16 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """Predict the class of elements in the testing dataset X."""
+        """Predict the class of elements in the testing dataset X.
+
+        Input
+        ----------
+        X : Set of data to be predicted
+
+        Output
+        ----------
+        y_pred : array corresponding to the the predicted classes.
+        """
         check_is_fitted(self)
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0],
@@ -37,7 +56,17 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """Compare calculated prediction of X y_pred and real prediction y."""
+        """Compare calculated prediction of X y_pred and real prediction y.
+
+        Input
+        ----------
+        X : Set of testing data with shape : n_samples * n_features
+        y : Set of real labels with shape : n_samples
+
+        Output
+        ----------
+        Accuracy
+        """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
         return np.mean(y_pred == y)
