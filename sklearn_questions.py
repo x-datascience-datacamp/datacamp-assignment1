@@ -1,20 +1,20 @@
 # noqa: D100
+
 import numpy as np
+
 from sklearn.base import BaseEstimator, ClassifierMixin
-from sklearn.utils.validation import check_X_y, check_is_fitted
-from sklearn.utils.validation import check_array
 from sklearn.utils.multiclass import check_classification_targets
+from sklearn.utils.validation import check_X_y, check_is_fitted
+
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """An implementation of 1-Nearest Neighbors classifier
-
-    """
+    """An implementation of 1-Nearest Neighbors classifier."""
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """Fits classifier to data
+        """Fit classifier to data.
 
         Here we do nothing more than store the values of X & Y.
 
@@ -30,6 +30,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         OneNearsetNeighbor()
             The instance of the classifier
         """
+
         X, y = check_X_y(X, y)
         check_classification_targets(y)
         self.classes_ = np.unique(y)
@@ -38,7 +39,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """Makes the predictions of a given new dataset
+        """Make the predictions of a given new dataset.
 
         We compute the euclidan distance to eachpoint,
          the label is the one of the closest point.
@@ -54,7 +55,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
         """
         check_is_fitted(self)
-        X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0],
                          dtype=self.classes_.dtype)
         for i in range(X.shape[0]):
@@ -63,7 +63,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """Computes the score of a given validation set
+        """Compute the score of a given validation set.
 
         Parameters
         ----------
