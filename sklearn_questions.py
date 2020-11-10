@@ -7,15 +7,14 @@ from sklearn.metrics import pairwise_distances
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
+    """1-nearest neighbors classifier."""
 
-    """1-nearest neighbors classifier.
-    """
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
         """Fit X to y.
-        
+
         Parameters
         -------------------------
         X : training data - ndarray of shape ( n_samples, n_features )
