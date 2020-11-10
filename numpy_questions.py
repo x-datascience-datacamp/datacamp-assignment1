@@ -29,6 +29,14 @@ def max_index(X):
 
     # TODO
 
+    if type(X) != 'np.ndarray':
+        raise TypeError('X is not an array')
+    elif len(X.shape) != 2:
+        raise TypeError('X is not a 2D vector')
+
+    i = X.argmax(axis=0)
+    j = X.argmax(axis=1)
+
     return i, j
 
 
