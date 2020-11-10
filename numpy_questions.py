@@ -1,5 +1,4 @@
 # noqa: D100
-import numpy as np
 
 
 def max_index(X):
@@ -47,8 +46,14 @@ def wallis_product(n_terms):
     https://en.wikipedia.org/wiki/Wallis_product
 
     XXX : write Parameters and Returns sections as above.
-
     """
     # XXX : The n_terms is an int that corresponds to the number of
     # terms in the product. For example 10000.
-    return 0.
+
+    i = 1
+    res = 1
+
+    while i <= n_terms:
+        res = res * (2 * (i) ^ 2) / ((2 * (i) ^ 2) - 1)
+
+    return res
