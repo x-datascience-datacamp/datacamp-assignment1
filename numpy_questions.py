@@ -33,7 +33,8 @@ def max_index(X):
         raise ValueError("The inupt should be numpy array-type")
 
     if len(shape) != 2:
-        raise ValueError("The input should be 2D (not " + str(len(shape)) + "D")
+        raise ValueError("The input should be 2D "
+                         "(not " + str(len(shape)) + "D")
 
     i, j = np.unravel_index(X.argmax(), X.shape)
 
