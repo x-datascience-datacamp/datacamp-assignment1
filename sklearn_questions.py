@@ -32,7 +32,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """
+        """Predict the OneNearestNeighbor.
+        
         Parameters
         ----------
         X : Data points to be labelled.
