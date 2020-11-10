@@ -28,7 +28,7 @@ def max_index(X):
     j = 0
 
     # TODO
-    if not isinstance(X, np.ndarray):
+    if type(X) is not np.ndarray:
         raise ValueError('X is not an array')
 
     if len(X.shape) != 2:
@@ -63,7 +63,7 @@ def wallis_product(n_terms):
     pi = 2
 
     while i <= n_terms:
-        pi = pi * (2 * (i) ^ 2) / ((2 * (i) ^ 2) - 1)
+        pi = pi * (4 * (i*i)) / ((4 * (i*i)) - 1)
         i += 1
 
     return pi
