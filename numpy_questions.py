@@ -32,9 +32,9 @@ def max_index(X):
     else:
         for a in range(X.shape[0]):
             for b in range(X.shape[1]):
-                if X[i][j] < X[a][b]:
-                    i, j = a, b
-    return i, j
+                if X[i][j]<X[a][b]:
+                    i,j=a, b
+    return i,j
 
 
 def wallis_product(n_terms):
@@ -61,7 +61,7 @@ def wallis_product(n_terms):
     """
     if type(n_terms) is not int :
         raise ValueError("n_terms is not an integer")
-    pi_approx = 1
+    pi_approx=1
     for n in range(1, n_terms+1):
-        pi_approx *= (4*n*n)/((2*n-1)*(2*n+1))
+        pi_approx*=(4*n*n)/((2*n-1)*(2*n+1))
     return 2*pi_approx
