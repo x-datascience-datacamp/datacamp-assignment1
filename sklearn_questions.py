@@ -33,8 +33,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """Find the NN and make the prediction.
-
+        """Prediction class for X.
+        
         Parameters
         ----------
         X : ndarray of shape (n_samples, n_features)
