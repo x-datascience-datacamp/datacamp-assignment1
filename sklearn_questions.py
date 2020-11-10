@@ -23,7 +23,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         y : array-like of shape (n_samples,)
             True labels for X.
             
-        Returns
+        Return
         -------
         score : object
             One nearest neighbor instance.
@@ -44,16 +44,18 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         X : array-like of shape (n_samples, n_features)
             Training samples.
             
-        Returns
+        Return
         -------
         y_pred : array-like of shape (n_samples,)
             Predicted labels.
         """
         check_is_fitted(self)
         X = check_array(X)
-        y_pred = np.full(shape=len(X), fill_value=self.classes_[0], dtype=self._y.dtype)
+        y_pred = np.full(shape=len(X),
+         fill_value=self.classes_[0], dtype=self._y.dtype)
         for i in range(len(y_pred)):
-            y_pred[i] = self._y[np.argmin(np.linalg.norm(self._X - X[i], axis=1))]
+            y_pred[i] = self._y[np.argmin(np.linalg.norm(self._X - X[i],
+             axis=1))]
         return y_pred
 
     def score(self, X, y):
@@ -67,7 +69,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         y : array-like of shape (n_samples,)
             True labels for X.
 
-        Returns
+        Return
         -------
         score : float
             Mean accuracy of self.predict(X) wrt. y.

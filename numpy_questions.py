@@ -30,9 +30,9 @@ def max_index(X):
     # TODO
     if isinstance(X, np.ndarray):
         if len(X.shape) == 2:
-           i, j = np.argmax(np.max(X, axis=1)), np.argmax(np.max(X, axis=0))
+            i, j = np.argmax(np.max(X, axis=1)), np.argmax(np.max(X, axis=0))
         else:
-           raise ValueError("Argument is not a 2D numpy array")   
+            raise ValueError("Argument is not a 2D numpy array")   
     else:
        raise ValueError("Argument is not a numpy ndarray")
     return i, j
@@ -56,6 +56,7 @@ def wallis_product(n_terms):
 
     """
     n = np.arange(1, n_terms+1)
-    pi_approx = 2 if n_terms == 0 else 2 * np.prod((2 * n / (2 * n - 1)) * (2 * n / (2 * n +1)))
+    pi_approx = 2 if n_terms == 0 else 2 * np.prod((2 * n / (2 * n - 1)) *
+     (2 * n / (2 * n + 1)))
 
     return pi_approx
