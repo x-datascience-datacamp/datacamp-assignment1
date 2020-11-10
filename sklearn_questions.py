@@ -9,6 +9,7 @@ from sklearn.metrics import euclidean_distances
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """Creates a one nearest neighbour.
+
     """
     def __init__(self):  # noqa: D107
         pass
@@ -22,6 +23,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         Returns
         -------
         self : the ONE NN.
+
         """
 
         X, y = check_X_y(X, y)
@@ -41,12 +43,12 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         Returns
         -------
         the predicted class of X.
+        
         """
 
         check_is_fitted(self)
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
-        # XXX fix
         closest = np.argmin(euclidean_distances(X, self.X_train_), axis=1)
         y_pred = self.y_train_[closest]
         return y_pred
