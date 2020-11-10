@@ -4,13 +4,11 @@ from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.validation import check_X_y, check_is_fitted
 from sklearn.utils.validation import check_array
 
-
-
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """Implemetation of nearest neighbour."""
 
     def __init__(self):  # noqa: D107
-        """Initialization."""
+        """Initialize."""
         pass
 
     def fit(self, X, y):
