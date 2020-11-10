@@ -22,7 +22,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
         Returns
         -------
-        self : the ONE NN 
+        self : the ONE NN. 
         """
         
         X, y = check_X_y(X, y)
@@ -41,7 +41,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
         Returns
         -------
-        the predicted class of X 
+        the predicted class of X. 
         """
         check_is_fitted(self)
         X = check_array(X)
@@ -60,7 +60,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
         Returns
         -------
-        the distance between the prediction and the label  
+        the distance between the prediction and the label.  
 
         """
         X, y = check_X_y(X, y)
