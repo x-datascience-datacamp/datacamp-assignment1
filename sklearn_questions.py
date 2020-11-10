@@ -8,8 +8,10 @@ from sklearn.utils.multiclass import check_classification_targets
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
+    """One NearestNeighbor Estimator."""
+
     def __init__(self):  # noqa: D107
-        """Initialisation method of OneNearestNeighbor class.
+        """Initialisae method of OneNearestNeighbor class.
 
         Parameters
         ----------
@@ -26,7 +28,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         pass
 
     def fit(self, X, y):
-        """Fit the OneNearestNeighbor estimator
+        """Fit the OneNearestNeighbor estimator.
 
         Parameters
         ----------
@@ -52,7 +54,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """Predicts a class for the X input
+        """Predict a class for the X input.
 
         Parameters
         ----------
@@ -82,7 +84,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """Predicts a class for the X input
+        """Predicts a class for the X input.
 
         Parameters
         ----------
