@@ -9,18 +9,16 @@ from sklearn.utils.multiclass import check_classification_targets
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """ Algorithm of the One Nearest Neighbor
+    """Algorithm of the One Nearest Neighbor."""
 
-    """
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
         """
-        Initialises the data and the neighbors
+        Initialise the data and the neighbors.
         Parameters
         ----------
-
         X : ndarray of shape (n_neigbors, n_features)
         y : ndarray of shape (n_neigbors,)
         """
@@ -33,7 +31,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """Predicts classes for the X data
+        """Predicts classes for the X data.
 
         Parameters
         ----------
@@ -54,18 +52,16 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """ returns the mean value of the number of correct predictions
+        """Return the mean value of the number of correct predictions.
+
         Parameters
         ----------
-
         X : ndarray of shape (n_samples, n_features)
         y : ndarray of shape (n_neigbors,)
 
         Returns
         ----------
-
         The value of the score of the prediction
-
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
