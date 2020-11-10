@@ -8,24 +8,27 @@ from sklearn.utils.multiclass import type_of_target
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """ 1-NearestNeightbor estimator."""
+    """1-NearestNeightbor estimator."""
 
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """ Fit method the 1-NearestNeightbor
+        """Fit method the 1-NearestNeightbor.
+
         Parameters
-        ---------       
-        X : ndarray of shape (n_samples, n_features)
+        -------
+        X : ndarray of shape (n_samples, n_features).
             The input array.
-        y : ndarray of shape (n_samples, 1)   
-        Returns 
-        --------
+        y : ndarray of shape (n_samples, 1).
+
+        Return
+
+        -------
         self : OneNearestNeighbor
         """
-
         X, y = check_X_y(X, y)
+        self.n_features_in_ = X.shape[1]
         self.classes_ = np.unique(y)
 
         if type_of_target(y) not in ['binary', 'multiclass', 'unknown']:
@@ -37,16 +40,17 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def predict(self, X):
         """Prediction of the class of X.
+
         Parameters
         ----------
-        X : ndarray of shape (n_samples, n_features)
+        X : ndarray of shape (n_samples, n_features).
             The input array.
-        Returns
-        -------
-        pred : ndarray of shape (len(X), 1)
-                The output array with the predictions.
-        """
 
+        Return
+        -------
+        pred : ndarray of shape (len(X), 1).
+            The output array with the predictions.
+        """
         check_is_fitted(self)
         X = check_array(X)
         pred = np.full(shape=len(X), fill_value=self.classes_[0])
@@ -62,15 +66,17 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def score(self, X, y):
         """Calculate the error rate of our predictor.
-            Parameters
+
+        Parameters
         ----------
         X : ndarray of shape (n_samples, n_features)
             The input array on which we will predict.
         y : ndarray of shape (n_samples)
             The input array with correct classes
-        Returns
+
+        Return
         -------
-        score : float 
+        score : float
                 The score of the prediction.
         """
         X, y = check_X_y(X, y)
