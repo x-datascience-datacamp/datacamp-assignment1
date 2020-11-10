@@ -7,21 +7,19 @@ from sklearn.metrics import pairwise_distances
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """
-    1-nearest neighbors classifier
+
+    """1-nearest neighbors classifier.
     """
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """
-        Fit X to y
-
+        """Fit X to y.
+        
         Parameters
         -------------------------
         X : training data - ndarray of shape ( n_samples, n_features )
         y : target value - ndarray of shape ( n_samples )
-
         Returns
         -------------------------
         self
@@ -29,18 +27,17 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
         if len(self.classes_) > 50:
-            raise ValueError(
-                "Unknown label type: Regression task")
+            raise ValueError("Unknown label type: Regression task")
         self.X_ = X
         self.y_ = y
         return self
 
     def predict(self, X):
-        """Predict the class for a givin X
+        """Predict the class for a givin X.
 
         Parameters
         ----------------------
-        X : array, shape (n_samples, n_features)
+        X : array, shape (n_samples, n_features).
 
         Returns
         -----------------------
@@ -49,11 +46,11 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         check_is_fitted(self)
         X = check_array(X)
         Distances = pairwise_distances(X, self.X_)
-        y_pred = self.y_[np.argmin(Distances, axis = 1)]
+        y_pred = self.y_[np.argmin(Distances, axis=1)]
         return y_pred
 
     def score(self, X, y):
-        """Scoring function
+        """Scoring function.
 
         Parameters
         -----------------------------
