@@ -30,7 +30,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         OneNearsetNeighbor()
             The instance of the classifier
         """
-
         X, y = check_X_y(X, y)
         check_classification_targets(y)
         self.classes_ = np.unique(y)
