@@ -35,12 +35,7 @@ def max_index(X):
 
 
 def wallis_product(n_terms):
-    """Implement the Wallis product to compute an approximation of pi.
-    
-    See:
-    https://en.wikipedia.org/wiki/Wallis_product
-    XXX : write Parameters and Returns sections as above.
-    """
+    """Implement the Wallis product to compute an approximation of pi."""
     pi = 1
     for i in range(1, n_terms+1):
         pi *= 4*i**2 / (4 * i**2 - 1)
