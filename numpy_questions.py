@@ -54,17 +54,9 @@ def wallis_product(n_terms):
         If the input is not an int
     """
 
-    pi = 0.0   
-    for i in range(1, n):
-        x = 4 * (i ** 2)
-        y = x - 1
-        z = float(x) / float(y)
-        if (i == 1):
-            pi = z
-        else:
-            pi *= z
-    pi *= 2
-    if (type(n)) != int : 
-        return "ValueError"
-    else:
-        return pi
+    if n_terms > 0:
+        N = np.arange(1, n_terms+1)
+        elem = (4 * N**2)/(4*N**2 - 1)
+        pi *= np.product(elem)
+        pi *= 2
+    return pi
