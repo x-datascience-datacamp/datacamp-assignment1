@@ -7,7 +7,9 @@ The nearest neighbor classifier predicts for a point X_i the target y_k of
 the training sample X_k which is the closest to X_i. We measure proximity with
 the Euclidean distance. The model will be evaluated with the accuracy (average
 number of samples corectly classified). You need to implement the `fit`,
-`predict` and `score` methods for this class.
+`predict` and `score` methods for this class. The code you write should pass
+the test we implemented. You can run the tests by calling at the root of the
+repo `pytest test_sklearn_questions.py`.
 
 We also ask to respect the pep8 convention: https://pep8.org. This will be
 enforced with `flake8`. You can check that there is no flake8 errors by
