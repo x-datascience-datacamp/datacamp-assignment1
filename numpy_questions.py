@@ -52,6 +52,6 @@ def wallis_product(n_terms):
     re = 2
     
     for i in range(1, n_terms+1):
-        re = re * (2 *i)/(2*i-1)*(2*i)/(2*i+1)
+        re = re*(2*i)/(2*i-1)*(2*i)/(2*i+1)
     
     return re

@@ -30,9 +30,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
         # XXX fix
         for i in range(len(X)):
-            NN_idx = np.argmin(np.linalg.norm(X[i,:] - self.X_, axis=1))
+            NN_idx = np.argmin(np.linalg.norm(X[i, :] - self.X_, axis=1))
             y_pred[i] = self.y_[NN_idx]
-        
         
         return y_pred
 
