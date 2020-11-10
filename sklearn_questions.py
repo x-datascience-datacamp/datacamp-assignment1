@@ -9,22 +9,21 @@ from sklearn.metrics import euclidean_distances
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """Creates a one nearest neighbour."""
-    
+
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """Fit the one NN.
+        """Fit X with a one nearest neighbhor.
+
         Parameters
         ----------
-        X, y : training set and training labels
+        X : training set
 
         Returns
         -------
-        self : the ONE NN.
-
+        The train set.
         """
-
         X, y = check_X_y(X, y)
         check_classification_targets(y)
         self.classes_ = np.unique(y)
@@ -33,17 +32,17 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """Classifies X.
+        """Predict the class of X.
+
         Parameters
         ----------
-        X : training set
+        X : set we want to classifies.
 
         Returns
         -------
-        the predicted class of X.
+        y_pred : the prediction of the classificattion
 
         """
-
         check_is_fitted(self)
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
@@ -52,18 +51,17 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """Calculate the error of prediction.
+        """Give the distance between the prediction and the labels.
+        
         Parameters
         ----------
-        X : array that we class
-        y : the labels that is our target
+        X : the set classified 
+        y : the label
 
         Returns
-        -------
-        the distance between the prediction and the label.
-
+         -------
+        The distance.
         """
-
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
         return np.mean(y_pred == y)
