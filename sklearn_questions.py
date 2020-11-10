@@ -7,7 +7,9 @@ from sklearn.metrics import pairwise_distances_argmin_min
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Write docstring
+    """
+    Algorithm that cretae an estimator based on a set of observations and ouputs
+    It compares a the distance new observation
     """
     def __init__(self):  # noqa: D107
         pass
@@ -21,7 +23,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         """
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
-        if len(self.classes) > 50:
+        if len(self.classes_) > 50:
             raise ValueError("The label doesn't exist")
         self.observations_ = X
         self.targets_ = y# XXX fix
