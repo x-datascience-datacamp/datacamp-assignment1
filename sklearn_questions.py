@@ -7,10 +7,10 @@ from sklearn.utils.multiclass import check_classification_targets
 from sklearn.utils.validation import check_X_y, check_is_fitted
 
 
-
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """An implementation of 1-Nearest Neighbors classifier."""
-    def __init__(self):  # noqa: D107
+
+    def __init__(self):
         pass
 
     def fit(self, X, y):
@@ -30,7 +30,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         OneNearsetNeighbor()
             The instance of the classifier
         """
-
         X, y = check_X_y(X, y)
         check_classification_targets(y)
         self.classes_ = np.unique(y)
