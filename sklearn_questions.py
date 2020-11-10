@@ -3,6 +3,7 @@ import numpy as np
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.validation import check_X_y, check_is_fitted
 from sklearn.utils.validation import check_array
+from sklearn.metrics import pairwise_distances_argmin_min
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
@@ -12,24 +13,35 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         pass
 
     def fit(self, X, y):
-        """Write docstring
+        """Fitting the One Nearest Neighbor Model
+        Parameters
+        X : np array of observations
+        y : np array of labels
+        Return the fitted model
         """
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
-        # XXX fix
+        if len(self.classes) > 50:
+            raise ValueError("The label doesn't exist")
+        self.observations_ = X
+        self.targets_ = y# XXX fix
         return self
 
     def predict(self, X):
         """Write docstring
+        Given an observation this methods gives the best estimator output based on the model
+        The input is an observation and the output is the predicted y
         """
         check_is_fitted(self)
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
-        # XXX fix
+        min = pairwise_distances_argmin_min(X,self.observations_,axis = 1)[0]
+        y_pred = self.targets_[min]# XXX fix
         return y_pred
 
     def score(self, X, y):
-        """Write docstring
+        """
+        The method returns a float mesasuring the accuracy of the model on the training set
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
