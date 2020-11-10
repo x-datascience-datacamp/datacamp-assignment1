@@ -26,11 +26,11 @@ def max_index(X):
     if ((len(X.shape) != 2) or (isinstance(X,np.ndarray))==False):
         raise ValueError(" The input must be an array of shape 2D")
     ind = np.argmax(X)
-    ind1 = np.unravel_index(ind,X.shape)
+    i,j = np.unravel_index(ind,X.shape)
     
     # TODO
 
-    return ind1
+    return i,j
 
 def wallis_product(n_terms):
     """Implement the Wallis product to compute an approximation of pi.
