@@ -50,7 +50,7 @@ def wallis_product(n_terms):
     -------
     p : float
         TThe computed wallis product.
-        
+
     """
     p = 2
     if n_terms == 0:
@@ -59,4 +59,3 @@ def wallis_product(n_terms):
         for i in range(1, n_terms+1):
             p *= (4 * i ** 2) / (4 * i ** 2 - 1)
         return p
-    

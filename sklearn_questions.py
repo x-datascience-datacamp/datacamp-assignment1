@@ -19,7 +19,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         ----------
         X : Training data. an  array with shape [n_samples, n_features].
         Y : Target values of shape = [n_samples].
-        
+
         """
         X, y = check_X_y(X, y)
         check_classification_targets(y)
@@ -39,7 +39,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         -------
         y : ndarray of shape [n_samples,]
             Class labels for each data sample.
-        
+
         """
         check_is_fitted(self)
         X = check_array(X)
@@ -67,7 +67,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         -------
         score : float
             Mean accuracy of self.predict(X) wrt. y.
-        
+
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
