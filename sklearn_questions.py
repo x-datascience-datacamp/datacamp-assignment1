@@ -25,9 +25,8 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         """
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
-        # XXX fix
-        self.X_= X
-        self.y_= y
+        self.X_ = X
+        self.y_ = y
         return self
 
     def predict(self, X):
