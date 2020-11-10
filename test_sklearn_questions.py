@@ -6,9 +6,7 @@ from sklearn.utils.estimator_checks import check_estimator
 from sklearn.model_selection import train_test_split
 from sklearn.datasets import make_classification
 from sklearn.neighbors import KNeighborsClassifier
-
 from sklearn_questions import OneNearestNeighbor
-
 from numpy.testing import assert_array_equal
 
 

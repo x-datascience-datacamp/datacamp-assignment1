@@ -28,7 +28,13 @@ def max_index(X):
     j = 0
 
     # TODO
-
+    if isinstance(X, np.ndarray):
+        if len(X.shape) == 2:
+            i, j = np.argmax(np.max(X, axis=1)), np.argmax(np.max(X, axis=0))
+        else:
+            raise ValueError("Argument is not a 2D numpy array")
+    else:
+       raise ValueError("Argument is not a numpy ndarray")
     return i, j
 
 
@@ -38,9 +44,19 @@ def wallis_product(n_terms):
     See:
     https://en.wikipedia.org/wiki/Wallis_product
 
-    XXX : write Parameters and Returns sections as above.
+    Parameters
+    ----------
+    n_terms : int
+              The number of terms in the product. For example 10000.
+
+    Returns
+    -------
+    pi_approx : int
+                An approximation of pi.
 
     """
-    # XXX : The n_terms is an int that corresponds to the number of
-    # terms in the product. For example 10000.
-    return 0.
+    n = np.arange(1, n_terms+1)
+    pi_approx = 2 if n_terms == 0 else 2 * np.prod((2 * n / (2 * n - 1)) *
+     (2 * n / (2 * n + 1)))
+
+    return pi_approx
