@@ -33,11 +33,9 @@ def max_index(X):
     if len(X.shape) != 2:
         raise ValueError('The shape is not 2D')
 
-    maxi = X[0, 0]
-    for k in range(X.shape[0]):
-        for m in range(X.shape[1]):
-            if X[k, m] > maxi:
-                i, j = k, m
+    i = np.where(X == np.amax(X))[0][0]
+    j = np.where(X == np.amax(X))[1][0]
+    
     return i, j
 
 
