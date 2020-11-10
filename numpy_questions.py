@@ -23,6 +23,7 @@ def max_index(X):
     ValueError
         If the input is not a numpy error or
         if the shape is not 2D.
+
     """
     i = 0
     j = 0
@@ -39,8 +40,6 @@ def max_index(X):
 
 def wallis_product(n_terms):
     """Implement the Wallis product to compute an approximation of pi.
-    See:
-    https://en.wikipedia.org/wiki/Wallis_product.
 
     Parameters
     ----------
@@ -51,10 +50,7 @@ def wallis_product(n_terms):
     -------
     p : float
         TThe computed wallis product.
-    Raises
-    ------
-    ValueError
-        If the input is not a positive integer.
+        
     """
     p = 2
     if n_terms == 0:
@@ -63,3 +59,4 @@ def wallis_product(n_terms):
         for i in range(1, n_terms+1):
             p *= (4 * i ** 2) / (4 * i ** 2 - 1)
         return p
+    
