@@ -7,7 +7,7 @@ from sklearn.utils.multiclass import check_classification_targets
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """One nearest neighbor classifier implementation
+    """One nearest neighbor classifier implementation.
 
     Attributes
     ----------
@@ -21,11 +21,12 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         Training data labels
 
     """
+
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """Fits the model according to the training data
+        """Fit the model according to the training data.
 
         Parameters
         ----------
@@ -47,7 +48,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """Predicts the classes of a test data set
+        """Predict the classes of a test data set.
 
         Parameters
         ----------
@@ -68,7 +69,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """Returns the accuracy score of the model
+        """Return the accuracy score of the model.
 
         Parameters
         ----------
