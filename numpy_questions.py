@@ -37,6 +37,7 @@ def max_index(X):
 def wallis_product(n_terms):
     pi = 1
     for i in range(1, n_terms+1):
-        pi *= 4*i**2 / (4*i**2-1)
+        pi *= 4*i**2 / (4 * i**2 - 1)
     pi *= 2
     return pi
+print(wallis_product(100))
