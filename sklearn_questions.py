@@ -11,13 +11,13 @@ reg_the = 30
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """1-Nearest-Neighbor implementation using sklearn API."""
-    
+
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X: np.ndarray, y: np.ndarray):
         """Fit the model using X as input data and y labels.
-        
+
         Parameters
         ----------
         X : ndarray of shape (n_samples, n_features)
@@ -44,7 +44,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def predict(self, X):
         """Predict the labels for the input X data.
-        
+
         Parameters
         ----------
         X : ndarray of shape (n_test_samples, n_features)
@@ -65,7 +65,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def score(self, X, y):
         """Compute the Mean Square Error for a given data and predicted labels.
-        
+
         Parameters
         ----------
         X : ndarray of shape (n_samples, n_features)
