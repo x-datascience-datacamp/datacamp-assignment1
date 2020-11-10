@@ -29,15 +29,15 @@ from sklearn.utils.validation import check_is_fitted
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Our estimator
+    """Our estimator.
     
-    Algorithm that creata an estimator based on a set of
-    observations and ouputs
-    It compares a the distance new observation
+    Algorithm that creata an estimator based on a set of.
+    observations and ouputs.
+    It compares a the distance new observation.
     """
 
     def fit(self, X, y):
-        """Fitting the One Nearest Neighbor Model
+        """Fitting the One Nearest Neighbor Model.
         
         Parameters
         X : np array of observations.
