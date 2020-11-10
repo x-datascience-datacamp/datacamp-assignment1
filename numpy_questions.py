@@ -52,7 +52,7 @@ def wallis_product(n_terms):
     # terms in the product. For example 10000.
 
     prod = 1
-    for n in range(1, n_terms+1):
+    for n in range(1, n_terms + 1):
         n2 = n**2
         prod *= 4 * n2 / (4 * n2 - 1)
     return prod * 2
