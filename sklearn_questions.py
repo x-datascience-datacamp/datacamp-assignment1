@@ -5,6 +5,7 @@ from sklearn.utils.validation import check_X_y, check_is_fitted
 from sklearn.utils.validation import check_array
 
 
+
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """Implemetation of nearest neighbour
     """
@@ -15,7 +16,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         """Copy the input data
         """
         X, y = check_X_y(X, y)
-        check_classification_targets(y)
         self.classes_ = np.unique(y)
         # XXX fix
         self._X = X
