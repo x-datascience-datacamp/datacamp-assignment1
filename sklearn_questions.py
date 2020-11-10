@@ -24,7 +24,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
         if len(self.classes_) > 50:
-            raise ValueError("The label doesn't exist")
+            raise ValueError("Unknown label type: ")
         self.observations_ = X
         self.targets_ = y# XXX fix
         return self
