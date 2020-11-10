@@ -8,31 +8,33 @@ from sklearn.utils.multiclass import check_classification_targets
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-
-    """Classifier implementing the 1-nearest neighbor vote
+    """Classifier implementing the 1-nearest neighbor vote.
 
     Attributes
     ----------
     classes_ : array of shape (n_classes,)
-        Class label meet in X_train
+        Class label meet in X_train.
+
     """
 
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """Fit the model using X as training data and y as class labels
+        """Fit the model using X as training data and y as class labels.
 
         Parameters
         ----------
         X : array_like
             Training data, shape (n_samples, n_features)
+
         y : array-like
             class labels of shape = (n_samples,)
 
         Returns
         -------
         self : fitted model
+
         """
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
@@ -52,6 +54,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         -------
         y_pred : ndarray of shape (n_queries,)
             Class labels for each data sample.
+
         """
         check_is_fitted(self)
         X = check_array(X)
@@ -62,8 +65,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """
-        Return the mean accuracy on the given test data and labels.
+        """Return the mean accuracy on the given test data and labels.
 
         Parameters
         ----------
@@ -76,6 +78,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         -------
         score : float
             Mean accuracy of self.predict(X) wrt. y.
+
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
