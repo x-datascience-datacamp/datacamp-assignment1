@@ -11,6 +11,7 @@ from numpy_questions import wallis_product, max_index
 
 
 def test_max_index():
+    """Test max_index."""
     X = np.array([[0, 1], [2, 0]])
     assert max_index(X) == (1, 0)
 
@@ -29,6 +30,7 @@ def test_max_index():
 
 
 def test_wallis_product():
+    """Test Wallis_product."""
     pi_approx = wallis_product(0)
     assert pi_approx == 2.
 
