@@ -3,6 +3,7 @@ import numpy as np
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.validation import check_X_y, check_is_fitted
 from sklearn.utils.validation import check_array
+from sklearn.utils.multiclass import check_classification_targets
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
@@ -13,8 +14,11 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def fit(self, X, y):
         """Store classes, training points and the associated labels."""
+        check_classification_targets(y)
         X, y = check_X_y(X, y)
+
         self.classes_ = np.unique(y)
+
         self.X_ = X
         self.y_ = y
         return self
