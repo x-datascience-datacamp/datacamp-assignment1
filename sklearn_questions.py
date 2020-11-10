@@ -5,6 +5,7 @@ import numpy as np
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.multiclass import check_classification_targets
 from sklearn.utils.validation import check_X_y, check_is_fitted
+from sklearn.utils.validation import check_array
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
@@ -52,6 +53,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         np.ndarray(m,)
             The predicted features
         """
+        X = check_array(X)
         check_is_fitted(self)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0],
                          dtype=self.classes_.dtype)
