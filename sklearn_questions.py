@@ -3,8 +3,8 @@ import numpy as np
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.validation import check_X_y, check_is_fitted
 from sklearn.utils.validation import check_array
-from scipy.spatial import distance_matrix
 from sklearn.utils.multiclass import check_classification_targets
+from sklearn.metrics import euclidean_distances
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
@@ -14,17 +14,16 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         pass
 
     def fit(self, X, y):
-        """Fit the one NN 
-
+        """Fit the one NN
         Parameters
         ----------
-        X, y : training set and training labels 
+        X, y : training set and training labels
 
         Returns
         -------
-        self : the ONE NN. 
+        self : the ONE NN.
         """
-        
+
         X, y = check_X_y(X, y)
         check_classification_targets(y)
         self.classes_ = np.unique(y)
@@ -37,21 +36,23 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
         Parameters
         ----------
-        X : training set 
+        X : training set
 
         Returns
         -------
-        the predicted class of X. 
+        the predicted class of X.
         """
+
         check_is_fitted(self)
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0])
-        k_near = [np.argmin(np.linalg.norm(self.X_train_-x, axis=1)) for x in X]
-        y_pred = np.array([self.y_train_[n] for n in k_near])
+        # XXX fix
+        closest = np.argmin(euclidean_distances(X, self.X_train_), axis=1)
+        y_pred = self.y_train_[closest]
         return y_pred
 
     def score(self, X, y):
-        """Calculate the error of prediction 
+        """Calculate the error of prediction
 
         Parameters
         ----------
@@ -60,7 +61,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
         Returns
         -------
-        the distance between the prediction and the label.  
+        the distance between the prediction and the label.
 
         """
         X, y = check_X_y(X, y)
