@@ -23,13 +23,14 @@ def max_index(X):
     """
     i = 0
     j = 0
-    if type(X) is not np.ndarray:
+    if not isinstance(X, np.ndarray):
         raise ValueError('the input is not a numpy')
     # TODO
-    if (len(X.shape) != 2):
+    if X.ndim != 2:
         raise ValueError('the shape is not 2D')
-    i = np.where(X == np.amax(X))[0][0]
-    j = np.where(X == np.max(X))[1][0]
+    i, j = np.where(X == np.max(X))
+    i = i[0]
+    j = j[0]
     return i, j
 
 
@@ -42,9 +43,10 @@ def wallis_product(n_terms):
     XXX : write Parameters and Returns sections as above.
 
     """
-    pi_approx = 2.
-    for i in range(1, n_terms+1):
+    pi_approx = 2
+    if n_terms > 0:
+        i = np.arange(1, n_terms+1)
         first_term = (2. * i)/(2. * i - 1.)
         secont_term = (2. * i)/(2. * i + 1.)
-        pi_approx = pi_approx * first_term * secont_term
+        pi_approx *= np.product(first_term*secont_term)
     return pi_approx
