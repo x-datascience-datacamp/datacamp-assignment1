@@ -5,7 +5,6 @@ from sklearn.utils.validation import check_X_y, check_is_fitted
 from sklearn.utils.validation import check_array
 
 
-
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """Implemetation of nearest neighbour.
     """
@@ -32,7 +31,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         for i in range(len(X)):
             NN_idx = np.argmin(np.linalg.norm(X[i, :] - self.X_, axis=1))
             y_pred[i] = self.y_[NN_idx]
-        
         return y_pred
 
     def score(self, X, y):
