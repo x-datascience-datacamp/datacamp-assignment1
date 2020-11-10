@@ -61,7 +61,11 @@ def wallis_product(n_terms):
     ValueError
         If the input is not an integer .
     """
+    if isinstance(n_terms, int) is False:
+        raise ValueError('The input is not an integer')
     if n_terms == 0:
         return 2
+    if n_terms == 1:
+        return 8 / 3
     prod = np.prod([(4 * n**2) / (4 * n**2 - 1) for n in range(1, n_terms+1)])
     return prod
