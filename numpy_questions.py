@@ -23,11 +23,13 @@ def max_index(X):
     i = 0
     j = 0
 
+    #TODO
     if type(X) != np.ndarray or len(X.shape) != 2:
         raise ValueError("Value Error")
-    d=np.where(X==np.max(X, axis=None))
-    i=d[0][0]
-    j=d[1][0]
+    else:
+        d=np.where(X==np.max(X, axis=None))
+        i=d[0][0]
+        j=d[1][0]
 
     return i, j
 
