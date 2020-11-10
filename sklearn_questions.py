@@ -7,13 +7,13 @@ from sklearn.utils.validation import check_array
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Implemetation of nearest neighbour
+    """Implemetation of nearest neighbour.
     """
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """Copy the input data
+        """Copy the input data.
         """
         X, y = check_X_y(X, y)
         self.classes_ = np.unique(y)
@@ -23,7 +23,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """Find the NN and predict
+        """Find the NN and predict.
         """
         check_is_fitted(self)
         X = check_array(X)
@@ -36,7 +36,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
-        """Accurancy
+        """Accurancy.
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
