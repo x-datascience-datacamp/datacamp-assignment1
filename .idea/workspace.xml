@@ -27,7 +27,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7af7d7ec-8efe-498b-a829-80edcbee2af3" name="Default Changelist" comment="etek">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sklearn_questions.py" beforeDir="false" afterPath="$PROJECT_DIR$/sklearn_questions.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +173,7 @@
       <workItem from="1604931702302" duration="2533000" />
       <workItem from="1604942434450" duration="1855000" />
       <workItem from="1604995803651" duration="8193000" />
-      <workItem from="1605021076404" duration="782000" />
+      <workItem from="1605021076404" duration="1742000" />
     </task>
     <task id="LOCAL-00001" summary="etek">
       <created>1604932112646</created>
