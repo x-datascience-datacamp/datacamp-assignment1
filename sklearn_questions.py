@@ -13,7 +13,9 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         pass
 
     def nearest_neighbor_index(self, data):
+
         """Find nearest datapoint in the predictors.
+
         Parameters
         ----------
         self : OneNearestNeihbor() Model
@@ -26,7 +28,9 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return np.argmin(dist)
 
     def fit(self, X, y):
+
         """Fit function of our One nearest neighbor model.
+
         Parameters
         ----------
         X : ndarray of training predictors (n_samples, n_features)
@@ -50,6 +54,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
+
         """Predict function of our One nearest neighbor model.
         Parameters
         ----------
@@ -58,6 +63,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         -------
         y_pred = ndarray the predicted values (n_samples)
         """
+
         check_is_fitted(self)
         X = check_array(X)
         y_pred = np.full(shape=len(X), fill_value=self.classes_[0], dtype=self.classes_.dtype)
@@ -67,7 +73,9 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return y_pred
 
     def score(self, X, y):
+
         """Score function of our One nearest neighbor model.
+
         Parameters
         ----------
         X : ndarray of test predictors (n_samples, n_features)
