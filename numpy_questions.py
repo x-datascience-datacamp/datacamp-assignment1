@@ -23,19 +23,18 @@ def max_index(X):
     i = 0
     j = 0
 
-    #TODO
+    # TODO
     if type(X) != np.ndarray or len(X.shape) != 2:
         raise ValueError("Value Error")
     else:
-        d=np.where(X==np.max(X, axis=None))
-        i=d[0][0]
-        j=d[1][0]
-
+        d = np.where(X == np.max(X, axis=None))
+        i = d[0][0]
+        j = d[1][0]
     return i, j
 
 
 def wallis_product(n_terms):
-     """Implement the Wallis product to compute an approximation of pi.
+    """Implement the Wallis product to compute an approximation of pi.
     See:
     https://en.wikipedia.org/wiki/Wallis_product
     XXX : write Parameters and Returns sections as above.
