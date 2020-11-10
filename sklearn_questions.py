@@ -59,7 +59,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         - X : array
             input data
         - Y : array
-            classes corresponding on each input X
+            clases corresponding on each input X
 
         Returns
         -------
