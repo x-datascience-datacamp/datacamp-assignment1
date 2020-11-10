@@ -30,7 +30,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """Write docstring
+        """
         Given an observation this methods gives the best estimator output based on the model
         The input is an observation and the output is the predicted y
         """
