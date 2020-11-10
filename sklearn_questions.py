@@ -9,12 +9,12 @@ from sklearn.metrics import euclidean_distances
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
     """Creates a one nearest neighbour."""
+    
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
         """Fit the one NN.
-
         Parameters
         ----------
         X, y : training set and training labels
@@ -34,7 +34,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def predict(self, X):
         """Classifies X.
-
         Parameters
         ----------
         X : training set
@@ -54,7 +53,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def score(self, X, y):
         """Calculate the error of prediction.
-
         Parameters
         ----------
         X : array that we class
@@ -65,7 +63,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         the distance between the prediction and the label.
 
         """
-        
+
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
         return np.mean(y_pred == y)
