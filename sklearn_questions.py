@@ -6,14 +6,15 @@ from sklearn.utils.validation import check_array
 from sklearn.utils.multiclass import check_classification_targets
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    """Classification algorithm that is non parametric
+
+    """Classification algorithm that is non parametric.
     """
     def __init__(self):
 
         pass
 
     def fit(self, X, y):
-        """Fitting the model
+        """Fitting the model.
         """
         X, y = check_X_y(X, y)
         check_classification_targets(y)
