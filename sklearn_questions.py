@@ -31,7 +31,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
             euclidean_distances = np.linalg.norm(self.X_ - X[i,:], axis=1)
             index_closest = np.argmin(euclidean_distances)
             y_pred[i] = self.y_[index_closest]
-          return y_pred
+        return y_pred
 
     def score(self, X, y):
         """Computes the score."""
