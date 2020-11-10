@@ -16,15 +16,18 @@
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select />
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:NP" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7af7d7ec-8efe-498b-a829-80edcbee2af3" name="Default Changelist" comment="etek">
-      <change afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/assesment1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assesment1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/numpy_questions.py" beforeDir="false" afterPath="$PROJECT_DIR$/numpy_questions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sklearn_questions.py" beforeDir="false" afterPath="$PROJECT_DIR$/sklearn_questions.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +46,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="NP" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="JupyterTrust" id="741cbe1b-4d08-4ae3-a1ea-f4e47e9e12cf" />
@@ -55,7 +63,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../numpy_questions.py" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/lab-CNN-1.ipynb" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -64,7 +72,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python tests.pytest in test_numpy_questions.py">
+  <component name="RunManager" selected="Python tests.pytest in test_sklearn_questions.py">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="assesment1" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -126,12 +134,31 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="pytest in test_sklearn_questions.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="assesment1" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/test_sklearn_questions.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Python.numpy_questions" />
       <item itemvalue="Python tests.pytest in test_numpy_questions.py" />
+      <item itemvalue="Python tests.pytest in test_sklearn_questions.py" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.pytest in test_sklearn_questions.py" />
         <item itemvalue="Python tests.pytest in test_numpy_questions.py" />
       </list>
     </recent_temporary>
@@ -144,7 +171,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1604931700800</updated>
-      <workItem from="1604931702302" duration="1797000" />
+      <workItem from="1604931702302" duration="2533000" />
+      <workItem from="1604942434450" duration="1855000" />
+      <workItem from="1604995803651" duration="8193000" />
+      <workItem from="1605021076404" duration="376000" />
     </task>
     <task id="LOCAL-00001" summary="etek">
       <created>1604932112646</created>
@@ -164,11 +194,24 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="NP" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="etek" />
@@ -179,20 +222,57 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="67" width="1089" height="713" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1604933669657" />
-    <state x="549" y="154" key="FileChooserDialogImpl" timestamp="1604933635013">
+    <state x="549" y="154" key="FileChooserDialogImpl" timestamp="1605006153246">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="154" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1604933635013" />
+    <state x="549" y="154" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605006153246" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1605005480640">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605005480640" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1605005480638">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605005480638" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1605005480633">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605005480633" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1605005480638">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605005480638" />
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1604999859897">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1604999859897" />
+    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1604999859897">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1604999859897" />
+    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1604999859897">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1604999859897" />
+    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1604999859897">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1604999859897" />
     <state x="277" y="57" key="SettingsEditor" timestamp="1604933622864">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1604933622864" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1604931793645">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1605021445419">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1604931793645" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1605021445419" />
+    <state x="490" y="304" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1605021420261">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="490" y="304" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1536.824@0.0.1536.824" timestamp="1605021420261" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/assesment1$pytest_in_test_numpy_questions_py.coverage" NAME="pytest in test_numpy_questions.py Coverage Results" MODIFIED="1604933705971" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/assesment1$pytest_in_test_sklearn_questions_py.coverage" NAME="pytest in test_sklearn_questions.py Coverage Results" MODIFIED="1605001019865" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
