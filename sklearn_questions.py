@@ -14,6 +14,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def fit(self, X, y):
         """Fit the one NN.
+
         Parameters
         ----------
         X, y : training set and training labels
@@ -33,6 +34,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
     def predict(self, X):
         """Classifies X.
+
         Parameters
         ----------
         X : training set
@@ -63,6 +65,7 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         the distance between the prediction and the label.
 
         """
+        
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
         return np.mean(y_pred == y)
