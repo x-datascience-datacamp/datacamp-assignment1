@@ -25,6 +25,7 @@ from sklearn.base import ClassifierMixin
 from sklearn.utils.validation import check_X_y
 from sklearn.utils.validation import check_array
 from sklearn.metrics import pairwise_distances_argmin_min
+from sklearn.utils.validation import check_is_fitted
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
@@ -42,7 +43,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         Return the fitted model
         """
         X, y = check_X_y(X, y)
-        y = check_classification_targets(y)
         self.classes_ = np.unique(y)
         if len(self.classes_) > 50:
             raise ValueError("Unknown label type: ")
@@ -62,8 +62,6 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         min = pairwise_distances_argmin_min(X, self.observations_, axis=1)[0]
         y_pred = self.targets_[min]  # XXX fix
         return y_pred
-
-    
 
     def score(self, X, y):
         """
