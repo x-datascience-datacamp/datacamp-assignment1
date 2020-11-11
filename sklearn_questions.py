@@ -1,72 +1,85 @@
-"""Assignment - making a sklearn estimator.
+# noqa: D100
 
-The goal of this assignment is to implement by yourself a scikit-learn
-estimator for the OneNearestNeighbor and check that it is working properly.
-
-The nearest neighbor classifier predicts for a point X_i the target y_k of
-the training sample X_k which is the closest to X_i. We measure proximity with
-the Euclidean distance. The model will be evaluated with the accuracy (average
-number of samples corectly classified). You need to implement the `fit`,
-`predict` and `score` methods for this class. The code you write should pass
-the test we implemented. You can run the tests by calling at the root of the
-repo `pytest test_sklearn_questions.py`.
-
-We also ask to respect the pep8 convention: https://pep8.org. This will be
-enforced with `flake8`. You can check that there is no flake8 errors by
-calling `flake8` at the root of the repo.
-
-Finally, you need to write docstring similar to the one in `numpy_questions`
-for the methods you code and for the class. The docstring will be checked using
-`pydocstyle` that you can also call at the root of the repo.
-"""
 import numpy as np
-from sklearn.base import BaseEstimator
-from sklearn.base import ClassifierMixin
-from sklearn.utils.validation import check_X_y
+from sklearn.base import BaseEstimator, ClassifierMixin
+from sklearn.utils.validation import check_X_y, check_is_fitted
 from sklearn.utils.validation import check_array
-from sklearn.utils.validation import check_is_fitted
-from sklearn.utils.multiclass import check_classification_targets
+from sklearn.utils.multiclass import type_of_target
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    "OneNearestNeighbor classifier."
+    """1-NearestNeightbor estimator."""
+
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """Write docstring.
+        """Fit method the 1-NearestNeightbor.
 
-        And describe parameters
+        Parameters
+        -------
+        X : ndarray of shape (n_samples, n_features).
+            The input array.
+        y : ndarray of shape (n_samples, 1).
+
+        Return
+
+        -------
+        self : OneNearestNeighbor
         """
         X, y = check_X_y(X, y)
-        y = check_classification_targets(y)
+        self.n_features_in_ = X.shape[1]
         self.classes_ = np.unique(y)
 
-        # XXX fix
+        if type_of_target(y) not in ['binary', 'multiclass', 'unknown']:
+            raise ValueError(f"Unknown label type: {y}")
+
+        self.X_train_ = X.copy()
+        self.y_train_ = y.copy()
         return self
 
     def predict(self, X):
-        """Write docstring.
+        """Prediction of the class of X.
 
-        And describe parameters
+        Parameters
+        ----------
+        X : ndarray of shape (n_samples, n_features).
+            The input array.
+
+        Return
+        -------
+        pred : ndarray of shape (len(X), 1).
+            The output array with the predictions.
         """
         check_is_fitted(self)
         X = check_array(X)
-        y_pred = np.full(
-            shape=len(X), fill_value=self.classes_[0],
-            dtype=self.classes_.dtype
-        )
+        pred = np.full(shape=len(X), fill_value=self.classes_[0])
+        # the distance used to choose the proximate labal
+        dist = np.zeros((len(X)))
 
-        # XXX fix
-        return y_pred
+        for i in range(len(X)):
+            dist[i] = np.argmin(np.linalg.norm(self.X_train_-X[i], axis=1))
+        dist = dist.astype(int)
+
+        pred = self.y_train_[dist]
+
+        return pred
 
     def score(self, X, y):
-        """Write docstring.
+        """Calculate the error rate of our predictor.
 
-        And describe parameters
+        Parameters
+        ----------
+        X : ndarray of shape (n_samples, n_features)
+            The input array on which we will predict.
+        y : ndarray of shape (n_samples)
+            The input array with correct classes
+
+        Return
+        -------
+        score : float
+                The score of the prediction.
         """
         X, y = check_X_y(X, y)
-        y_pred = self.predict(X)
-
-        # XXX fix
-        return y_pred.sum()
+        pred = self.predict(X)
+        return np.mean(pred == y)
