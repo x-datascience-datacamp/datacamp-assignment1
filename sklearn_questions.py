@@ -49,11 +49,10 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
                the current instance of the classifier
         """
         X, y = check_X_y(X, y)
-        y = check_classification_targets(y)
+        check_classification_targets(y)
         self.classes_ = np.unique(y)
         self.X_ = X
         self.y_ = y
-
         return self
 
     def predict(self, X):
@@ -61,15 +60,18 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
 
         Parameters
         ----------
-        X : ndarray of shape (n_test_samples, n_features)
-            test data to predict on
+        X : (n_test_samples, n_features)
+            test data
         Returns
         ----------
-        y : ndarray of shape (n_test_samples,)
-            Class labels for each test data sample
+        y : (n_test_samples,)
+            labels
         """
         check_is_fitted(self)
         X = check_array(X)
+        y_pred = np.full(shape=len(X), fill_value=self.classes_[0],
+                         dtype=self.classes_.dtype
+                         )
         all_distances = pairwise_distances(X, self.X_)
         closest_dist = np.argmin(all_distances, axis=1)
         y_pred = self.y_[closest_dist]
@@ -82,4 +84,4 @@ class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
-        return y_pred.mean()
+        return (y_pred == y).mean()
