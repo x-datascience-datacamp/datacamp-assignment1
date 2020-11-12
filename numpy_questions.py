@@ -23,13 +23,11 @@ def max_index(X):
 
     Parameters
     ----------
-    X : ndarray of shape (n_samples, n_features)
-        The input array.
-
+    X : ndarray of shape (n_samples, n_features) The input array.
     Returns
     -------
     (i, j) : tuple(int)
-        The row and columnd index of the maximum.
+          The row and columnd index of the maximum.
 
     Raises
     ------
@@ -39,9 +37,14 @@ def max_index(X):
     """
     i = 0
     j = 0
-
+    if not isinstance(X, np.ndarray):
+        raise ValueError('the input is not a numpy')
     # TODO
-
+    if X.ndim != 2:
+        raise ValueError('the shape is not 2D')
+    i, j = np.where(X == np.max(X))
+    i = i[0]
+    j = j[0]
     return i, j
 
 
@@ -62,6 +65,10 @@ def wallis_product(n_terms):
     pi : float
         The approximation of order `n_terms` of pi using the Wallis product.
     """
-    # XXX : The n_terms is an int that corresponds to the number of
-    # terms in the product. For example 10000.
-    return 0.
+    pi_approx = 2
+    if n_terms > 0:
+        i = np.arange(1, n_terms+1)
+        first_term = (2. * i)/(2. * i - 1.)
+        secont_term = (2. * i)/(2. * i + 1.)
+        pi_approx *= np.product(first_term*secont_term)
+    return pi_approx

@@ -22,51 +22,66 @@ for the methods you code and for the class. The docstring will be checked using
 import numpy as np
 from sklearn.base import BaseEstimator
 from sklearn.base import ClassifierMixin
-from sklearn.utils.validation import check_X_y
+from sklearn.utils.validation import check_X_y, check_is_fitted
 from sklearn.utils.validation import check_array
-from sklearn.utils.validation import check_is_fitted
 from sklearn.utils.multiclass import check_classification_targets
+from sklearn.metrics.pairwise import pairwise_distances
 
 
 class OneNearestNeighbor(BaseEstimator, ClassifierMixin):
-    "OneNearestNeighbor classifier."
+    """OneNearestNeighbor."""
+
     def __init__(self):  # noqa: D107
         pass
 
     def fit(self, X, y):
-        """Write docstring.
+        """Fitting function.
 
-        And describe parameters
+         Parameters
+        ----------
+        X : ndarray of shape (n_samples, n_features)
+            training data of shape
+        y : ndarray of shap (n_samples,)
+            target values of shape
+        Returns
+        ----------
+        self : OneNearestNeighbor()
+               the current instance of the classifier
         """
         X, y = check_X_y(X, y)
-        y = check_classification_targets(y)
+        check_classification_targets(y)
         self.classes_ = np.unique(y)
-
-        # XXX fix
+        self.X_ = X
+        self.y_ = y
         return self
 
     def predict(self, X):
-        """Write docstring.
+        """Predict function.
 
-        And describe parameters
+        Parameters
+        ----------
+        X : (n_test_samples, n_features)
+            test data
+        Returns
+        ----------
+        y : (n_test_samples,)
+            labels
         """
         check_is_fitted(self)
         X = check_array(X)
-        y_pred = np.full(
-            shape=len(X), fill_value=self.classes_[0],
-            dtype=self.classes_.dtype
-        )
-
-        # XXX fix
+        y_pred = np.full(shape=len(X), fill_value=self.classes_[0],
+                         dtype=self.classes_.dtype
+                         )
+        all_distances = pairwise_distances(X, self.X_)
+        closest_dist = np.argmin(all_distances, axis=1)
+        y_pred = self.y_[closest_dist]
         return y_pred
 
     def score(self, X, y):
-        """Write docstring.
+        """Calculate the Score of the prediction.
 
         And describe parameters
         """
         X, y = check_X_y(X, y)
         y_pred = self.predict(X)
-
-        # XXX fix
-        return y_pred.sum()
+        return (y_pred == y).mean()
